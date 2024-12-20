@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DumpDrive.Domain.Actions
+namespace DumpDrive.Domain.Repositories
 {
-    internal class ExitMenuAction
+    internal class UserRepositorycs
     {
     }
 }
