@@ -10,6 +10,14 @@ namespace DumpDrive.Presentation.Helpers
     internal class Writer
     {
         public static void Write(User user)
-            => Console.WriteLine($"{user.Id}: {user.FirstName} {user.LastName}");
+            => Console.WriteLine($"{user.Id}: {user.Name} {user.Surname}");
+
+
+        public static void Error(string message)
+        {
+            Console.WriteLine(message);
+            Thread.Sleep(1000);
+            Console.Clear();
+        }
     }
 }
