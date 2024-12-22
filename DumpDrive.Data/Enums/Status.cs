@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace DumpDrive.Data.Enums
 {
-    internal class Status
+    public enum Status
     {
+        Admin,
+        Standard
     }
 }

@@ -1,12 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DumpDrive.Data.Entities;
+using DumpDrive.Domain.Enums;
 
 namespace DumpDrive.Domain.Repositories
 {
-    internal class BaseRepository
+    public abstract class BaseRepository
     {
+        protected readonly DumpDriveDbContext DbContext;
+
+        protected BaseRepository(DumpDriveDbContext dbContext)
+        {
+            DbContext = dbContext;
+        }
+
+        protected ResponseResultType SaveChanges()
+        {
+            var hasChanges = DbContext.SaveChanges() > 0;
+            if (hasChanges)
+                return ResponseResultType.Success;
+
+            return ResponseResultType.NoChanges;
+        }
     }
 }
