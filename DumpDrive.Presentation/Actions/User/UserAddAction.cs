@@ -1,5 +1,7 @@
-﻿using DumpDrive.Domain.Abstractions;
+﻿using DumpDrive.Presentation.Abstractions;
 using DumpDrive.Domain.Enums;
+using DumpDrive.Domain.Repositories;
+using DumpDrive.Presentation.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DumpDrive.Domain.Actions.User
+namespace DumpDrive.Presentation.Actions.User
 {
     public class UserAddAction : IAction
     {
@@ -23,9 +25,9 @@ namespace DumpDrive.Domain.Actions.User
 
         public void Open()
         {
-            Reader.ReadInput("First name", out var firstName);
-            Reader.ReadInput("Last name", out var lastName);
-            var user = new Data.Entities.Models.User(firstName, lastName);
+            Reader.ReadInput("First name", out var name);
+            Reader.ReadInput("Last name", out var surname);
+            var user = new Data.Entities.Models.User(name, surname);
 
             var responseResult = _userRepository.Add(user);
             if (responseResult is ResponseResultType.Success)
