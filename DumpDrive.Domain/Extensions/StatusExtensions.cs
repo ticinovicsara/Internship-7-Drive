@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using DumpDrive.Data.Enums;
 
 namespace DumpDrive.Domain.Extensions
@@ -14,6 +13,5 @@ namespace DumpDrive.Domain.Extensions
         {
             return statusesToCheck.Contains(status);
         }
-
     }
 }

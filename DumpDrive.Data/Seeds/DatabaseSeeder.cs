@@ -1,9 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using DumpDrive.Data.Entities.Models;
 
-public static class DatabaseSeeder
+namespace DumpDrive.Data.Seeds
 {
-	public Class1()
-	{
-	}
+    public static class DatabaseSeeder
+    {
+        public static void Seed(ModelBuilder builder)
+        {
+        }
+    }
 }

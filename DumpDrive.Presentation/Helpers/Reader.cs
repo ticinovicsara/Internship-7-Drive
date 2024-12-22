@@ -60,23 +60,24 @@ namespace DumpDrive.Presentation.Helpers
             input = Console.ReadLine() ?? string.Empty;
         }
 
+
         public static bool TryReadEmail(string message, out string email)
         {
             email = string.Empty;
-
             Console.WriteLine(message);
+
             var input = Console.ReadLine();
-            var isEmpty = string.IsNullOrWhiteSpace(input);
-            var isValid = !string.IsNullOrWhiteSpace(input) &&
-                input.Contains("@") &&
-                input.Contains(".") &&
-                input.Split("@").Length == 2 &&
-                input.Split(".").Last().Length >= 2;
+            if (string.IsNullOrWhiteSpace(input))
+                return false;
 
-            if (isValid)
+            if (regex.IsMatch(input))
+            {
                 email = input;
+                return true;
+            }
 
-            return isValid;
+            Console.WriteLine("Email is not in the right format.");
+            return false;
         }
 
         public static bool TryReadPassword(string massage, out string password)
@@ -84,8 +85,8 @@ namespace DumpDrive.Presentation.Helpers
             password = string.Empty;
             Console.WriteLine(massage);
 
-            ConsoleKey key;
             var passBuilder = StringBuilder();
+            ConsoleKey key;
 
             do
             {
@@ -109,4 +110,14 @@ namespace DumpDrive.Presentation.Helpers
 
             return !string.IsNullOrWhiteSpace(password);
         }
+
+        public static string CaptchaGenerator
+        {
+            var random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                return new string (Enumerable.Repeat(chars, 8)
+                    .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+    }
+
 }

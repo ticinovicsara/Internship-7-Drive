@@ -49,6 +49,7 @@ namespace DumpDrive.Domain.Repositories
             return SaveChanges();
         }
 
+        public User GetByEmail(string email) => _users.FirstOrDefault(u => u.Email == email);
         public User? GetById(int id) => DbContext.Users.FirstOrDefault(u => u.Id == id);
         public ICollection<User> GetAll() => DbContext.Users.ToList();
 

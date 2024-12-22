@@ -16,17 +16,12 @@ namespace DumpDrive.Presentation.Factories
         public static UserAction Create()
         {
             var actions = new List<IAction>
-        {
-            new UserAddAction(RepositoryFactory.Create<UserRepository>()),
-            new UserEditAction(RepositoryFactory.Create<UserRepository>()),
-            new UserDeleteAction(RepositoryFactory.Create<UserRepository>()),
-            new UsersReadByGroupAction(RepositoryFactory.Create<UserRepository>(), RepositoryFactory.Create<GroupRepository>()),
-            new UserAddToGroupAction(
-                RepositoryFactory.Create<UserRepository>(),
-                RepositoryFactory.Create<GroupRepository>(),
-                RepositoryFactory.Create<GroupUserRepository>()),
-            new ExitMenuAction()
-        };
+            {
+                new UserAddAction(RepositoryFactory.Create<UserRepository>()),
+                new UserEditAction(RepositoryFactory.Create<UserRepository>()),
+                new UserDeleteAction(RepositoryFactory.Create<UserRepository>()),
+                new ExitMenuAction()
+            };
 
             var menuAction = new UserAction(actions);
             return menuAction;

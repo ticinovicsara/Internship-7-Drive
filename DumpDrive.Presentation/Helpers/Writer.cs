@@ -10,7 +10,9 @@ namespace DumpDrive.Presentation.Helpers
     internal class Writer
     {
         public static void Write(User user)
-            => Console.WriteLine($"{user.Id}: {user.Name} {user.Surname}");
+        {
+            Console.WriteLine($"ID: {user.Id} | Ime: {user.Name} {user.Surname} | Email: {user.Email}");
+        }
 
 
         public static void Error(string message)
@@ -18,6 +20,24 @@ namespace DumpDrive.Presentation.Helpers
             Console.WriteLine(message);
             Thread.Sleep(1000);
             Console.Clear();
+        }
+
+        public static void WriteFolders(ICollection<Folder> folders)
+        {
+            Console.WriteLine("Mape:");
+            foreach (var folder in folders.OrderBy(f => f.Name))
+            {
+                Console.WriteLine($"- {folder.} (Stvorena: {folder.CreatedAt})");
+            }
+        }
+
+        public static void WriteFiles(ICollection<File> files)
+        {
+            Console.WriteLine("Datoteke:");
+            foreach (var file in files.OrderByDescending(f => f.LastModified))
+            {
+                Console.WriteLine($"- {file.Name} ({file.Size} KB, Zadnja izmjena: {file.LastModified})");
+            }
         }
     }
 }

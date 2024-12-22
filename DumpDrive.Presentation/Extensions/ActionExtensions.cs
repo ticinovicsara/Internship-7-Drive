@@ -1,63 +1,64 @@
 ﻿using DumpDrive.Presentation.Abstractions;
 using DumpDrive.Presentation.Actions;
 
-namespace DumpDrive.Presentation.Extensions;
-
-public class ActionExtensions
+namespace DumpDrive.Presentation.Extensions
 {
-    public static void PrintActionsAndOpen(this IList<IAction> actions)
+    public static class ActionExtensions
     {
-        const string INVALID_INPUT_MSG = "Please type in number!";
-        const string INVALID_ACTION_MSG = "Please select valid action!";
-
-
-        var isExitSelected = false;
-        do
+        public static void PrintActionsAndOpen(this IList<IAction> actions)
         {
-            PrintActions(actions);
+            const string INVALID_INPUT_MSG = "Please type in number!";
+            const string INVALID_ACTION_MSG = "Please select valid action!";
 
-            var isValidInput = int.TryParse(Console.ReadLine(), out var actionIndex);
-            if (!isValidInput)
+
+            var isExitSelected = false;
+            do
             {
-                PrintErrorMessage(INVALID_INPUT_MSG);
-                continue;
-            }
+                PrintActions(actions);
 
-            var action = actions.FirstOrDefault(a => a.MenuIndex == actionIndex);
-            if (action is null)
+                var isValidInput = int.TryParse(Console.ReadLine(), out var actionIndex);
+                if (!isValidInput)
+                {
+                    PrintErrorMessage(INVALID_INPUT_MSG);
+                    continue;
+                }
+
+                var action = actions.FirstOrDefault(a => a.MenuIndex == actionIndex);
+                if (action is null)
+                {
+                    PrintErrorMessage(INVALID_ACTION_MSG);
+                    continue;
+                }
+
+                action.Open();
+
+                isExitSelected = action is ExitMenuAction;
+            } while (!isExitSelected);
+        }
+
+        public static void SetActionIndexes(this IList<IAction> actions)
+        {
+            var index = 0;
+            foreach (var action in actions)
             {
-                PrintErrorMessage(INVALID_ACTION_MSG);
-                continue;
+                action.MenuIndex = ++index;
             }
-
-            action.Open();
-
-            isExitSelected = action is ExitMenuAction;
-        } while (!isExitSelected);
-    }
-
-    public static void SetActionIndexes(this IList<IAction> actions)
-    {
-        var index = 0;
-        foreach (var action in actions)
-        {
-            action.MenuIndex = ++index;
+            Console.Writeline("\n: ");
         }
-        Console.Writeline("\n: ");
-    }
 
-    private static void PrintActions(IList<IAction> actions)
-    {
-        foreach (var action in actions)
+        private static void PrintActions(IList<IAction> actions)
         {
-            Console.WriteLine($"{action.MenuIndex}. {action.Name}");
+            foreach (var action in actions)
+            {
+                Console.WriteLine($"{action.MenuIndex}. {action.Name}");
+            }
         }
-    }
 
-    private static void PrintErrorMessage(string message)
-    {
-        Console.WriteLine(message);
-        Thread.Sleep(1000);
-        Console.Clear();
+        private static void PrintErrorMessage(string message)
+        {
+            Console.WriteLine(message);
+            Thread.Sleep(1000);
+            Console.Clear();
+        }
     }
 }
