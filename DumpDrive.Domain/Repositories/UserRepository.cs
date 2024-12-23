@@ -17,6 +17,21 @@ namespace DumpDrive.Domain.Repositories
             return SaveChanges();
         }
 
+        public ResponseResultType Create(string email, string password)
+        {
+            if (DbContext.Users.Any(u => u.Email == email))
+            {
+                return ResponseResultType.Conflict;
+            }
+
+            var user = new User(email, password, "Name", "Surname");
+
+            DbContext.Users.Add(user);
+
+            return SaveChanges();
+        }
+
+
         public ResponseResultType Update(User user, int id)
         {
             var userToUpdate = DbContext.Users.Find(id);

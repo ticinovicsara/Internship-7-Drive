@@ -1,18 +1,16 @@
 ﻿using DumpDrive.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 
 namespace DumpDrive.Domain.Factories
 {
     public static class DbContextFactory
     {
-        public static DumpDriveDbContext GetDumpDrivesDbContext()
+        public static DumpDriveDbContext GetDumpDrivesDbContext(IConfiguration configuration)
         {
-            var options = new DbContextOptionsBuilder()
-                .UseNpgsql(ConfigurationManager.ConnectionStrings["DumpDrive"].ConnectionString)
+            var options = new DbContextOptionsBuilder<DumpDriveDbContext>()
+                .UseNpgsql(configuration.GetConnectionString("DumpDrive"))
                 .Options;
 
             return new DumpDriveDbContext(options);

@@ -10,6 +10,7 @@ namespace DumpDrive.Domain.Enums
     {
         Success,
         NoChanges,
-        NotFound
+        NotFound,
+        Conflict
     }
 }
