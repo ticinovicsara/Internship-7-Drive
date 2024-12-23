@@ -11,7 +11,7 @@ namespace DumpDrive.Presentation.Actions
         public int MenuIndex { get; set; }
         public string Name { get; set; } = "Shared with me";
 
-        public class SharedWithMeAction(IList<IAction> (actions) : base(actions)
+        public class SharedWithMeAction(IList<IAction> (actions) : base(actions))
         {
             Name = "User menu";
         }

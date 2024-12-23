@@ -3,7 +3,7 @@ using DumpDrive.Domain.Factories;
 using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Helpers;
 
-namespace DumpDrive.Domain.Actions
+namespace DumpDrive.Presentation.Actions
 {
     public class RegisterAction : IAction
     {
@@ -13,9 +13,9 @@ namespace DumpDrive.Domain.Actions
         public void Execute()
         {
             Console.WriteLine("Enter email:");
-            var email = Console.ReadLine();
+            string email = Console.ReadLine();
 
-            if (!Reader.TryReadEmail("", email))
+            if (!Reader.TryReadEmail("Please enter a valid email address: ", out email))
             {
                 Console.WriteLine("Invalid email format.");
                 return;

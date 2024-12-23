@@ -1,5 +1,6 @@
-﻿using DumpDrive.Domain.Abstractions;
-using DumpDrive.Domain.Actions;
+﻿using DumpDrive.Presentation.Abstractions;
+using DumpDrive.Presentation.Actions;
+using DumpDrive.Presentation.Extensions;
 
 namespace DumpDrive.Presentation.Factories
 {
@@ -9,8 +10,8 @@ namespace DumpDrive.Presentation.Factories
         {
             var actions = new List<IAction>
             {
-                new LoginUser(),
-                new RegisterUser(),
+                new LoginAction(),
+                new RegisterAction(),
                 new ExitMenuAction()
             };
 

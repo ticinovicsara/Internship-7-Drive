@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using DumpDrive.Presentation.Extensions;
+﻿using DumpDrive.Presentation.Extensions;
 
 namespace DumpDrive.Presentation.Abstractions
 {

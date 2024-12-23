@@ -1,11 +1,6 @@
 ﻿using DumpDrive.Data.Entities;
 using DumpDrive.Data.Entities.Models;
 using DumpDrive.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DumpDrive.Domain.Repositories
 {
@@ -39,6 +34,12 @@ namespace DumpDrive.Domain.Repositories
         public User GetByEmail(string email) => DbContext.Users.FirstOrDefault(u => u.Email == email);
         public User? GetById(int id) => DbContext.Users.FirstOrDefault(u => u.Id == id);
         public ICollection<User> GetAll() => DbContext.Users.ToList();
+
+        public User? FindByEmailAndPassword(string email, string password)
+        {
+            return DbContext.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+        }
+
 
     }
 }

@@ -1,11 +1,14 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml;
 using DumpDrive.Data.Enums;
 
 namespace DumpDrive.Presentation.Helpers
 {
-    internal class Reader
+    public class Reader
     {
+        private static readonly Regex regex = new Regex(@"^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$");
+
         public static bool TryReadNumber(out int number)
         {
             number = 0;
@@ -111,13 +114,6 @@ namespace DumpDrive.Presentation.Helpers
             return !string.IsNullOrWhiteSpace(password);
         }
 
-        public static string CaptchaGenerator()
-        {
-            var random = new Random();
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            return new string (Enumerable.Repeat(chars, 8)
-                .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
     }
 
 }

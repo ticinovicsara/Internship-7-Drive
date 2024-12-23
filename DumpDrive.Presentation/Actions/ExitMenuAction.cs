@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DumpDrive.Presentation.Abstractions;
+﻿using DumpDrive.Presentation.Abstractions;
 
-namespace DumpDrive.Domain.Actions
+namespace DumpDrive.Presentation.Actions
 {
     public class ExitMenuAction : IAction
     {

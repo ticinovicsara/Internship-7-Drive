@@ -2,10 +2,9 @@
 using DumpDrive.Domain.Factories;
 using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Factories;
-using DumpDrive.Presentation.Abstractions;
-using static System.Net.Mime.MediaTypeNames;
+using DumpDrive.Presentation.Helpers;
 
-namespace DumpDrive.Domain.Actions
+namespace DumpDrive.Presentation.Actions
 {
     public class LoginAction : IAction
     {
@@ -14,11 +13,17 @@ namespace DumpDrive.Domain.Actions
 
         public void Execute()
         {
-            Console.WriteLine("Enter email:");
-            var email = Console.ReadLine();
+            string email;
+            while (!Reader.TryReadEmail("Enter email:", out email))
+            {
+                Console.WriteLine("Please enter a valid email address.");
+            }
 
-            Console.WriteLine("Enter password:");
-            var password = Console.ReadLine();
+            string password;
+            while (!Reader.TryReadPassword("Enter password:", out password))
+            {
+                Console.WriteLine("Password cannot be empty.");
+            }
 
             var user = RepositoryFactory.Create<UserRepository>().FindByEmailAndPassword(email, password);
 
