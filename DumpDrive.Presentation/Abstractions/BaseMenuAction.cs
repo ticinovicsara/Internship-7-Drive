@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DumpDrive.Presentation.Extensions;
 
-namespace DumpDrive.Domain.Abstractions
+namespace DumpDrive.Presentation.Abstractions
 {
     public class BaseMenuAction : IMenuAction
     {

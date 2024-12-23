@@ -1,5 +1,4 @@
-﻿
-using DumpDrive.Data.Enums;
+﻿using DumpDrive.Data.Enums;
 
 namespace DumpDrive.Data.Entities.Models
 {
@@ -9,6 +8,7 @@ namespace DumpDrive.Data.Entities.Models
         public string Name { get; set; }
         public string Content { get; set; }
         public int OwnerId { get; set; }
+        public User Owner { get; set; }
         public int FolderId { get; set; }
         public Folder Folder { get; set; }
         public DateTime LastModified { get; set; }

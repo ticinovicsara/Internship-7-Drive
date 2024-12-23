@@ -1,18 +1,16 @@
-﻿using TodoApp.Presentation.Extensions;
-using TodoApp.Presentation.Factories;
-
-using DumpDrive.Presentation.Factories;
+﻿using DumpDrive.Presentation.Factories;
+using static System.Net.Mime.MediaTypeNames;
 
 class Program
 {
     static void Main(string[] args)
     {
-        var mainMenuActions = MainMenuFactory.CreateActions();
-        var mainMenu = new BaseMenuAction(mainMenuActions)
-        {
-            Name = "Main menu"
-        };
+        Console.WriteLine("Welcome to DumpDrive!");
 
-        mainMenu.Open();
+        Application.SetMenu(StartMenuFactory.Create());
+        while (true)
+        {
+            Application.DisplayMenu();
+        }
     }
 }

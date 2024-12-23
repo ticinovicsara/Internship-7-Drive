@@ -39,5 +39,13 @@ namespace DumpDrive.Presentation.Helpers
                 Console.WriteLine($"- {file.Name} ({file.Size} KB, Zadnja izmjena: {file.LastModified})");
             }
         }
+
+        public static string CaptchaGenerator()
+        {
+            var random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            return new string(Enumerable.Repeat(chars, 8)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
     }
 }

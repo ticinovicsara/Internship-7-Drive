@@ -3,15 +3,14 @@ using DumpDrive.Domain.Actions;
 
 namespace DumpDrive.Presentation.Factories
 {
-    public class MainMenuFactory
+    public class StartMenuFactory
     {
         public static IList<IAction> Create()
         {
             var actions = new List<IAction>
             {
-                new MyDiskAction(),
-                new SharedWithMeAction(),
-                new ProfileAction(),
+                new LoginUser(),
+                new RegisterUser(),
                 new ExitMenuAction()
             };
 

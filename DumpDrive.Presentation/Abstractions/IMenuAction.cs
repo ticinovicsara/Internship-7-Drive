@@ -1,4 +1,4 @@
-﻿namespace DumpDrive.Domain.Abstractions
+﻿namespace DumpDrive.Presentation.Abstractions
 {
     public interface IMenuAction : IAction
     {

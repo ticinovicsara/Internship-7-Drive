@@ -43,7 +43,7 @@ namespace DumpDrive.Presentation.Extensions
             {
                 action.MenuIndex = ++index;
             }
-            Console.Writeline("\n: ");
+            Console.WriteLine("\n: ");
         }
 
         private static void PrintActions(IList<IAction> actions)
