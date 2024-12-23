@@ -8,15 +8,15 @@ namespace DumpDrive.Presentation.Actions
 {
     public class LoginAction : IAction
     {
-        public int Index { get; set; }
-        public string Name => "Login";
+        public int MenuIndex { get; set; }
+        public string Name { get; set }  = "Login";
 
         public LoginAction()
         {
             
         }
 
-        public void Execute()
+        public void Open()
         {
             string email;
             while (!Reader.TryReadEmail("Enter email:", out email))

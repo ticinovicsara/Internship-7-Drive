@@ -3,15 +3,15 @@ using DumpDrive.Presentation.Extensions;
 
 public static class Application
 {
-    private static IList<IAction> _currentMenu;
+    private static IList<IAction> currentMenu;
 
     public static void SetMenu(IList<IAction> menu)
     {
-        _currentMenu = menu;
+        currentMenu = menu;
     }
 
     public static void DisplayMenu()
     {
-        _currentMenu.PrintActionsAndOpen();
+        currentMenu.PrintActionsAndOpen();
     }
 }

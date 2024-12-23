@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 using DumpDrive.Data.Entities.Models;
-using System.Reflection.Emit;
 using Microsoft.EntityFrameworkCore.Design;
+using DumpDrive.Data.Seeds;
 
 namespace DumpDrive.Data.Entities
 {

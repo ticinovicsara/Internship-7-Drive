@@ -2,46 +2,48 @@
 using DumpDrive.Domain.Factories;
 using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Helpers;
+using DumpDrive.Presentation.Factories;
 
 namespace DumpDrive.Presentation.Actions
 {
     public class RegisterAction : IAction
     {
-        public int Index { get; set; }
-        public string Name => "Register";
+        public int MenuIndex { get; set; }
+        public string Name { get; set }  = "Register";
 
-        public RegisterAction()
+        public RegisterAction() { }
+
+        public void Open()
         {
-
-        }
-
-        public void Execute()
-        {
-            Console.WriteLine("Enter email:");
-            string email = Console.ReadLine();
-
-            if (!Reader.TryReadEmail("Please enter a valid email address: ", out email))
+            string email;
+            while (!Reader.TryReadEmail("Enter email:", out email))
             {
-                Console.WriteLine("Invalid email format.");
-                return;
+                Console.WriteLine("Please enter a valid email address.");
             }
-
-            if (RepositoryFactory.Create<UserRepository>().Exists(email))
+            var existingUser = RepositoryFactory.Create<UserRepository>().GetByEmail(email);
+            if (existingUser != null)
             {
                 Console.WriteLine("Email already in use.");
                 return;
             }
 
-            Console.WriteLine("Enter password:");
-            var password = Console.ReadLine();
-
-            Console.WriteLine("Confirm password:");
-            var confirmPassword = Console.ReadLine();
-
-            if (password != confirmPassword)
+            string password;
+            while (!Reader.TryReadPassword("Enter password:", out password))
             {
-                Console.WriteLine("Passwords do not match.");
-                return;
+                Console.WriteLine("Password cannot be empty.");
+            }
+
+            string confirmPassword;
+            while (!Reader.TryReadPassword("Confirm password:", out confirmPassword) || password != confirmPassword)
+            {
+                if (password != confirmPassword)
+                {
+                    Console.WriteLine("Passwords do not match.");
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid password.");
+                }
             }
 
             var captcha = Writer.CaptchaGenerator();
@@ -57,6 +59,7 @@ namespace DumpDrive.Presentation.Actions
 
             RepositoryFactory.Create<UserRepository>().Create(email, password);
             Console.WriteLine("Registration successful! You can now log in.");
+            Application.SetMenu(MainMenuFactory.Create());
         }
     }
 }
