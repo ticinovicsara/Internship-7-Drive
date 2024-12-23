@@ -1,4 +1,6 @@
 ﻿using DumpDrive.Domain.Repositories;
+using DumpDrive.Presentation.Abstractions;
+using BCrypt.Net;
 
 namespace DumpDrive.Presentation.Actions
 {
@@ -22,13 +24,11 @@ namespace DumpDrive.Presentation.Actions
             Console.WriteLine($"Current email: {user.Email}");
             Console.WriteLine($"Current ime: {user.Name}");
 
-            // Promena imena
             if (TryChangeName(user))
             {
                 Console.WriteLine("Name successfully changed\n");
             }
 
-            // Promena lozinke
             if (TryChangePassword(user))
             {
                 Console.WriteLine("Password successfully changed\n");
@@ -38,7 +38,7 @@ namespace DumpDrive.Presentation.Actions
         private bool TryChangeName(User user)
         {
             string newName;
-            if (Reader.TryReadLine("Enter new name:", out newName))
+            if (Reader.TryReadLine("Enter new name: ", out newName))
             {
                 user.Name = newName;
                 _userRepository.Update(user);
@@ -49,15 +49,44 @@ namespace DumpDrive.Presentation.Actions
 
         private bool TryChangePassword(User user)
         {
+            string currentPassword;
             string newPassword;
-            if (Reader.TryReadPassword("Unesite novu lozinku:", out newPassword))
+            string confirmPassword;
+
+            if (!Reader.TryReadPassword("Enter current password: ", out currentPassword))
             {
-                // Verifikacija lozinke (ako je potrebno) ili hashiranje pre nego što se sačuva
-                user.Password = newPassword; // Preporučuje se da ovde koristiš funkcionalnost za hashiranje
-                _userRepository.Update(user);
-                return true;
+                Console.WriteLine("Password is not changed");
+                return false;
             }
-            return false;
+
+            if (!BCrypt.Net.BCrypt.Verify(currentPassword, user.Password))
+            {
+                Console.WriteLine("Password is incorrect");
+                return false;
+            }
+
+            if (!Reader.TryReadPassword("Enter new password: ", out newPassword))
+            {
+                Console.WriteLine("Password is not changed");
+                return false;
+            }
+
+            if (!Reader.TryReadPassword("Validate new password:", out confirmPassword))
+            {
+                Console.WriteLine("Password is not changed");
+                return false;
+            }
+
+            if (newPassword != confirmPassword)
+            {
+                Console.WriteLine("Passwords do not match.");
+                return false;
+            }
+
+            _userRepository.Update(user);
+
+            Console.WriteLine("Passwor changed successfully.");
+            return true;
         }
     }
 

@@ -27,7 +27,7 @@ namespace DumpDrive.Presentation.Helpers
             Console.WriteLine("Mape:");
             foreach (var folder in folders.OrderBy(f => f.Name))
             {
-                Console.WriteLine($"- {folder.} (Stvorena: {folder.CreatedAt})");
+                Console.WriteLine($"- {folder.Name} (Stvorena: {folder.CreatedAt})");
             }
         }
 

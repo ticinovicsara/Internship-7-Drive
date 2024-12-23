@@ -22,19 +22,6 @@ namespace DumpDrive.Domain.Repositories
             return SaveChanges();
         }
 
-        public ResponseResultType Delete(int id)
-        {
-            var userToDelete = DbContext.Users.Find(id);
-            if (userToDelete is null)
-            {
-                return ResponseResultType.NotFound;
-            }
-
-            DbContext.Users.Remove(userToDelete);
-
-            return SaveChanges();
-        }
-
         public ResponseResultType Update(User user, int id)
         {
             var userToUpdate = DbContext.Users.Find(id);
@@ -43,13 +30,13 @@ namespace DumpDrive.Domain.Repositories
                 return ResponseResultType.NotFound;
             }
 
-            userToUpdate.FirstName = user.Name;
-            userToUpdate.LastName = user.Surname;
+            userToUpdate.Name = user.Name;
+            userToUpdate.Surname = user.Surname;
 
             return SaveChanges();
         }
 
-        public User GetByEmail(string email) => _users.FirstOrDefault(u => u.Email == email);
+        public User GetByEmail(string email) => DbContext.Users.FirstOrDefault(u => u.Email == email);
         public User? GetById(int id) => DbContext.Users.FirstOrDefault(u => u.Id == id);
         public ICollection<User> GetAll() => DbContext.Users.ToList();
 

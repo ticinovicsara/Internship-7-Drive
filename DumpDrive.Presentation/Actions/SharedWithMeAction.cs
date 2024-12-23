@@ -1,4 +1,6 @@
-﻿
+﻿using DumpDrive.Domain.Repositories;
+using DumpDrive.Presentation.Abstractions;
+
 namespace DumpDrive.Presentation.Actions
 {
     public class SharedWithMeAction : IAction
@@ -7,7 +9,12 @@ namespace DumpDrive.Presentation.Actions
         private readonly int _userId;
 
         public int MenuIndex { get; set; }
-        public string Name { get; set; } = "Dijeljeno sa mnom";
+        public string Name { get; set; } = "Shared with me";
+
+        public class SharedWithMeAction(IList<IAction> (actions) : base(actions)
+        {
+            Name = "User menu";
+        }
 
         public SharedWithMeAction(FileRepository fileRepository, int userId)
         {

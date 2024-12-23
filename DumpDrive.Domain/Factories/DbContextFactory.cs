@@ -9,7 +9,7 @@ namespace DumpDrive.Domain.Factories
 {
     public static class DbContextFactory
     {
-        public static DumpDriveDbContext GetTodoAppDbContext()
+        public static DumpDriveDbContext GetDumpDrivesDbContext()
         {
             var options = new DbContextOptionsBuilder()
                 .UseNpgsql(ConfigurationManager.ConnectionStrings["DumpDrive"].ConnectionString)

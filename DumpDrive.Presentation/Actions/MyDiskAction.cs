@@ -8,7 +8,7 @@ namespace DumpDrive.Presentation.Actions
         private readonly int _userId;
 
         public int MenuIndex { get; set; }
-        public string Name { get; set; } = "Moj disk";
+        public string Name { get; set; } = "My disk";
 
         public MyDiskAction(FileRepository fileRepository, int userId)
         {

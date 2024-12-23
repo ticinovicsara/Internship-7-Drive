@@ -12,7 +12,7 @@ namespace DumpDrive.Domain.Factories
         public static TRepository Create<TRepository>()
             where TRepository : BaseRepository
         {
-            var dbContext = DbContextFactory.GetDumpDriveDbContext();
+            var dbContext = DbContextFactory.GetDumpDrivesDbContext();
             var repositoryInstance = Activator.CreateInstance(typeof(TRepository), dbContext) as TRepository;
 
             return repositoryInstance!;

@@ -46,13 +46,13 @@ namespace DumpDrive.Data.Entities
                 .HasForeignKey(s => s.SharedWithUserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            DatabaseSeeder.Seed(modelBuilder);
+            DbSeeder.Seed(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
     }
 
 
-    public class TodoAppDbContextFactory : IDesignTimeDbContextFactory<TodoAppDbContext>
+    public class DumpDriveDbContextFactory : IDesignTimeDbContextFactory<DumpDriveDbContext>
     {
         public DumpDriveDbContext CreateDbContext(string[] args)
         {

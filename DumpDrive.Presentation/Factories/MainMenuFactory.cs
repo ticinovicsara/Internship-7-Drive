@@ -1,25 +1,28 @@
 ﻿using DumpDrive.Domain.Abstractions;
+using DumpDrive.Domain.Actions.User;
 using DumpDrive.Domain.Actions;
-using DumpDrive.Presentation.Abstrations;
-using DumpDrive.Presentation.Actions;
-using DumpDrive.Presentation.Extensions;
+using DumpDrive.Domain.Repositories;
+using DumpDrive.Presentation.Actions.User;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DumpDrive.Presentation.Factories
 {
     public class MainMenuFactory
     {
-        public static IList<IAction> CreateActions(int userId)
+        public static IList<IAction> Create()
         {
-            var fileRepository = new FileRepository();
             var userRepository = new UserRepository();
 
             var actions = new List<IAction>
-        {
-            new MyDiskAction(fileRepository, userId),
-            new SharedWithMeAction(fileRepository, userId),
-            new ProfileSettingsAction(userRepository, userId),
-            new ExitMenuAction(),
-        };
+            {
+                new LoginUser(RepositoryFactory.Create<UserRepository>()),
+                new RegisterUser(RepositoryFactory.Create<UserRepository>()),
+                new ExitMenuAction()
+            };
 
             actions.SetActionIndexes();
             return actions;
