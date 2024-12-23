@@ -1,6 +1,6 @@
 ﻿namespace DumpDrive.Domain.Repositories
 {
-    internal class FolderRepository
+    public class FolderRepository
     {
     }
 }

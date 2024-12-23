@@ -1,6 +1,7 @@
 ﻿using DumpDrive.Domain.Repositories;
+using DumpDrive.Data.Entities.Models;
 using DumpDrive.Presentation.Abstractions;
-using BCrypt.Net;
+using DumpDrive.Presentation.Helpers;
 
 namespace DumpDrive.Presentation.Actions
 {
@@ -20,7 +21,7 @@ namespace DumpDrive.Presentation.Actions
 
         public void Open()
         {
-            var user = _userRepository.GetUserById(_userId);
+            var user = _userRepository.GetById(_userId);
             Console.WriteLine($"Current email: {user.Email}");
             Console.WriteLine($"Current ime: {user.Name}");
 
@@ -41,7 +42,7 @@ namespace DumpDrive.Presentation.Actions
             if (Reader.TryReadLine("Enter new name: ", out newName))
             {
                 user.Name = newName;
-                _userRepository.Update(user);
+                _userRepository.Update(user, user.Id);
                 return true;
             }
             return false;
@@ -83,7 +84,7 @@ namespace DumpDrive.Presentation.Actions
                 return false;
             }
 
-            _userRepository.Update(user);
+            _userRepository.Update(user, user.Id);
 
             Console.WriteLine("Passwor changed successfully.");
             return true;

@@ -56,14 +56,17 @@ namespace DumpDrive.Data.Entities
     {
         public DumpDriveDbContext CreateDbContext(string[] args)
         {
+            var presentationLayerPath = Path.Combine(Directory.GetCurrentDirectory(), @"..\DumpDrive.Presentation");
+            var configFilePath = Path.Combine(presentationLayerPath, "App.config.xml");
+
             var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddXmlFile("App.config")
+                .SetBasePath(presentationLayerPath)
+                .AddXmlFile(configFilePath)
                 .Build();
 
             config.Providers
                 .First()
-                .TryGet("connectionStrings:add:TodoApp:connectionString", out var connectionString);
+                .TryGet("connectionStrings:add:DumpDrive:connectionString", out var connectionString);
 
             var options = new DbContextOptionsBuilder<DumpDriveDbContext>()
                 .UseNpgsql(connectionString)

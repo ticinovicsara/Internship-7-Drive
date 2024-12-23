@@ -52,7 +52,7 @@ namespace DumpDrive.Data.Seeds
             var file8Id = 8;
             var file9Id = 9;
 
-            builder.Entity<<File>
+            builder.Entity<<File>()
                 .HasData(new List<File>
                 {
                     new File("resume.pdf", folder1Id, Status.Private) { Id = file1Id },
@@ -69,34 +69,34 @@ namespace DumpDrive.Data.Seeds
             builder.Entity<Comment>()
                 .HasData(new List<Comment>
                 {
-                new Comment("Great resume!", file1Id, ivonaId) { Id = Guid.NewGuid(), CreatedAt = DateTime.Now },
-                new Comment("Lovely picture!", file2Id, jureId) { Id = Guid.NewGuid(), CreatedAt = DateTime.Now },
-                new Comment("Nice music!", file3Id, brunoId) { Id = Guid.NewGuid(), CreatedAt = DateTime.Now },
-                new Comment("Cool video!", file4Id, anaId) { Id = Guid.NewGuid(), CreatedAt = DateTime.Now },
-                new Comment("This resume could be better.", file1Id, anaId) { Id = Guid.NewGuid(), CreatedAt = DateTime.Now },
-                new Comment("Beautiful image!", file2Id, brunoId) { Id = Guid.NewGuid(), CreatedAt = DateTime.Now },
-                new Comment("I dont like this song!", file3Id, brunoId) { Id = Guid.NewGuid(), CreatedAt = DateTime.Now },
-                new Comment("Amazing video!", file4Id, jureId) { Id = Guid.NewGuid(), CreatedAt = DateTime.Now },
-                new Comment("Excellent project plan!", file5Id, jureId) { Id = Guid.NewGuid(), CreatedAt = DateTime.Now },
-                new Comment("Great presentation!", file6Id, anaId) { Id = Guid.NewGuid(), CreatedAt = DateTime.Now },
-                new Comment("Very detailed report!", file7Id, ivonaId) { Id = Guid.NewGuid(), CreatedAt = DateTime.Now },
-                new Comment("Important archive data.", file8Id, jureId) { Id = Guid.NewGuid(), CreatedAt = DateTime.Now },
-                new Comment("Data needs cleanup.", file9Id, ivonaId) { Id = Guid.NewGuid(), CreatedAt = DateTime.Now }
+                    new Comment("Great resume!", file1Id, anaId) { Id = 1, CreatedAt = DateTime.Now },
+                    new Comment("Lovely picture!", file2Id, markoId) { Id = 2, CreatedAt = DateTime.Now },
+                    new Comment("Nice music!", file3Id, peroId) { Id = 3, CreatedAt = DateTime.Now },
+                    new Comment("Cool video!", file4Id, anaId) { Id = 4, CreatedAt = DateTime.Now },
+                    new Comment("This resume could be better.", file1Id, anaId) { Id = 5, CreatedAt = DateTime.Now },
+                    new Comment("Beautiful image!", file2Id, josipId) { Id = 6, CreatedAt = DateTime.Now },
+                    new Comment("I dont like this song!", file3Id, josipId) { Id = 7, CreatedAt = DateTime.Now },
+                    new Comment("Amazing video!", file4Id, peroId) { Id = 8, CreatedAt = DateTime.Now },
+                    new Comment("Excellent project plan!", file5Id, markoId) { Id = 9, CreatedAt = DateTime.Now },
+                    new Comment("Great presentation!", file6Id, anaId) { Id = 10, CreatedAt = DateTime.Now },
+                    new Comment("Very detailed report!", file7Id, anaId) { Id = 11, CreatedAt = DateTime.Now },
+                    new Comment("Important archive data.", file8Id, markoId) { Id = 12, CreatedAt = DateTime.Now },
+                    new Comment("Data needs cleanup.", file9Id, josipId) { Id = 13, CreatedAt = DateTime.Now }
                 });
 
-            builder.Entity<AuditLog>()
-                .HasData(new List<AuditLog>
-                {
-                new AuditLog(ChangeType.Created, file1Id, ivonaId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-                new AuditLog(ChangeType.Created, file2Id, jureId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-                new AuditLog(ChangeType.Updated, file3Id, brunoId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-                new AuditLog(ChangeType.Created, file4Id, anaId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-                new AuditLog(ChangeType.Created, file5Id, jureId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-                new AuditLog(ChangeType.Updated, file6Id, brunoId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-                new AuditLog(ChangeType.Created, file7Id, ivonaId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-                new AuditLog(ChangeType.Created, file8Id, brunoId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-                new AuditLog(ChangeType.Updated, file9Id, anaId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now }
-                });
+            //builder.Entity<AuditLog>()
+            //    .HasData(new List<AuditLog>
+            //    {
+            //    new AuditLog(ChangeType.Created, file1Id, ivonaId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
+            //    new AuditLog(ChangeType.Created, file2Id, jureId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
+            //    new AuditLog(ChangeType.Updated, file3Id, brunoId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
+            //    new AuditLog(ChangeType.Created, file4Id, anaId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
+            //    new AuditLog(ChangeType.Created, file5Id, jureId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
+            //    new AuditLog(ChangeType.Updated, file6Id, brunoId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
+            //    new AuditLog(ChangeType.Created, file7Id, ivonaId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
+            //    new AuditLog(ChangeType.Created, file8Id, brunoId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
+            //    new AuditLog(ChangeType.Updated, file9Id, anaId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now }
+            //    });
         }
     }
 }

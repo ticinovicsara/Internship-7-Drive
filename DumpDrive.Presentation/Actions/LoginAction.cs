@@ -11,6 +11,11 @@ namespace DumpDrive.Presentation.Actions
         public int Index { get; set; }
         public string Name => "Login";
 
+        public LoginAction()
+        {
+            
+        }
+
         public void Execute()
         {
             string email;

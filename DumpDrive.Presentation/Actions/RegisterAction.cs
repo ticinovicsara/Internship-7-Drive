@@ -10,6 +10,11 @@ namespace DumpDrive.Presentation.Actions
         public int Index { get; set; }
         public string Name => "Register";
 
+        public RegisterAction()
+        {
+
+        }
+
         public void Execute()
         {
             Console.WriteLine("Enter email:");

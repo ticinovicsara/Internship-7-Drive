@@ -11,10 +11,6 @@ namespace DumpDrive.Presentation.Actions
         public int MenuIndex { get; set; }
         public string Name { get; set; } = "Shared with me";
 
-        public class SharedWithMeAction(IList<IAction> (actions) : base(actions))
-        {
-            Name = "User menu";
-        }
 
         public SharedWithMeAction(FileRepository fileRepository, int userId)
         {
@@ -25,9 +21,16 @@ namespace DumpDrive.Presentation.Actions
         public void Open()
         {
             var sharedFiles = _fileRepository.GetSharedWithUser(_userId);
-            foreach (var file in sharedFiles)
+            if (sharedFiles.Count == 0)
             {
-                Console.WriteLine($"{file.Id}. {file.Name}");
+                Console.WriteLine("No files shared with you.");
+            }
+            else
+            {
+                foreach (var file in sharedFiles)
+                {
+                    Console.WriteLine($"{file.Id}. {file.Name}");
+                }
             }
         }
     }
