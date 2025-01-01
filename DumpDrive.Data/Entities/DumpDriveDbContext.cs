@@ -14,7 +14,7 @@ namespace DumpDrive.Data.Entities
 
         public DbSet<User> Users { get; set; }
         public DbSet<Folder> Folders { get; set; }
-        public DbSet<File> Files { get; set; }
+        public DbSet<DFile> Files { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<SharedItem> SharedItems { get; set; }
 
@@ -31,7 +31,7 @@ namespace DumpDrive.Data.Entities
                 .HasForeignKey(f => f.ParentFolderId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<File>()
+            modelBuilder.Entity<DFile>()
                 .HasOne(f => f.Owner)
                 .WithMany(u => u.Files)
                 .HasForeignKey(f => f.OwnerId);
