@@ -8,12 +8,14 @@ namespace DumpDrive.Presentation.Actions
 {
     public class LoginAction : IAction
     {
+        private readonly MainMenuFactory _mainMenuFactory;
+
         public int MenuIndex { get; set; }
         public string Name { get; set; } = "Login";
 
-        public LoginAction()
+        public LoginAction(MainMenuFactory mainMenuFactory)
         {
-            
+            _mainMenuFactory = mainMenuFactory;
         }
 
         public void Open()
@@ -40,7 +42,7 @@ namespace DumpDrive.Presentation.Actions
             }
 
             Console.WriteLine($"Welcome {user.Name}!");
-            Application.SetMenu(MainMenuFactory.Create());
+            Application.SetMenu(_mainMenuFactory.Create());
         }
     }
 }

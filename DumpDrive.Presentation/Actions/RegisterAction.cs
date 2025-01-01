@@ -8,10 +8,15 @@ namespace DumpDrive.Presentation.Actions
 {
     public class RegisterAction : IAction
     {
+        private readonly MainMenuFactory _mainMenuFactory;
+
         public int MenuIndex { get; set; }
         public string Name { get; set; }  = "Register";
 
-        public RegisterAction() { }
+        public RegisterAction(MainMenuFactory mainMenuFactory) 
+        { 
+            _mainMenuFactory = mainMenuFactory;
+        }
 
         public void Open()
         {
@@ -59,7 +64,7 @@ namespace DumpDrive.Presentation.Actions
 
             RepositoryFactory.Create<UserRepository>().Create(email, password);
             Console.WriteLine("Registration successful! You can now log in.");
-            Application.SetMenu(MainMenuFactory.Create());
+            Application.SetMenu(_mainMenuFactory.Create());
         }
     }
 }

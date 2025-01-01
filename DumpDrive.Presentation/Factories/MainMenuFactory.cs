@@ -14,7 +14,7 @@ namespace DumpDrive.Presentation.Factories
         public MainMenuFactory()
         {
         }
-
+        
         public IList<IAction> Create()
         {
             var actions = new List<IAction>

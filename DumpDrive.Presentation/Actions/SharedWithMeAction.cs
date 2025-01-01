@@ -20,7 +20,7 @@ namespace DumpDrive.Presentation.Actions
 
         public void Open()
         {
-            var sharedFiles = _fileRepository.GetSharedWithUser(_userId);
+            var sharedFiles = _fileRepository.GetSharedFilesByUser(_userId);
             if (sharedFiles.Count == 0)
             {
                 Console.WriteLine("No files shared with you.");

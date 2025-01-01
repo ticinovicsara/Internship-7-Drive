@@ -54,7 +54,5 @@ namespace DumpDrive.Domain.Repositories
         {
             return DbContext.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
         }
-
-
     }
 }

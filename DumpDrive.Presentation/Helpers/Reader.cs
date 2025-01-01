@@ -26,23 +26,6 @@ namespace DumpDrive.Presentation.Helpers
             return TryReadNumber(out number);
         }
 
-        //?????
-        //public static bool TryReadStatus(string message, out Status status)
-        //{
-        //    status = Status.Todo;
-
-        //    Console.WriteLine(message);
-        //    var input = Console.ReadLine();
-        //    var isStatus = Enum.TryParse(typeof(Status), input, out var inputStatus);
-
-        //    if (isStatus && inputStatus is not null)
-        //    {
-        //        status = (Status)inputStatus;
-        //    }
-
-        //    return isStatus;
-        //}
-
         public static bool TryReadLine(string message, out string line)
         {
             line = string.Empty;
@@ -88,7 +71,7 @@ namespace DumpDrive.Presentation.Helpers
             password = string.Empty;
             Console.WriteLine(massage);
 
-            var passBuilder = StringBuilder();
+            var passBuilder = string.Empty;
             ConsoleKey key;
 
             do

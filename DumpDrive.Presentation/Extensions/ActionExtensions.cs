@@ -19,6 +19,7 @@ namespace DumpDrive.Presentation.Extensions
                 var isValidInput = int.TryParse(Console.ReadLine(), out var actionIndex);
                 if (!isValidInput)
                 {
+                    Console.Clear();
                     PrintErrorMessage(INVALID_INPUT_MSG);
                     continue;
                 }
@@ -26,6 +27,7 @@ namespace DumpDrive.Presentation.Extensions
                 var action = actions.FirstOrDefault(a => a.MenuIndex == actionIndex);
                 if (action is null)
                 {
+                    Console.Clear();
                     PrintErrorMessage(INVALID_ACTION_MSG);
                     continue;
                 }
@@ -43,7 +45,6 @@ namespace DumpDrive.Presentation.Extensions
             {
                 action.MenuIndex = ++index;
             }
-            Console.WriteLine("\n: ");
         }
 
         private static void PrintActions(IList<IAction> actions)
@@ -52,6 +53,7 @@ namespace DumpDrive.Presentation.Extensions
             {
                 Console.WriteLine($"{action.MenuIndex}. {action.Name}");
             }
+            Console.WriteLine("\n: ");
         }
 
         private static void PrintErrorMessage(string message)

@@ -60,7 +60,7 @@ namespace DumpDrive.Presentation.Actions
                 return false;
             }
 
-            if (!BCrypt.Net.BCrypt.Verify(currentPassword, user.Password))
+            if (currentPassword != user.Password)
             {
                 Console.WriteLine("Password is incorrect");
                 return false;

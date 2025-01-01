@@ -18,6 +18,11 @@ namespace DumpDrive.Domain.Repositories
             return _dbContext.Files.Where(f => f.OwnerId == userId).ToList();
         }
 
+        public ICollection<DFile> GetSharedFilesByUser(int userId)
+        {
+            return _dbContext.Files.Where(f => f.OwnerId == userId && f.Status == Data.Enums.Status.Shared).ToList();
+        }
+
         public void AddFile(DFile file)
         {
             _dbContext.Files.Add(file);

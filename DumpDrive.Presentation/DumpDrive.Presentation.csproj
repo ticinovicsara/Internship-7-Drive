@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+	<ProjectReference Include="..\DumpDrive.Data\DumpDrive.Data.csproj" />
     <ProjectReference Include="..\DumpDrive.Domain\DumpDrive.Domain.csproj" />
   </ItemGroup>
 

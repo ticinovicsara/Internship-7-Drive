@@ -10,13 +10,13 @@ class Program
     static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
         builder.Services.AddDbContext<DumpDriveDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DumpDrive")));
 
         builder.Services.AddScoped<UserRepository>();
         builder.Services.AddScoped<FileRepository>();
-        builder.Services.AddScoped<BaseRepository>();
         builder.Services.AddScoped<FolderRepository>();
 
         builder.Services.AddScoped<MyDiskAction>();
@@ -26,6 +26,7 @@ class Program
 
         builder.Services.AddSingleton<MainMenuFactory>();
         builder.Services.AddSingleton<StartMenuFactory>();
+        builder.Services.AddSingleton<DumpDriveDbContextFactory>();
 
 
         var app = builder.Build();
@@ -39,7 +40,7 @@ class Program
             var startMenu = startMenuFactory.Create();
             Application.SetMenu(startMenu);
 
-            Console.WriteLine("Welcome to DumpDrive!");
+            Console.WriteLine("Welcome to DumpDrive!\n");
             Application.DisplayMenu();
 
         }
