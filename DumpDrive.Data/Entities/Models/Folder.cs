@@ -12,7 +12,7 @@ namespace DumpDrive.Data.Entities.Models
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        public User Owner { get; set; }
+        public User? Owner { get; set; }
         public ICollection<Folder> SubFolders { get; set; } = new List<Folder>();
         public ICollection<DFile> Files { get; set; } = new List<DFile>();
 

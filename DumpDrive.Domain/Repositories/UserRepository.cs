@@ -10,7 +10,7 @@ namespace DumpDrive.Domain.Repositories
         {
         }
 
-        public ResponseResultType Add(User user)
+        public ResponseResultType AddUser(User user)
         {
             DbContext.Users.Add(user);
 

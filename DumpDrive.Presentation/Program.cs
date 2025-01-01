@@ -3,46 +3,48 @@ using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Actions;
 using DumpDrive.Presentation.Factories;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 class Program
 {
     static void Main(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
-        builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .Build();
 
-        builder.Services.AddDbContext<DumpDriveDbContext>(options =>
-            options.UseNpgsql(builder.Configuration.GetConnectionString("DumpDrive")));
+        var serviceProvider = new ServiceCollection()
+            .AddSingleton<IConfiguration>(configuration)
+            .AddDbContext<DumpDriveDbContext>(options =>
+                options.UseNpgsql(configuration.GetConnectionString("DumpDrive")))
 
-        builder.Services.AddScoped<UserRepository>();
-        builder.Services.AddScoped<FileRepository>();
-        builder.Services.AddScoped<FolderRepository>();
+            .AddScoped<UserRepository>()
+            .AddScoped<FileRepository>()
+            .AddScoped<FolderRepository>()
 
-        builder.Services.AddScoped<MyDiskAction>();
-        builder.Services.AddScoped<LoginAction>();
-        builder.Services.AddScoped<RegisterAction>();
-        builder.Services.AddScoped<SharedWithMeAction>();
+            .AddScoped<MyDiskAction>()
+            .AddScoped<LoginAction>()
+            .AddScoped<RegisterAction>()
+            .AddScoped<SharedWithMeAction>()
 
-        builder.Services.AddSingleton<MainMenuFactory>();
-        builder.Services.AddSingleton<StartMenuFactory>();
-        builder.Services.AddSingleton<DumpDriveDbContextFactory>();
+            .AddSingleton<MainMenuFactory>()
+            .AddSingleton<StartMenuFactory>()
+            .AddSingleton<DumpDriveDbContextFactory>()
 
+            .BuildServiceProvider();
 
-        var app = builder.Build();
-
-        using (var scope = app.Services.CreateScope())
+        using (var scope = serviceProvider.CreateScope())
         {
             var services = scope.ServiceProvider;
 
             var startMenuFactory = services.GetRequiredService<StartMenuFactory>();
-
             var startMenu = startMenuFactory.Create();
+
             Application.SetMenu(startMenu);
 
             Console.WriteLine("Welcome to DumpDrive!\n");
             Application.DisplayMenu();
-
         }
     }
 }

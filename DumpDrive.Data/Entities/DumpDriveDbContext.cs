@@ -3,6 +3,8 @@ using DumpDrive.Data.Entities.Models;
 using Microsoft.EntityFrameworkCore.Design;
 using DumpDrive.Data.Seeds;
 using System.Xml.Linq;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Configuration;
 
 namespace DumpDrive.Data.Entities
 {
@@ -11,6 +13,8 @@ namespace DumpDrive.Data.Entities
         public DumpDriveDbContext(DbContextOptions options) : base(options)
         {
         }
+
+
 
         public DbSet<User> Users { get; set; }
         public DbSet<Folder> Folders { get; set; }
@@ -50,6 +54,13 @@ namespace DumpDrive.Data.Entities
             DbSeeder.Seed(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder
+                .ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.PendingModelChangesWarning))
+                .LogTo(Console.WriteLine);
+        }
     }
 
 
@@ -57,21 +68,12 @@ namespace DumpDrive.Data.Entities
     {
         public DumpDriveDbContext CreateDbContext(string[] args)
         {
-            var presentationLayerPath = Path.Combine(Directory.GetCurrentDirectory(), @"..\DumpDrive.Presentation");
-            var configFilePath = Path.Combine(presentationLayerPath, "App.config");
+            var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddXmlFile("App.config");
 
-            var configXml = XElement.Load(configFilePath);
-
-            var connectionString = configXml
-                .Element("connectionStrings")?
-                .Elements("add")
-                .FirstOrDefault(e => e.Attribute("name")?.Value == "DumpDrive")?
-                .Attribute("connectionString")?.Value;
-
-            if (string.IsNullOrEmpty(connectionString))
-            {
-                throw new InvalidOperationException("Connection string 'DumpDrive' not found in app.config.");
-            }
+            var configuration = builder.Build();
+            var connectionString = configuration.GetConnectionString("DumpDrive");
 
             var options = new DbContextOptionsBuilder<DumpDriveDbContext>()
                 .UseNpgsql(connectionString)

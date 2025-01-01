@@ -8,95 +8,60 @@ namespace DumpDrive.Data.Seeds
     {
         public static void Seed(ModelBuilder builder)
         {
-            var anaId = 1;
-            var markoId = 2;
-            var josipId = 3;
-            var peroId = 4;
-
             builder.Entity<User>()
                 .HasData(new List<User>
                 {
-                    new User("ana@gmail.com", "pass12345", "Ana", "Anic") { Id = anaId },
-                    new User("marko@gmail.com", "pass54322", "Marko", "Markic") { Id = markoId },
-                    new User("josip@gmail.com", "qwert", "Josip", "Jopic") { Id = josipId },
-                    new User("pero@gmail.com", "pass7", "Pero", "Peric") { Id = peroId }
+                    new User("ana@gmail.com", "pass12345", "Ana", "Anic") { Id = 1 },
+                    new User("marko@gmail.com", "pass54322", "Marko", "Markic") { Id = 2 },
+                    new User("josip@gmail.com", "qwert", "Josip", "Jopic") { Id = 3 },
+                    new User("pero@gmail.com", "pass7", "Pero", "Peric") { Id = 4 }
                 });
-
-            var folder1Id = 1;
-            var folder2Id = 2;
-            var folder3Id = 3;
-            var folder4Id = 4;
-            var folder5Id = 5;
-            var folder6Id = 6;
-            var folder7Id = 7;
 
             builder.Entity<Folder>()
                 .HasData(new List<Folder>
                 {
-                    new Folder("Documents", anaId) { Id = folder1Id, Status = Status.Private },
-                    new Folder("Photos", markoId) { Id = folder2Id, Status = Status.Shared },
-                    new Folder("Music", josipId) { Id = folder3Id, Status = Status.Private },
-                    new Folder("Videos", peroId) { Id = folder4Id, Status = Status.Shared },
-                    new Folder("Projects", anaId) { Id = folder5Id, Status = Status.Private },
-                    new Folder("Downloads", markoId) { Id = folder6Id, Status = Status.Shared },
-                    new Folder("Archives", josipId) { Id = folder7Id, Status = Status.Private }
+                    new Folder("Documents", 1) { Id = 1, Status = Status.Private },
+                    new Folder("Photos", 2) { Id = 2, Status = Status.Shared },
+                    new Folder("Music", 3) { Id = 3, Status = Status.Private },
+                    new Folder("Videos", 4) { Id = 4, Status = Status.Shared },
+                    new Folder("Projects", 3) { Id = 5, Status = Status.Private },
+                    new Folder("Downloads", 2) { Id = 6, Status = Status.Shared },
+                    new Folder("Archives", 1) { Id = 7, Status = Status.Private }
                 });
 
-            var file1Id = 1;
-            var file2Id = 2;
-            var file3Id = 3;
-            var file4Id = 4;
-            var file5Id = 5;
-            var file6Id = 6;
-            var file7Id = 7;
-            var file8Id = 8;
-            var file9Id = 9;
-
-            builder.Entity< DFile > ()
+            builder.Entity<DFile>()
                 .HasData(new List<DFile>
                 {
-                    new DFile("resume.pdf", folder1Id, Status.Private) { Id = file1Id },
-                    new DFile("holiday.jpg", folder2Id, Status.Shared) { Id = file2Id },
-                    new DFile("song.mp3", folder3Id, Status.Private) { Id = file3Id },
-                    new DFile("movie.mp4", folder4Id, Status.Shared) { Id = file4Id },
-                    new DFile("project_plan.docx", folder5Id, Status.Private) { Id = file5Id },
-                    new DFile("presentation.pptx", folder5Id, Status.Shared) { Id = file6Id },
-                    new DFile("report.pdf", folder6Id, Status.Private) { Id = file7Id },
-                    new DFile("archive.zip", folder7Id, Status.Shared) { Id = file8Id },
-                    new DFile("data.csv", folder7Id, Status.Private) { Id = file9Id }
+                    new DFile("resume.pdf", 1, Status.Private) { Id = 1, Content = "Some content for resume.pdf" },
+                    new DFile("holiday.jpg", 2, Status.Shared) { Id = 2, Content = "Image content for holiday.jpg" },
+                    new DFile("song.mp3", 3, Status.Private) { Id = 3, Content = "Audio content for song.mp3" },
+                    new DFile("movie.mp4", 4, Status.Shared) { Id = 4, Content = "Video content for movie.mp4" },
+                    new DFile("project_plan.docx", 5, Status.Private) { Id = 5, Content = "Document content for project_plan.docx" },
+                    new DFile("presentation.pptx", 6, Status.Shared) { Id = 6, Content = "Presentation content for presentation.pptx" },
+                    new DFile("report.pdf", 7, Status.Private) { Id = 7, Content = "Report content for report.pdf" },
+                    new DFile("archive.zip", 4, Status.Shared) { Id = 8, Content = "Archive content for archive.zip" },
+                    new DFile("data.csv", 1, Status.Private) { Id = 9, Content = "Data content for data.csv" }
                 });
+
 
             builder.Entity<Comment>()
                 .HasData(new List<Comment>
                 {
-                    new Comment("Great resume!", file1Id, anaId) { Id = 1, CreatedAt = DateTime.Now },
-                    new Comment("Lovely!", file2Id, markoId) { Id = 2, CreatedAt = DateTime.Now },
-                    new Comment("Nice!", file3Id, peroId) { Id = 3, CreatedAt = DateTime.Now },
-                    new Comment("Cool!", file4Id, anaId) { Id = 4, CreatedAt = DateTime.Now },
-                    new Comment("Could be better.", file1Id, anaId) { Id = 5, CreatedAt = DateTime.Now },
-                    new Comment("Beautiful!", file2Id, josipId) { Id = 6, CreatedAt = DateTime.Now },
-                    new Comment("I dont like this song!", file3Id, josipId) { Id = 7, CreatedAt = DateTime.Now },
-                    new Comment("Amazing!", file4Id, peroId) { Id = 8, CreatedAt = DateTime.Now },
-                    new Comment("Excellent plan!", file5Id, markoId) { Id = 9, CreatedAt = DateTime.Now },
-                    new Comment("Great presentation!", file6Id, anaId) { Id = 10, CreatedAt = DateTime.Now },
-                    new Comment("Nice.", file7Id, anaId) { Id = 11, CreatedAt = DateTime.Now },
-                    new Comment("Important archive data.", file8Id, markoId) { Id = 12, CreatedAt = DateTime.Now },
-                    new Comment("Data needs cleanup.", file9Id, josipId) { Id = 13, CreatedAt = DateTime.Now }
+                    new Comment("Great resume!", 1, 1) { Id = 1, CreatedAt = DateTime.Now },
+                    new Comment("Lovely!", 2, 2) { Id = 2, CreatedAt = DateTime.Now },
+                    new Comment("Nice!", 9, 3) { Id = 3, CreatedAt = DateTime.Now },
+                    new Comment("Cool!", 8, 4) { Id = 4, CreatedAt = DateTime.Now },
+                    new Comment("Could be better.", 7, 3) { Id = 5, CreatedAt = DateTime.Now },
+                    new Comment("Beautiful!", 7, 2) { Id = 6, CreatedAt = DateTime.Now },
+                    new Comment("I dont like this song!", 6, 1) { Id = 7, CreatedAt = DateTime.Now },
+                    new Comment("Amazing!", 5, 2) { Id = 8, CreatedAt = DateTime.Now },
+                    new Comment("Excellent plan!", 4, 3) { Id = 9, CreatedAt = DateTime.Now },
+                    new Comment("Great presentation!", 3, 4) { Id = 10, CreatedAt = DateTime.Now },
+                    new Comment("Nice.", 3, 3) { Id = 11, CreatedAt = DateTime.Now },
+                    new Comment("Important archive data.", 2, 2) { Id = 12, CreatedAt = DateTime.Now },
+                    new Comment("Data needs cleanup.", 6, 1) { Id = 13, CreatedAt = DateTime.Now }
                 });
-
-            //builder.Entity<AuditLog>()
-            //    .HasData(new List<AuditLog>
-            //    {
-            //    new AuditLog(ChangeType.Created, file1Id, ivonaId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-            //    new AuditLog(ChangeType.Created, file2Id, jureId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-            //    new AuditLog(ChangeType.Updated, file3Id, brunoId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-            //    new AuditLog(ChangeType.Created, file4Id, anaId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-            //    new AuditLog(ChangeType.Created, file5Id, jureId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-            //    new AuditLog(ChangeType.Updated, file6Id, brunoId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-            //    new AuditLog(ChangeType.Created, file7Id, ivonaId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-            //    new AuditLog(ChangeType.Created, file8Id, brunoId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now },
-            //    new AuditLog(ChangeType.Updated, file9Id, anaId) { Id = Guid.NewGuid(), Timestamp = DateTime.Now }
-            //    });
+            
         }
     }
 }

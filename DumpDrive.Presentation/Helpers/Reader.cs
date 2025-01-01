@@ -62,41 +62,41 @@ namespace DumpDrive.Presentation.Helpers
                 return true;
             }
 
+            Console.Clear();
             Console.WriteLine("Email is not in the right format.");
             return false;
         }
 
-        public static bool TryReadPassword(string massage, out string password)
+        public static bool TryReadPassword(string message, out string password)
         {
             password = string.Empty;
-            Console.WriteLine(massage);
+            Console.WriteLine(message);
 
-            var passBuilder = string.Empty;
-            ConsoleKey key;
+            password = Console.ReadLine();
 
-            do
+            if (string.IsNullOrWhiteSpace(password))
             {
-                var keyInfo = Console.ReadKey(intercept: true);
-                key = keyInfo.Key;
+                Console.Clear();
+                Console.WriteLine("Password cannot be empty.");
+                return false;
+            }
 
-                if (key == ConsoleKey.Backspace && passBuilder.Length > 0)
-                {
-                    passBuilder.Remove(passBuilder.Length - 1, 1);
-                    Console.Write("\b \b");
-                }
-                else if (!char.IsControl(keyInfo.KeyChar))
-                {
-                    passBuilder.Append(keyInfo.KeyChar);
-                    Console.Write("*");
-                }
-            } while (key != ConsoleKey.Enter);
+            if (password.Length < 6)
+            {
+                Console.Clear();
+                Console.WriteLine("Password must be at least 6 characters long.\n");
+                return false;
+            }
 
-            Console.WriteLine();
-            password = passBuilder.ToString();
+            if (!password.Any(char.IsLower) || !password.Any(char.IsDigit))
+            {
+                Console.Clear();
+                Console.WriteLine("Password must contain at least one lowercase letter and one number\n");
+                return false;
+            }
 
-            return !string.IsNullOrWhiteSpace(password);
+            return true;
         }
-
     }
 
 }

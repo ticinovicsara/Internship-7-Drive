@@ -9,38 +9,42 @@ namespace DumpDrive.Presentation.Actions
     public class LoginAction : IAction
     {
         private readonly MainMenuFactory _mainMenuFactory;
+        private readonly UserRepository _userRepository;
 
         public int MenuIndex { get; set; }
         public string Name { get; set; } = "Login";
 
-        public LoginAction(MainMenuFactory mainMenuFactory)
+        public LoginAction(MainMenuFactory mainMenuFactory, UserRepository userRepository)
         {
             _mainMenuFactory = mainMenuFactory;
+            _userRepository = userRepository;
         }
 
         public void Open()
         {
             string email;
-            while (!Reader.TryReadEmail("Enter email:", out email))
+            while (!Reader.TryReadEmail("\nEnter email:", out email))
             {
                 Console.WriteLine("Please enter a valid email address.");
             }
 
             string password;
-            while (!Reader.TryReadPassword("Enter password:", out password))
+            while (!Reader.TryReadPassword("\nEnter password:", out password))
             {
                 Console.WriteLine("Password cannot be empty.");
             }
 
-            var user = RepositoryFactory.Create<UserRepository>().FindByEmailAndPassword(email, password);
+            var user = _userRepository.FindByEmailAndPassword(email, password);
 
             if (user == null)
             {
-                Console.WriteLine("Invalid credentials. Please wait 30 seconds before retrying.");
+                Console.Clear();
+                Console.WriteLine("Invalid credentials. Please wait 30 seconds before retrying.\n");
                 Thread.Sleep(30000);
                 return;
             }
 
+            Console.Clear();
             Console.WriteLine($"Welcome {user.Name}!");
             Application.SetMenu(_mainMenuFactory.Create());
         }
