@@ -16,5 +16,8 @@
         }
 
         public SharedItem() { }
+
+        public User? SharedWithUser { get; set; }
+        public User? Owner { get; set; }
     }
 }

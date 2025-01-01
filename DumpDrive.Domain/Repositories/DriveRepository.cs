@@ -1,5 +1,6 @@
 ﻿using DumpDrive.Data.Entities.Models;
 using DumpDrive.Data.Entities;
+using DumpDrive.Data.Enums;
 using DumpDrive.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,34 +12,33 @@ namespace DumpDrive.Domain.Repositories
         {
         }
 
-        public ICollection<Folder> GetUserFolders(int userId)
+        public ICollection<DFile> GetUserFiles(int userId)
         {
-            var folders = DbContext.Folders
-                .Where(f => f.OwnerId == userId)
-                .Include(f => f.Files)
-                .OrderBy(f => f.Name)
+            return DbContext.Files
+                .Where(f => f.Folder.OwnerId == userId)
+                .Select(f => new DFile(f.Name, f.FolderId, f.OwnerId)
+                {
+                    Id = f.Id,
+                    LastModified = f.LastModified,
+                    Status = f.Status
+                })
+                .OrderByDescending(f => f.LastModified)
                 .ToList();
-
-            return folders.Select(f => new Folder(f.Name, f.OwnerId)
-            {
-                Id = f.Id,
-                Status = f.Status,
-                Files = f.Files.ToList()
-            }).ToList();
         }
 
 
-        public ICollection<DumpFile> GetFolderFiles(int folderId)
+
+        public ICollection<DFile> GetFolderFiles(int folderId)
         {
             return DbContext.Files
                 .Where(f => f.FolderId == folderId)
-                .Select(f => new DumpFile(f.Name, f.FolderId)
+                .Select(f => new DFile(f.Name, f.FolderId, f.OwnerId)
                 {
                     Id = f.Id,
-                    LastChanged = f.LastChanged,
+                    LastModified = f.LastModified,
                     Status = f.Status
                 })
-                .OrderByDescending(f => f.LastChanged)
+                .OrderByDescending(f => f.LastModified)
                 .ToList();
         }
 
@@ -49,7 +49,7 @@ namespace DumpDrive.Domain.Repositories
                 .FirstOrDefault();
         }
 
-        public DumpFile GetFileByName(int userId, string fileName)
+        public DFile GetFileByName(int userId, string fileName)
         {
             return DbContext.Files
                 .Where(f => f.Folder.OwnerId == userId && f.Name.ToLower() == fileName.ToLower())
@@ -59,7 +59,7 @@ namespace DumpDrive.Domain.Repositories
         public ResponseResultType CreateFolder(int userId, string folderName)
         {
             var isDuplicate = DbContext.Folders.Any(f => f.OwnerId == userId && f.Name == folderName);
-            if (isDuplicate) return ResponseResultType.AlreadyExists;
+            if (isDuplicate) return ResponseResultType.Conflict;
 
             var folder = new Folder(folderName, userId);
             DbContext.Folders.Add(folder);
@@ -67,17 +67,17 @@ namespace DumpDrive.Domain.Repositories
             return SaveChanges();
         }
 
-        public ResponseResultType CreateFile(int folderId, string fileName)
+        public ResponseResultType CreateFile(int folderId, string fileName, int ownerId)
         {
             var folderExists = DbContext.Folders.Any(f => f.Id == folderId);
             if (!folderExists) return ResponseResultType.NotFound;
 
             var isDuplicate = DbContext.Files.Any(f => f.FolderId == folderId && f.Name.ToLower() == fileName.ToLower());
-            if (isDuplicate) return ResponseResultType.AlreadyExists;
+            if (isDuplicate) return ResponseResultType.Conflict;
 
-            var file = new DumpFile(fileName, folderId)
+            var file = new DFile(fileName, folderId, ownerId)
             {
-                Status = SharedStatus.Private
+                Status = Status.Private
             };
             DbContext.Files.Add(file);
 
@@ -89,11 +89,11 @@ namespace DumpDrive.Domain.Repositories
             var file = DbContext.Files.FirstOrDefault(f => f.Id == fileId);
             if (file == null)
             {
-                return ResponseResultType.Failure;
+                return ResponseResultType.NotFound;
             }
 
             file.Content = newContent;
-            file.LastChanged = DateTime.UtcNow;
+            file.LastModified = DateTime.UtcNow;
 
             DbContext.SaveChanges();
             return ResponseResultType.Success;

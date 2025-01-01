@@ -33,7 +33,11 @@ namespace DumpDrive.Presentation.Actions
                 Console.WriteLine("Password cannot be empty.");
             }
 
-            var user = _userRepository.FindByEmailAndPassword(email, password);
+            var user = _userRepository.GetByEmailAndPassword(email, password);
+            if(user != null)
+            {
+                UserContext.UserId = user.Id;
+            }
 
             if (user == null)
             {

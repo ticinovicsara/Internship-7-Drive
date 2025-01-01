@@ -1,5 +1,4 @@
 ﻿using DumpDrive.Data.Enums;
-using System;
 
 namespace DumpDrive.Data.Entities.Models
 {
@@ -8,7 +7,7 @@ namespace DumpDrive.Data.Entities.Models
         public int Id { get; set; }
         public ChangeType ChangeType { get; set; }
         public int FileId { get; set; }
-        public DumpFile? File { get; set; }
+        public DFile? File { get; set; }
         public int ChangedByUserId { get; set; }
         public User? ChangedByUser { get; set; }
         public DateTime Timestamp { get; set; }
