@@ -18,7 +18,7 @@
         public ICollection<Folder> Folders { get; set; } = new List<Folder>();
         public ICollection<DFile> Files { get; set; } = new List<DFile>();
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
-
+        public ICollection<AuditLog>? AuditLogs { get; set; }
         public ICollection<SharedItem> OwnedSharedItems { get; set; } = new List<SharedItem>();
         public ICollection<SharedItem> SharedWithItems { get; set; } = new List<SharedItem>();
     }

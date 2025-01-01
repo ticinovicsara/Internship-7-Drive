@@ -1,6 +1,8 @@
 ﻿using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Abstractions;
 using DumpDrive.Presentation.Helpers;
+using DumpDrive.Presentation.Actions.Menus;
+using DumpDrive.Presentation.Actions.Menus.MyDrive;
 
 namespace DumpDrive.Presentation.Actions
 {
@@ -28,6 +30,8 @@ namespace DumpDrive.Presentation.Actions
             {
                 Console.WriteLine($"{file.Id}. {file.Name}");
             }
+
+            var actions = HandleDrive(_driveRepository, _userRepository, _sharedRepository);
         }
     }
 

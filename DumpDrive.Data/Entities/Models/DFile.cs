@@ -11,20 +11,20 @@ namespace DumpDrive.Data.Entities.Models
         public User? Owner { get; set; }
         public int FolderId { get; set; }
         public Folder? Folder { get; set; }
-        public DateTime LastModified { get; set; }
+        public DateTime LastModified { get; set; } = DateTime.UtcNow;
         public Status Status { get; set; }
 
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
         public ICollection<User> SharedWith { get; set; } = new List<User>();
+        public ICollection<AuditLog>? AuditLogs { get; set; } = new List<AuditLog>();
 
-        public DFile(string name, int folderId, Status status)
+        public DFile(string name, int folderId, int ownerId)
         {
             Name = name;
-            LastModified = DateTime.UtcNow;
             FolderId = folderId;
-            Status = status;
+            Status = Status.Private;
+            OwnerId = ownerId;
         }
-
     }
 
 }

@@ -4,35 +4,16 @@ namespace DumpDrive.Presentation.Helpers
 {
     internal class Writer
     {
-        public static void Write(User user)
+        public static void Write(string output)
         {
-            Console.WriteLine($"ID: {user.Id} | Ime: {user.Name} {user.Surname} | Email: {user.Email}");
+            Console.WriteLine(output);
         }
-
 
         public static void Error(string message)
         {
             Console.WriteLine(message);
             Thread.Sleep(1000);
             Console.Clear();
-        }
-
-        public static void WriteFolders(ICollection<Folder> folders)
-        {
-            Console.WriteLine("Mape:");
-            foreach (var folder in folders.OrderBy(f => f.Name))
-            {
-                Console.WriteLine($"- {folder.Name} (Stvorena: {folder.CreatedAt})");
-            }
-        }
-
-        public static void WriteFiles(ICollection<DFile> files)
-        {
-            Console.WriteLine("Datoteke:");
-            foreach (var file in files.OrderByDescending(f => f.LastModified))
-            {
-                Console.WriteLine($"- {file.Name} (Zadnja izmjena: {file.LastModified})");
-            }
         }
 
         public static string CaptchaGenerator()
