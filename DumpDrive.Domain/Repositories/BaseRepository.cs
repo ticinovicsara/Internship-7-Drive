@@ -3,7 +3,7 @@ using DumpDrive.Domain.Enums;
 
 namespace DumpDrive.Domain.Repositories
 {
-    public abstract class BaseRepository
+    public class BaseRepository
     {
         protected readonly DumpDriveDbContext DbContext;
 

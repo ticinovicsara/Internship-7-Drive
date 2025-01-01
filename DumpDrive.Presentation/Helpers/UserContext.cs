@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace DumpDrive.Presentation.Helpers;
 
-namespace DumpDrive.Presentation.Helpers
+public static class UserContext
 {
-    internal class UserContext
-    {
-    }
+    public static int UserId { get; set; }
 }

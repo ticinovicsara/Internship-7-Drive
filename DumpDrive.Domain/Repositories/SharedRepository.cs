@@ -18,7 +18,7 @@ namespace DumpDrive.Domain.Repositories
             .ToList();
         }
 
-        public IEnumerable<DumpFile> GetSharedFiles(int userId)
+        public IEnumerable<DFile> GetSharedFiles(int userId)
         {
             return DbContext.UserSharedFiles
             .Where(uf => uf.UserId == userId)
@@ -26,7 +26,7 @@ namespace DumpDrive.Domain.Repositories
             .ToList();
         }
 
-        public IEnumerable<DumpFile> GetSharedFilesInFolder(int folderId, int userId)
+        public IEnumerable<DFile> GetSharedFilesInFolder(int folderId, int userId)
         {
             return DbContext.UserSharedFiles
                 .Where(uf => uf.UserId == userId && uf.File.FolderId == folderId)

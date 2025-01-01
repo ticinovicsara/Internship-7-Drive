@@ -5,17 +5,15 @@ namespace DumpDrive.Presentation.Actions
 {
     public class SharedWithMeAction : IAction
     {
-        private readonly FileRepository _fileRepository;
-        private readonly int _userId;
+        private readonly SharedRepository _sharedRepository;
 
         public int MenuIndex { get; set; }
         public string Name { get; set; } = "Shared with me";
 
 
-        public SharedWithMeAction(FileRepository fileRepository, int userId)
+        public SharedWithMeAction(SharedRepository sharedRepository)
         {
-            _fileRepository = fileRepository;
-            _userId = userId;
+            _sharedRepository = sharedRepository;
         }
 
         public void Open()

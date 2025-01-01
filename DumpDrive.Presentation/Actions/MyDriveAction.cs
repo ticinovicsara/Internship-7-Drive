@@ -31,7 +31,7 @@ namespace DumpDrive.Presentation.Actions
                 Console.WriteLine($"{file.Id}. {file.Name}");
             }
 
-            var actions = HandleDrive(_driveRepository, _userRepository, _sharedRepository);
+            var actions = HandleDrive;
         }
     }
 

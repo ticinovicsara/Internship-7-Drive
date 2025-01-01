@@ -46,13 +46,10 @@ namespace DumpDrive.Domain.Repositories
             return SaveChanges();
         }
 
-        public User GetByEmail(string email) => DbContext.Users.FirstOrDefault(u => u.Email == email.ToLower());
+        public User? GetByEmailAndPassword(string email, string password) => DbContext.Users.FirstOrDefault(u => u.Password == password && u.Email == email);
         public User? GetById(int id) => DbContext.Users.FirstOrDefault(u => u.Id == id);
-        public ICollection<User> GetAll() => DbContext.Users.ToList();
+        public User? GetByEmail(string email) => DbContext.Users.FirstOrDefault(u => u.Email == email);
 
-        public User? FindByEmailAndPassword(string email, string password)
-        {
-            return DbContext.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
-        }
+        public ICollection<User> GetAll() => DbContext.Users.ToList();
     }
 }

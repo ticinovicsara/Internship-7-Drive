@@ -3,20 +3,20 @@ using DumpDrive.Domain.Enums;
 using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Abstractions;
 using DumpDrive.Presentation.Helpers;
-using DumpDrive.Presentation.Helpers;
 
 namespace DumpDrive.Presentation.Actions.Menus.MyDrive
 {
-    public class HandleDriveContent : IAction
+    public class HandleDrive : IAction
     {
         private readonly DriveRepository _driveRepository;
         private readonly SharedRepository _sharedRepository;
         private readonly UserRepository _userRepository;
-        private readonly int _userId;
+        int _userId = UserContext.UserId;
 
-        public string Name => "Display Drive Contents";
+        public int MenuIndex { get; set; }
+        public string Name { get; set; } = "Display Drive Contents\n";
 
-        public HandleDriveContent(DriveRepository driveRepository, SharedRepository sharedRepository, UserRepository userRepository, int userId)
+        public HandleDrive(DriveRepository driveRepository, SharedRepository sharedRepository, UserRepository userRepository, int userId)
         {
             _driveRepository = driveRepository;
             _sharedRepository = sharedRepository;
@@ -26,12 +26,12 @@ namespace DumpDrive.Presentation.Actions.Menus.MyDrive
 
         private int currentFolderId;
 
-        public void Execute()
+        public void Open()
         {
             Console.Clear();
 
-            var folders = _driveRepository.GetUserFolders(_userId);
-            var files = _driveRepository.GetFolderFiles(_userId).OrderByDescending(f => f.LastChanged).ToList();
+            var folders = _driveRepository.GetUserFiles(_userId);
+            var files = _driveRepository.GetFolderFiles(_userId).OrderByDescending(f => f.LastModified).ToList();
 
             if (!folders.Any() && !files.Any())
             {
@@ -94,7 +94,7 @@ namespace DumpDrive.Presentation.Actions.Menus.MyDrive
 
             Writer.Write("Press any key to continue...");
             Console.ReadKey();
-            Execute();
+            Open();
         }
 
         private void ShowFolderHelp()
@@ -145,7 +145,7 @@ namespace DumpDrive.Presentation.Actions.Menus.MyDrive
                 return;
             }
 
-            var createFileResult = _driveRepository.CreateFile(currentFolderId, fileName);  // koristimo currentFolderId
+            var createFileResult = _driveRepository.CreateFile(currentFolderId, fileName, _userId);
             PrintResult(createFileResult, "File created successfully.", "Failed to create file.");
         }
 
@@ -242,10 +242,8 @@ namespace DumpDrive.Presentation.Actions.Menus.MyDrive
                 return;
             }
 
-            // Uzimamo prvi dio komande (prije 'to')
             var oldNamePart = parts[0].Trim();
 
-            // Provjeravamo i uklanjamo početne riječi ('rename folder' ili 'rename file')
             var oldName = oldNamePart.Replace("rename folder", "").Replace("rename file", "").Trim();
             var newName = parts[1].Trim();
 
@@ -342,7 +340,7 @@ namespace DumpDrive.Presentation.Actions.Menus.MyDrive
             }
         }
 
-        private void HandleFileEditingCommand(string input, ref bool isEditing, List<string> fileContent, DumpFile file)
+        private void HandleFileEditingCommand(string input, ref bool isEditing, List<string> fileContent, DFile file)
         {
             switch (input.ToLower())
             {
@@ -414,7 +412,7 @@ namespace DumpDrive.Presentation.Actions.Menus.MyDrive
             var contentName = contentPart.Replace("share folder", "").Replace("share file", "").Trim();
             var email = parts[1].Trim();
 
-            var user = _userRepository.GetUserByEmail(email);
+            var user = _userRepository.GetByEmail(email);
             if (user == null)
             {
                 Writer.Error("User not found.");
@@ -457,7 +455,7 @@ namespace DumpDrive.Presentation.Actions.Menus.MyDrive
             var contentName = contentPart.Replace("unshare folder", "").Replace("unshare file", "").Trim();
             var email = parts[1].Trim();
 
-            var user = _userRepository.GetUserByEmail(email);
+            var user = _userRepository.GetByEmail(email);
             if (user == null)
             {
                 Writer.Error("User not found.");

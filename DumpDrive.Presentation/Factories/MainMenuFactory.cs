@@ -24,9 +24,9 @@ namespace DumpDrive.Presentation.Factories
         {
             var actions = new List<IAction>
             {
-                 new MyDriveAction(_driveRepository, _sharedRepository, _userRepository).Create(_userId),
-                 new SharedWithMeAction(_sharedRepository).Create(_userId),
-                 new ProfileAction(_userRepository, _userId).Create(),
+                 new MyDriveAction(_driveRepository, _sharedRepository, _userRepository),
+                 new SharedWithMeAction(_sharedRepository),
+                 new ProfileAction(_userRepository, _userId),
                 new ExitMenuAction()
             };
 

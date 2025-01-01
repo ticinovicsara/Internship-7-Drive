@@ -9,6 +9,12 @@ namespace DumpDrive.Presentation.Helpers
     {
         private static readonly Regex regex = new Regex(@"^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$");
 
+        public static string ReadLine(string prompt)
+        {
+            Console.WriteLine(prompt);
+            return Console.ReadLine() ?? string.Empty;
+        }
+
         public static bool TryReadNumber(out int number)
         {
             number = 0;
@@ -96,6 +102,31 @@ namespace DumpDrive.Presentation.Helpers
             }
 
             return true;
+        }
+
+        public static (string line, bool isBackspace) ReadInputWithBackspace()
+        {
+            var input = new StringBuilder();
+            while (true)
+            {
+                var key = Console.ReadKey(intercept: true);
+
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    Console.WriteLine();
+                    break;
+                }
+                else if (key.Key == ConsoleKey.Backspace)
+                {
+                    return (null, true);
+                }
+                else
+                {
+                    input.Append(key.KeyChar);
+                    Console.Write(key.KeyChar);
+                }
+            }
+            return (input.ToString().Trim(), false);
         }
     }
 
