@@ -128,6 +128,20 @@ namespace DumpDrive.Presentation.Helpers
             }
             return (input.ToString().Trim(), false);
         }
+
+        public static int ReadNumber(string message)
+        {
+            int number;
+            while (true)
+            {
+                Console.Write(message);
+                if (int.TryParse(Console.ReadLine(), out number))
+                    break;
+
+                Writer.Error("Invalid number. Please try again.");
+            }
+            return number;
+        }
     }
 
 }

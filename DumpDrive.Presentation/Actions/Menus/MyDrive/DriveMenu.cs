@@ -14,7 +14,7 @@ namespace DumpDrive.Presentation.Actions.Menus.MyDrive
         int _userId = UserContext.UserId;
 
         public int MenuIndex { get; set; }
-        public string Name { get; set; } = "Display Drive Contents\n";
+        public string Name { get; set; } = "Manage Drive Contents\n";
 
         public HandleDrive(DriveRepository driveRepository, SharedRepository sharedRepository, UserRepository userRepository, int userId)
         {

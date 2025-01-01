@@ -1,7 +1,7 @@
 ﻿using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Abstractions;
 using DumpDrive.Presentation.Helpers;
-using DumpDrive.Presentation.Actions.Menus;
+using DumpDrive.Presentation.Actions.Menus.MyDrive;
 using DumpDrive.Presentation.Actions.Menus.MyDrive;
 
 namespace DumpDrive.Presentation.Actions
@@ -25,13 +25,9 @@ namespace DumpDrive.Presentation.Actions
         public void Open()
         {
             var userId = UserContext.UserId;
-            var files = _driveRepository.GetUserFiles(userId);
-            foreach (var file in files)
-            {
-                Console.WriteLine($"{file.Id}. {file.Name}");
-            }
 
-            var actions = HandleDrive;
+            var handleDriveAction = new DriveMenu(_driveRepository, _sharedRepository, _userRepository, userId);
+            handleDriveAction.Open();
         }
     }
 

@@ -1,5 +1,8 @@
 ﻿using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Abstractions;
+using DumpDrive.Presentation.Actions.Menus.SharedWith;
+using DumpDrive.Presentation.Extensions;
+using DumpDrive.Presentation.Helpers;
 
 namespace DumpDrive.Presentation.Actions
 {
@@ -18,18 +21,15 @@ namespace DumpDrive.Presentation.Actions
 
         public void Open()
         {
-            var sharedFiles = _fileRepository.GetSharedFilesByUser(_userId);
-            if (sharedFiles.Count == 0)
+            var userId = UserContext.UserId;
+
+            var actions = new List<IAction>
             {
-                Console.WriteLine("No files shared with you.");
-            }
-            else
-            {
-                foreach (var file in sharedFiles)
-                {
-                    Console.WriteLine($"{file.Id}. {file.Name}");
-                }
-            }
+                 new SharedWithMenu(_sharedRepository, userId),
+                new ExitMenuAction()
+            };
+
+            actions.SetActionIndexes();
         }
     }
 }

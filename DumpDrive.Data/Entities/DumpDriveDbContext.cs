@@ -14,6 +14,7 @@ namespace DumpDrive.Data.Entities
         public DbSet<Comment> Comments { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
         public DbSet<SharedItem> UserSharedFolders { get; set; }
+        public DbSet<SharedItem> UserSharedFiles { get; set; }
 
         public DumpDriveDbContext(DbContextOptions options) : base(options)
         {
