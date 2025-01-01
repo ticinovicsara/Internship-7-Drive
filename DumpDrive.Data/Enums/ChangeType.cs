@@ -3,7 +3,7 @@
     public enum ChangeType
     {
         Created,
-        Modified,
+        Updated,
         Deleted
     }
 }

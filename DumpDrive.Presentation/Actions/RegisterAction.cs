@@ -23,12 +23,12 @@ namespace DumpDrive.Presentation.Actions
             string email;
             while (!Reader.TryReadEmail("Enter email:", out email))
             {
-                Console.WriteLine("Please enter a valid email address.");
+                Console.WriteLine("Please enter a valid email address.\n");
             }
             var existingUser = RepositoryFactory.Create<UserRepository>().GetByEmail(email);
             if (existingUser != null)
             {
-                Console.WriteLine("Email already in use.");
+                Console.WriteLine("Email already in use.\n");
                 return;
             }
 

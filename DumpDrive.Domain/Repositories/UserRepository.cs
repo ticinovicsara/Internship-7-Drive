@@ -34,19 +34,19 @@ namespace DumpDrive.Domain.Repositories
 
         public ResponseResultType Update(User user, int id)
         {
-            var userToUpdate = DbContext.Users.Find(id);
+            var userToUpdate = GetById(id);
             if (userToUpdate is null)
             {
                 return ResponseResultType.NotFound;
             }
 
-            userToUpdate.Name = user.Name;
-            userToUpdate.Surname = user.Surname;
+            userToUpdate.Email = user.Email;
+            userToUpdate.Password = user.Password;
 
             return SaveChanges();
         }
 
-        public User GetByEmail(string email) => DbContext.Users.FirstOrDefault(u => u.Email == email);
+        public User GetByEmail(string email) => DbContext.Users.FirstOrDefault(u => u.Email == email.ToLower());
         public User? GetById(int id) => DbContext.Users.FirstOrDefault(u => u.Id == id);
         public ICollection<User> GetAll() => DbContext.Users.ToList();
 

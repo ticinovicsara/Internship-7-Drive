@@ -5,11 +5,22 @@ using DumpDrive.Presentation.Factories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Graph;
+using System.Configuration;
 
 class Program
 {
     static void Main(string[] args)
     {
+        var builder = WebApplication.CreateBuilder(args);
+
+        var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DumpDrive"]?.ConnectionString;
+
+        if (string.IsNullOrEmpty(connectionString))
+        {
+            throw new InvalidOperationException("Connection string 'DumpDrive' not found in App.config.");
+        }
+
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .Build();
@@ -33,6 +44,7 @@ class Program
             .AddSingleton<DumpDriveDbContextFactory>()
 
             .BuildServiceProvider();
+
 
         using (var scope = serviceProvider.CreateScope())
         {

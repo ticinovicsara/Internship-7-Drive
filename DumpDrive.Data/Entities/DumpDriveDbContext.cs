@@ -24,6 +24,11 @@ namespace DumpDrive.Data.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Files)
+                .WithOne(f => f.Owner)
+                .HasForeignKey(f => f.OwnerId);
+
             modelBuilder.Entity<Folder>()
                 .HasOne(f => f.Owner)
                 .WithMany(u => u.Folders)
@@ -46,10 +51,14 @@ namespace DumpDrive.Data.Entities
                 .HasForeignKey(c => c.UserId);
 
             modelBuilder.Entity<SharedItem>()
-                .HasOne(s => s.SharedWithUser)
-                .WithMany()
-                .HasForeignKey(s => s.SharedWithUserId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasOne(si => si.Owner)
+                .WithMany(u => u.OwnedSharedItems)
+                .HasForeignKey(si => si.OwnerId);
+
+            modelBuilder.Entity<SharedItem>()
+                .HasOne(si => si.SharedWithUser)
+                .WithMany(u => u.SharedWithItems)
+                .HasForeignKey(si => si.SharedWithUserId);
 
             DbSeeder.Seed(modelBuilder);
             base.OnModelCreating(modelBuilder);

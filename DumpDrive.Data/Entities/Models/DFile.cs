@@ -20,7 +20,7 @@ namespace DumpDrive.Data.Entities.Models
         public DFile(string name, int folderId, Status status)
         {
             Name = name;
-            LastModified = DateTime.Now;
+            LastModified = DateTime.UtcNow;
             FolderId = folderId;
             Status = status;
         }

@@ -1,23 +1,18 @@
-﻿using DumpDrive.Data.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Configuration;
+using DumpDrive.Data.Entities;
 
 namespace DumpDrive.Domain.Factories
 {
-    public class DumpDriveDbContextFactory : IDesignTimeDbContextFactory<DumpDriveDbContext>
+    public static class DbContextFactory
     {
-        public DumpDriveDbContext CreateDbContext(string[] args)
+        public static DumpDriveDbContext GetDumpDriveDbContext()
         {
-            var optionsBuilder = new DbContextOptionsBuilder<DumpDriveDbContext>();
+            var options = new DbContextOptionsBuilder()
+                .UseNpgsql("Host=localhost;Database=DumpDrive;User Id=postgres;Password=tici0")
+                .Options;
 
-            var connectionString = "Host=localhost;Port=5432;Database=DumpDrive;Username=postgres;Password=tici0";
-
-            optionsBuilder.UseNpgsql(connectionString);
-
-            return new DumpDriveDbContext(optionsBuilder.Options);
+            return new DumpDriveDbContext(options);
         }
     }
-
 }

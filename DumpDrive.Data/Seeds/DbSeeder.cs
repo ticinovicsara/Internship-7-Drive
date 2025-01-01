@@ -32,15 +32,15 @@ namespace DumpDrive.Data.Seeds
             builder.Entity<DFile>()
                 .HasData(new List<DFile>
                 {
-                    new DFile("resume.pdf", 1, Status.Private) { Id = 1, Content = "Some content for resume.pdf" },
-                    new DFile("holiday.jpg", 2, Status.Shared) { Id = 2, Content = "Image content for holiday.jpg" },
-                    new DFile("song.mp3", 3, Status.Private) { Id = 3, Content = "Audio content for song.mp3" },
-                    new DFile("movie.mp4", 4, Status.Shared) { Id = 4, Content = "Video content for movie.mp4" },
-                    new DFile("project_plan.docx", 5, Status.Private) { Id = 5, Content = "Document content for project_plan.docx" },
-                    new DFile("presentation.pptx", 6, Status.Shared) { Id = 6, Content = "Presentation content for presentation.pptx" },
-                    new DFile("report.pdf", 7, Status.Private) { Id = 7, Content = "Report content for report.pdf" },
-                    new DFile("archive.zip", 4, Status.Shared) { Id = 8, Content = "Archive content for archive.zip" },
-                    new DFile("data.csv", 1, Status.Private) { Id = 9, Content = "Data content for data.csv" }
+                   new DFile("resume.pdf", 1, Status.Private, 1) { Id = 1, Content = "Some content for resume.pdf", LastModified = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new DFile("holiday.jpg", 2, Status.Shared, 2) { Id = 2, Content = "Image content for holiday.jpg", LastModified = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new DFile("song.mp3", 3, Status.Private, 4) { Id = 3, Content = "Audio content for song.mp3", LastModified = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new DFile("movie.mp4", 4, Status.Shared, 3) { Id = 4, Content = "Video content for movie.mp4", LastModified = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new DFile("project_plan.docx", 5, Status.Private, 2) { Id = 5, Content = "Document content for project_plan.docx", LastModified = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new DFile("presentation.pptx", 6, Status.Shared, 1) { Id = 6, Content = "Presentation content for presentation.pptx", LastModified = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new DFile("report.pdf", 7, Status.Private, 2) { Id = 7, Content = "Report content for report.pdf", LastModified = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new DFile("archive.zip", 4, Status.Shared, 3) { Id = 8, Content = "Archive content for archive.zip", LastModified = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new DFile("data.csv", 1, Status.Private, 4) { Id = 9, Content = "Data content for data.csv", LastModified = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) }
                 });
 
 
@@ -61,7 +61,39 @@ namespace DumpDrive.Data.Seeds
                     new Comment("Important archive data.", 2, 2) { Id = 12, CreatedAt = DateTime.Now },
                     new Comment("Data needs cleanup.", 6, 1) { Id = 13, CreatedAt = DateTime.Now }
                 });
-            
+
+            builder.Entity<AuditLog>()
+               .HasData(new List<AuditLog>
+               {
+                    new AuditLog(ChangeType.Created, 1, 1) { Id = 1, Timestamp = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new AuditLog(ChangeType.Created, 2, 2) { Id = 2, Timestamp = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new AuditLog(ChangeType.Updated, 3, 3) { Id = 3, Timestamp = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new AuditLog(ChangeType.Created, 4, 4) { Id = 4, Timestamp = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new AuditLog(ChangeType.Created, 5, 2) { Id = 5, Timestamp = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new AuditLog(ChangeType.Updated, 6, 3) { Id = 6, Timestamp = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new AuditLog(ChangeType.Created, 7, 1) { Id = 7, Timestamp = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new AuditLog(ChangeType.Created, 8, 3) { Id = 8, Timestamp = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new AuditLog(ChangeType.Updated, 9, 4) { Id = 9, Timestamp = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new AuditLog(ChangeType.Created, 10, 5) { Id = 10, Timestamp = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) },
+                    new AuditLog(ChangeType.Created, 11, 6) { Id = 11, Timestamp = DateTime.SpecifyKind(new DateTime(2024, 12, 24, 10, 0, 0), DateTimeKind.Utc) }
+               });
+
+            builder.Entity<SharedItem>()
+                .HasData(new List<SharedItem>
+                {
+                    new SharedItem("Document1", "File") { Id = 1, OwnerId = 1, ItemId = 101, SharedWithUserId = 2 },
+                    new SharedItem("Folder1", "Folder") { Id = 2, OwnerId = 2, ItemId = 102, SharedWithUserId = 3 },
+                    new SharedItem("Picture1", "File") { Id = 3, OwnerId = 3, ItemId = 103, SharedWithUserId = 4 },
+                    new SharedItem("VideosFolder", "Folder") { Id = 4, OwnerId = 4, ItemId = 104, SharedWithUserId = 1 },
+        
+                    new SharedItem("Document2", "File") { Id = 5, OwnerId = 1, ItemId = 105, SharedWithUserId = 3 },
+                    new SharedItem("PhotosFolder", "Folder") { Id = 6, OwnerId = 2, ItemId = 106, SharedWithUserId = 4 },
+                    new SharedItem("VideoClip", "File") { Id = 7, OwnerId = 3, ItemId = 107, SharedWithUserId = 1 },
+                    new SharedItem("MusicFolder", "Folder") { Id = 8, OwnerId = 4, ItemId = 108, SharedWithUserId = 2 }
+                });
+
+
+
         }
     }
 }
