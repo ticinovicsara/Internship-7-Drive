@@ -9,7 +9,7 @@ namespace DumpDrive.Presentation.Actions
     public class LoginAction : IAction
     {
         public int MenuIndex { get; set; }
-        public string Name { get; set }  = "Login";
+        public string Name { get; set; } = "Login";
 
         public LoginAction()
         {

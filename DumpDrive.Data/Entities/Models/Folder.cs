@@ -14,7 +14,7 @@ namespace DumpDrive.Data.Entities.Models
 
         public User Owner { get; set; }
         public ICollection<Folder> SubFolders { get; set; } = new List<Folder>();
-        public ICollection<File> Files { get; set; } = new List<File>();
+        public ICollection<DFile> Files { get; set; } = new List<DFile>();
 
         int counter = 0;
         public Folder(string name, int ownerId)

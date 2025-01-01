@@ -16,7 +16,7 @@ namespace DumpDrive.Data.Seeds
             builder.Entity<User>()
                 .HasData(new List<User>
                 {
-                    new User("ana@gmail.com", "pass12345", "Ana", "Anic") { Id = anaId }
+                    new User("ana@gmail.com", "pass12345", "Ana", "Anic") { Id = anaId },
                     new User("marko@gmail.com", "pass54322", "Marko", "Markic") { Id = markoId },
                     new User("josip@gmail.com", "qwert", "Josip", "Jopic") { Id = josipId },
                     new User("pero@gmail.com", "pass7", "Pero", "Peric") { Id = peroId }
@@ -52,34 +52,34 @@ namespace DumpDrive.Data.Seeds
             var file8Id = 8;
             var file9Id = 9;
 
-            builder.Entity<<File>()
-                .HasData(new List<File>
+            builder.Entity< DFile > ()
+                .HasData(new List<DFile>
                 {
-                    new File("resume.pdf", folder1Id, Status.Private) { Id = file1Id },
-                    new File("holiday.jpg", folder2Id, Status.Shared) { Id = file2Id },
-                    new File("song.mp3", folder3Id, Status.Private) { Id = file3Id },
-                    new File("movie.mp4", folder4Id, Status.Shared) { Id = file4Id },
-                    new File("project_plan.docx", folder5Id, Status.Private) { Id = file5Id },
-                    new File("presentation.pptx", folder5Id, Status.Shared) { Id = file6Id },
-                    new File("report.pdf", folder6Id, Status.Private) { Id = file7Id },
-                    new File("archive.zip", folder7Id, Status.Shared) { Id = file8Id },
-                    new File("data.csv", folder7Id, Status.Private) { Id = file9Id }
+                    new DFile("resume.pdf", folder1Id, Status.Private) { Id = file1Id },
+                    new DFile("holiday.jpg", folder2Id, Status.Shared) { Id = file2Id },
+                    new DFile("song.mp3", folder3Id, Status.Private) { Id = file3Id },
+                    new DFile("movie.mp4", folder4Id, Status.Shared) { Id = file4Id },
+                    new DFile("project_plan.docx", folder5Id, Status.Private) { Id = file5Id },
+                    new DFile("presentation.pptx", folder5Id, Status.Shared) { Id = file6Id },
+                    new DFile("report.pdf", folder6Id, Status.Private) { Id = file7Id },
+                    new DFile("archive.zip", folder7Id, Status.Shared) { Id = file8Id },
+                    new DFile("data.csv", folder7Id, Status.Private) { Id = file9Id }
                 });
 
             builder.Entity<Comment>()
                 .HasData(new List<Comment>
                 {
                     new Comment("Great resume!", file1Id, anaId) { Id = 1, CreatedAt = DateTime.Now },
-                    new Comment("Lovely picture!", file2Id, markoId) { Id = 2, CreatedAt = DateTime.Now },
-                    new Comment("Nice music!", file3Id, peroId) { Id = 3, CreatedAt = DateTime.Now },
-                    new Comment("Cool video!", file4Id, anaId) { Id = 4, CreatedAt = DateTime.Now },
-                    new Comment("This resume could be better.", file1Id, anaId) { Id = 5, CreatedAt = DateTime.Now },
-                    new Comment("Beautiful image!", file2Id, josipId) { Id = 6, CreatedAt = DateTime.Now },
+                    new Comment("Lovely!", file2Id, markoId) { Id = 2, CreatedAt = DateTime.Now },
+                    new Comment("Nice!", file3Id, peroId) { Id = 3, CreatedAt = DateTime.Now },
+                    new Comment("Cool!", file4Id, anaId) { Id = 4, CreatedAt = DateTime.Now },
+                    new Comment("Could be better.", file1Id, anaId) { Id = 5, CreatedAt = DateTime.Now },
+                    new Comment("Beautiful!", file2Id, josipId) { Id = 6, CreatedAt = DateTime.Now },
                     new Comment("I dont like this song!", file3Id, josipId) { Id = 7, CreatedAt = DateTime.Now },
-                    new Comment("Amazing video!", file4Id, peroId) { Id = 8, CreatedAt = DateTime.Now },
-                    new Comment("Excellent project plan!", file5Id, markoId) { Id = 9, CreatedAt = DateTime.Now },
+                    new Comment("Amazing!", file4Id, peroId) { Id = 8, CreatedAt = DateTime.Now },
+                    new Comment("Excellent plan!", file5Id, markoId) { Id = 9, CreatedAt = DateTime.Now },
                     new Comment("Great presentation!", file6Id, anaId) { Id = 10, CreatedAt = DateTime.Now },
-                    new Comment("Very detailed report!", file7Id, anaId) { Id = 11, CreatedAt = DateTime.Now },
+                    new Comment("Nice.", file7Id, anaId) { Id = 11, CreatedAt = DateTime.Now },
                     new Comment("Important archive data.", file8Id, markoId) { Id = 12, CreatedAt = DateTime.Now },
                     new Comment("Data needs cleanup.", file9Id, josipId) { Id = 13, CreatedAt = DateTime.Now }
                 });

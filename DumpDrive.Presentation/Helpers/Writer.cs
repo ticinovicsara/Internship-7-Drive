@@ -26,12 +26,12 @@ namespace DumpDrive.Presentation.Helpers
             }
         }
 
-        public static void WriteFiles(ICollection<File> files)
+        public static void WriteFiles(ICollection<DFile> files)
         {
             Console.WriteLine("Datoteke:");
             foreach (var file in files.OrderByDescending(f => f.LastModified))
             {
-                Console.WriteLine($"- {file.Name} ({file.Size} KB, Zadnja izmjena: {file.LastModified})");
+                Console.WriteLine($"- {file.Name} (Zadnja izmjena: {file.LastModified})");
             }
         }
 

@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using DumpDrive.Data.Entities.Models;
 using Microsoft.EntityFrameworkCore.Design;
 using DumpDrive.Data.Seeds;
+using System.Xml.Linq;
 
 namespace DumpDrive.Data.Entities
 {
@@ -58,16 +58,20 @@ namespace DumpDrive.Data.Entities
         public DumpDriveDbContext CreateDbContext(string[] args)
         {
             var presentationLayerPath = Path.Combine(Directory.GetCurrentDirectory(), @"..\DumpDrive.Presentation");
-            var configFilePath = Path.Combine(presentationLayerPath, "App.config.xml");
+            var configFilePath = Path.Combine(presentationLayerPath, "App.config");
 
-            var config = new ConfigurationBuilder()
-                .SetBasePath(presentationLayerPath)
-                .AddXmlFile(configFilePath)
-                .Build();
+            var configXml = XElement.Load(configFilePath);
 
-            config.Providers
-                .First()
-                .TryGet("connectionStrings:add:DumpDrive:connectionString", out var connectionString);
+            var connectionString = configXml
+                .Element("connectionStrings")?
+                .Elements("add")
+                .FirstOrDefault(e => e.Attribute("name")?.Value == "DumpDrive")?
+                .Attribute("connectionString")?.Value;
+
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                throw new InvalidOperationException("Connection string 'DumpDrive' not found in app.config.");
+            }
 
             var options = new DbContextOptionsBuilder<DumpDriveDbContext>()
                 .UseNpgsql(connectionString)

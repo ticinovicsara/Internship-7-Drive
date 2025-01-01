@@ -6,7 +6,7 @@ namespace DumpDrive.Presentation.Factories
 {
     public class StartMenuFactory
     {
-        public static IList<IAction> Create()
+        public IList<IAction> Create()
         {
             var actions = new List<IAction>
             {

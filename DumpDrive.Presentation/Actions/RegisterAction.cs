@@ -9,7 +9,7 @@ namespace DumpDrive.Presentation.Actions
     public class RegisterAction : IAction
     {
         public int MenuIndex { get; set; }
-        public string Name { get; set }  = "Register";
+        public string Name { get; set; }  = "Register";
 
         public RegisterAction() { }
 

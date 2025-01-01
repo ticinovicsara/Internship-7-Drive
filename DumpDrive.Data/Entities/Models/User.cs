@@ -16,7 +16,7 @@
         }
 
         public ICollection<Folder> Folders { get; set; } = new List<Folder>();
-        public ICollection<File> Files { get; set; } = new List<File>();
+        public ICollection<DFile> Files { get; set; } = new List<DFile>();
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
     }
 }
