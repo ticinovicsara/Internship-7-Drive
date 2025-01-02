@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.Configuration;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace DumpDrive.Data.Entities
 {
@@ -35,6 +36,9 @@ namespace DumpDrive.Data.Entities
                 var connectionString = _configuration.GetConnectionString("DumpDrive");
                 optionsBuilder.UseNpgsql(connectionString);
             }
+
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
         }
 
 
@@ -91,7 +95,7 @@ namespace DumpDrive.Data.Entities
         }
     }
 
-public class DriveDbContextFactory : IDesignTimeDbContextFactory<DumpDriveDbContext>
+    public class DriveDbContextFactory : IDesignTimeDbContextFactory<DumpDriveDbContext>
     {
         public DumpDriveDbContext CreateDbContext(string[] args)
         {
@@ -101,13 +105,17 @@ public class DriveDbContextFactory : IDesignTimeDbContextFactory<DumpDriveDbCont
             if (!Directory.Exists(presentationLayerPath))
                 throw new DirectoryNotFoundException($"Directory '{presentationLayerPath}' not found.");
 
-            var configFilePath = Path.Combine(presentationLayerPath, "App.config.xml");
+            var configFilePath = Path.Combine(presentationLayerPath, "appsettings.json");
 
             if (!File.Exists(configFilePath))
                 throw new FileNotFoundException($"Configuration file '{configFilePath}' not found.");
 
-            var config = System.Configuration.ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            var connectionString = config.ConnectionStrings.ConnectionStrings["DumpDrive"]?.ConnectionString;
+            var config = new ConfigurationBuilder()
+                .SetBasePath(presentationLayerPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .Build();
+
+            var connectionString = config.GetConnectionString("DumpDrive");
 
             if (string.IsNullOrEmpty(connectionString))
                 throw new InvalidOperationException("Connection string 'DumpDrive' not found or is empty.");
@@ -119,5 +127,4 @@ public class DriveDbContextFactory : IDesignTimeDbContextFactory<DumpDriveDbCont
             return new DumpDriveDbContext(options);
         }
     }
-
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Configuration;
 using DumpDrive.Data.Entities;
 
 namespace DumpDrive.Domain.Factories

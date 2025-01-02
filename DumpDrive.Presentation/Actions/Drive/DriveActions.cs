@@ -1,8 +1,7 @@
-﻿using Drive.Presentation.Helpers;
+﻿using DumpDrive.Presentation.Helpers;
 using DumpDrive.Data.Entities.Models;
 using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Abstractions;
-using DumpDrive.Presentation.Helpers;
 
 namespace DumpDrive.Presentation.Actions
 {
@@ -48,19 +47,19 @@ namespace DumpDrive.Presentation.Actions
 
                 { command => Reader.IsCommand(command, "help"), _ => Writer.PrintCommands() },
 
-                { command => Reader.StartsWithCommand(command, "stvori mapu"), itemActions.CreateFolderInCurrentLocation },
+                { command => Reader.StartsWithCommand(command, "make folder"), itemActions.CreateFolderInCurrentLocation },
 
-                { command => Reader.StartsWithCommand(command, "stvori datoteku"), itemActions.CreateFileInCurrentLocation},
+                { command => Reader.StartsWithCommand(command, "make file"), itemActions.CreateFileInCurrentLocation},
 
-                { command => Reader.StartsWithCommand(command, "uredi datoteku"), command => itemActions.EditFileContents(command, false) },
+                { command => Reader.StartsWithCommand(command, "edit file"), command => itemActions.EditFileContents(command, false) },
 
-                { command => Reader.StartsWithCommand(command, "izbrisi"), itemActions.DeleteItem },
+                { command => Reader.StartsWithCommand(command, "delete"), itemActions.DeleteItem },
 
-                { command => Reader.StartsWithCommand(command, "promjeni naziv"), itemActions.ChangeItemName },
+                { command => Reader.StartsWithCommand(command, "change name"), itemActions.ChangeItemName },
 
-                { command => Reader.StartsWithCommand(command, "podijeli"), sharingActions.ShareItem },
+                { command => Reader.StartsWithCommand(command, "share"), sharingActions.ShareItem },
 
-                { command => Reader.StartsWithCommand(command, "prestani dijeliti"), sharingActions.StopSharingItem },
+                { command => Reader.StartsWithCommand(command, "stop sharing"), sharingActions.StopSharingItem },
 
             };
 

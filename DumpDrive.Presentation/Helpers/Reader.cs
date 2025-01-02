@@ -82,18 +82,6 @@ namespace DumpDrive.Presentation.Helpers
                 return false;
             }
 
-            if (input.Length < 6)
-            {
-                Writer.Error("Password must be at least 6 characters long. Please try again.\n");
-                return false;
-            }
-
-            if (!input.Any(char.IsLower) || !input.Any(char.IsDigit))
-            {
-                Writer.Error("Password must contain at least one lowercase letter and one number. Please try again.\n");
-                return false;
-            }
-
             password = input;
             return true;
         }
@@ -143,7 +131,7 @@ namespace DumpDrive.Presentation.Helpers
         {
             while (true)
             {
-                TryReadInput("Enter a command ('help' to see all commands, 'exit' to quit navigation)", out var command);
+                TryReadInput("\n\nEnter a command ('help' to see all commands or 'exit')", out var command);
                 command = command.Trim();
 
                 if (IsCommand(command, "exit"))

@@ -14,7 +14,7 @@ namespace DumpDrive.Presentation.Helpers
         {
             Console.WriteLine(message);
             Thread.Sleep(1000);
-            Console.Clear();
+            Console.WriteLine("\n\n");
         }
 
         public static string CaptchaGenerator()
@@ -109,16 +109,16 @@ namespace DumpDrive.Presentation.Helpers
 
         public static void PrintReducedCommands()
         {
-            Console.WriteLine("\nhelp                                        - Display all commands");
-            Console.WriteLine("uredi datoteku 'ime datoteke'               - Edit the specified file");
-            Console.WriteLine("izbrisi 'ime mape/datoteke'                 - Delete the specified folder or file\n");
+            Console.WriteLine("\nhelp                              - Display all commands");
+            Console.WriteLine("edit file 'filename'               - Edit the specified file");
+            Console.WriteLine("delete 'name of folder/file'       - Delete the specified folder or file\n");
         }
 
         public static void PrintFileEditCommands()
         {
-            Console.WriteLine("\n:save                - Save and exit");
+            Console.WriteLine("\n:save               - Save and exit");
             Console.WriteLine(":cancel              - Exit without saving");
-            Console.WriteLine(":otvori komentare    - Open comments");
+            Console.WriteLine(":open comments       - Open comments");
             Console.WriteLine(":help                - Display available commands");
         }
 
@@ -126,16 +126,23 @@ namespace DumpDrive.Presentation.Helpers
         public static void PrintFileContents(List<string> lines)
         {
             Console.Clear();
-            Write("========= Edit file =========\n");
+            Write("\t- Edit file -\n");
 
             foreach (var line in lines)
+            {
+                string input = Console.ReadLine();
                 Console.WriteLine("> " + line);
+                if (string.IsNullOrWhiteSpace(input) || input.Equals("exit", StringComparison.OrdinalIgnoreCase))
+                {
+                    break;
+                }
+            }
         }
 
         public static void PrintCurrentFolderContent(CurrentFolder? currentFolder, List<Folder> folders, List<Files> files)
         {
             Console.Clear();
-            Write("========== My Disk ==========");
+            Write("\t- My Drive -");
 
             var location = currentFolder?.Folder?.Name ?? "Root";
             Write(location);
@@ -144,7 +151,6 @@ namespace DumpDrive.Presentation.Helpers
             Console.WriteLine("");
             PrintFiles(files);
 
-            Write("\n=============================");
         }
     }
 }

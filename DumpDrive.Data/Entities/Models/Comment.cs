@@ -1,4 +1,6 @@
-﻿namespace DumpDrive.Data.Entities.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace DumpDrive.Data.Entities.Models
 {
     public class Comment
     {

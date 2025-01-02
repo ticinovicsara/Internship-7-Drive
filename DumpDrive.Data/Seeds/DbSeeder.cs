@@ -10,21 +10,21 @@ namespace DumpDrive.Data.Seeds
             builder.Entity<User>()
                 .HasData(new List<User>
                 {
-                    new User("luka@gmail.com", "12345")
+                    new User("marko@gmail.com", "12345")
                     {
                         Id = 1,
                         DriveId = 1,
-                        Name = "Luka"
+                        Name = "Marko"
                     },
 
-                    new User("ante@gmail.com", "12345")
+                    new User("jure@gmail.com", "12345")
                     {
                         Id = 2,
                         DriveId = 2,
-                        Name = "Anto"
+                        Name = "Jure"
                     },
 
-                    new User("mate@gmail.com", "12345")
+                    new User("ana@gmail.com", "12345")
                     {
                         Id = 3,
                         DriveId = 3,
@@ -35,19 +35,19 @@ namespace DumpDrive.Data.Seeds
             builder.Entity<DDrive>()
                 .HasData(new List<DDrive>
                 {
-                    new DDrive("Lukin-disk")
+                    new DDrive("Marko-drive")
                     {
                         DriveId = 1,
                         UserId = 1
                     },
 
-                    new DDrive("Antin-disk")
+                    new DDrive("Jure-drive")
                     {
                         DriveId = 2,
                         UserId = 2
                     },
 
-                    new DDrive("Matin-disk")
+                    new DDrive("Ana-drive")
                     {
                         DriveId = 3,
                         UserId = 3
@@ -255,35 +255,35 @@ namespace DumpDrive.Data.Seeds
                     {
                         CommentId = 1,
                         UserId = 1,
-                        ItemId = 15
+                        ItemId = 15,
                     },
 
                     new Comment("Komentar 2")
                     {
                         CommentId = 2,
                         UserId = 1,
-                        ItemId = 16
+                        ItemId = 16,
                     },
 
                     new Comment("Komentar 3")
                     {
                         CommentId = 3,
                         UserId = 1,
-                        ItemId = 17
+                        ItemId = 17,
                     },
 
                     new Comment("Komentar 4")
                     {
                         CommentId = 4,
                         UserId = 2,
-                        ItemId = 18
+                        ItemId = 18,
                     },
 
                     new Comment("Komentar 5")
                     {
                         CommentId = 5,
                         UserId = 3,
-                        ItemId = 19
+                        ItemId = 19,
                     },
 
                     new Comment("Komentar 6")

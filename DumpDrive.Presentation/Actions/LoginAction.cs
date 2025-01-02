@@ -20,7 +20,8 @@ namespace DumpDrive.Presentation.Actions
 
         public void Open()
         {
-            Console.WriteLine("Login:\n\n");
+            Console.Clear();
+            Console.WriteLine("Login:\n");
             string email;
             while (!Reader.TryReadEmail("\nEnter email:", out email))
             {

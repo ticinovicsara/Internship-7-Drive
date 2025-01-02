@@ -45,11 +45,7 @@ namespace DumpDrive.Presentation.Actions
             {
                 if (password != confirmPassword)
                 {
-                    Console.WriteLine("Passwords do not match.");
-                }
-                else
-                {
-                    Console.WriteLine("Please enter a valid password.");
+                    Console.WriteLine("Passwords do not match.\n");
                 }
             }
 
@@ -60,12 +56,14 @@ namespace DumpDrive.Presentation.Actions
 
             if (captcha != captchaInput)
             {
-                Console.WriteLine("CAPTCHA does not match.");
+                Console.Clear();
+                Console.WriteLine("CAPTCHA does not match.\n");
                 return;
             }
 
             RepositoryFactory.Create<UserRepository>().Add(email, password);
-            Console.WriteLine("Registration successful! You can now log in.\n");
+            Console.Clear();
+            Console.WriteLine("\nRegistration successful! You can now log in.\n");
             Reader.PressAnyKey();
         }
     }

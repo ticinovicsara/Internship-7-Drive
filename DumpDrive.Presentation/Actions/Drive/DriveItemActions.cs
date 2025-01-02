@@ -2,7 +2,6 @@
 using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Helpers;
 using DumpDrive.Domain.Enums;
-using Drive.Presentation.Helpers;
 
 namespace DumpDrive.Presentation.Actions
 {
@@ -46,7 +45,7 @@ namespace DumpDrive.Presentation.Actions
 
         public void CreateFolderInCurrentLocation(string command)
         {
-            var folderName = command.Substring("stvori mapu".Length).Trim();
+            var folderName = command.Substring("make folder".Length).Trim();
 
             if (!CheckIfValidName(folderName))
                 return;
@@ -63,7 +62,7 @@ namespace DumpDrive.Presentation.Actions
 
         public void CreateFileInCurrentLocation(string command)
         {
-            var fileName = command.Substring("stvori datoteku".Length).Trim();
+            var fileName = command.Substring("make file".Length).Trim();
 
             if(!CheckIfValidName(fileName))
                 return;
@@ -125,15 +124,15 @@ namespace DumpDrive.Presentation.Actions
             string? itemType = null;
             string? itemName = null;
 
-            if (Reader.StartsWithCommand(command, "izbrisi mapu"))
+            if (Reader.StartsWithCommand(command, "delete folder"))
             {
                 itemType = "folder";
-                itemName = command.Substring("izbrisi mapu".Length).Trim();
+                itemName = command.Substring("delete folder".Length).Trim();
             }
-            else if (Reader.StartsWithCommand(command, "izbrisi datoteku"))
+            else if (Reader.StartsWithCommand(command, "delete file"))
             {
                 itemType = "file";
-                itemName = command.Substring("izbrisi datoteku".Length).Trim();
+                itemName = command.Substring("delete file".Length).Trim();
             }
             else
             {
@@ -159,11 +158,11 @@ namespace DumpDrive.Presentation.Actions
             if (!Reader.ConfirmAction($"Are you sure you want to rename '{oldName}'?"))
                 return;
 
-            if (Reader.StartsWithCommand(command, "promjeni naziv mape"))
+            if (Reader.StartsWithCommand(command, "change name folder"))
             {
                RenameFolder(oldName, newName);
             }
-            else if (Reader.StartsWithCommand(command, "promjeni naziv datoteke"))
+            else if (Reader.StartsWithCommand(command, "change name file"))
             {
                 RenameFile(oldName, newName);
             }
@@ -213,12 +212,13 @@ namespace DumpDrive.Presentation.Actions
 
         public void EditFileContents(string command, bool isShared)
         {
-            var fileName = command.Substring("uredi datoteku".Length).Trim();
+            var fileName = command.Substring("edit file".Length).Trim();
             var file = _commandHelper.GetFile(fileName, isShared);
 
             if (file == null)
             {
-                Writer.Error($"File {fileName} does not exist or is not shared with you\n");
+                Writer.Error($"\nFile {fileName} does not exist or is not shared with you\n");
+                Reader.PressAnyKey();
                 return;
             }
 
@@ -264,7 +264,7 @@ namespace DumpDrive.Presentation.Actions
                     Reader.PressAnyKey();
                     return false;
 
-                case ":otvori komentare":
+                case ":open comments":
                     OpenComments(file.ItemId);
                     return false;
 
