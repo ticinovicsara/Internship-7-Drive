@@ -6,322 +6,326 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DumpDrive.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class AddNewModels : Migration
+    public partial class InitialMigratio : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterColumn<int>(
+                name: "Itemtype",
+                table: "SharedItem",
+                type: "integer",
+                nullable: false,
+                defaultValue: 0,
+                oldClrType: typeof(string),
+                oldType: "text",
+                oldNullable: true);
+
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(496));
+                value: new DateTime(2025, 1, 2, 14, 45, 26, 645, DateTimeKind.Local).AddTicks(5576));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(521));
+                value: new DateTime(2025, 1, 2, 14, 45, 26, 648, DateTimeKind.Local).AddTicks(1249));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(526));
+                value: new DateTime(2025, 1, 2, 14, 45, 26, 648, DateTimeKind.Local).AddTicks(1269));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(534));
+                value: new DateTime(2025, 1, 2, 14, 45, 26, 648, DateTimeKind.Local).AddTicks(1274));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(539));
+                value: new DateTime(2025, 1, 2, 14, 45, 26, 648, DateTimeKind.Local).AddTicks(1277));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 6,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(548));
+                value: new DateTime(2025, 1, 2, 14, 45, 26, 648, DateTimeKind.Local).AddTicks(1293));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 7,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(555));
+                value: new DateTime(2025, 1, 2, 14, 45, 26, 648, DateTimeKind.Local).AddTicks(1297));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 8,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(561));
+                value: new DateTime(2025, 1, 2, 14, 45, 26, 648, DateTimeKind.Local).AddTicks(1300));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 9,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(568));
+                value: new DateTime(2025, 1, 2, 14, 45, 26, 648, DateTimeKind.Local).AddTicks(1304));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 10,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(576));
+                value: new DateTime(2025, 1, 2, 14, 45, 26, 648, DateTimeKind.Local).AddTicks(1309));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 11,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(583));
+                value: new DateTime(2025, 1, 2, 14, 45, 26, 648, DateTimeKind.Local).AddTicks(1312));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 12,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(589));
+                value: new DateTime(2025, 1, 2, 14, 45, 26, 648, DateTimeKind.Local).AddTicks(1316));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 13,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(596));
+                value: new DateTime(2025, 1, 2, 14, 45, 26, 648, DateTimeKind.Local).AddTicks(1320));
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 1,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 79, DateTimeKind.Local).AddTicks(6995));
+                column: "Itemtype",
+                value: 1);
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 2,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7353));
+                column: "Itemtype",
+                value: 1);
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 3,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7395));
+                column: "Itemtype",
+                value: 0);
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 4,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7403));
+                column: "Itemtype",
+                value: 1);
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 5,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7408));
+                column: "Itemtype",
+                value: 0);
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 6,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7427));
+                column: "Itemtype",
+                value: 1);
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 7,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7431));
+                column: "Itemtype",
+                value: 0);
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 8,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7434));
-
-            migrationBuilder.UpdateData(
-                table: "Files",
-                keyColumn: "Id",
-                keyValue: 9,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7438));
+                column: "Itemtype",
+                value: 1);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterColumn<string>(
+                name: "Itemtype",
+                table: "SharedItem",
+                type: "text",
+                nullable: true,
+                oldClrType: typeof(int),
+                oldType: "integer");
+
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 322, DateTimeKind.Local).AddTicks(654));
+                value: new DateTime(2025, 1, 2, 14, 8, 14, 244, DateTimeKind.Local).AddTicks(5295));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 322, DateTimeKind.Local).AddTicks(679));
+                value: new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4581));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 322, DateTimeKind.Local).AddTicks(685));
+                value: new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4602));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 322, DateTimeKind.Local).AddTicks(690));
+                value: new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4607));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 322, DateTimeKind.Local).AddTicks(695));
+                value: new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4637));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 6,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 322, DateTimeKind.Local).AddTicks(703));
+                value: new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4653));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 7,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 322, DateTimeKind.Local).AddTicks(708));
+                value: new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4657));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 8,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 322, DateTimeKind.Local).AddTicks(713));
+                value: new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4660));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 9,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 322, DateTimeKind.Local).AddTicks(719));
+                value: new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4664));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 10,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 322, DateTimeKind.Local).AddTicks(725));
+                value: new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4668));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 11,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 322, DateTimeKind.Local).AddTicks(730));
+                value: new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4672));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 12,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 322, DateTimeKind.Local).AddTicks(736));
+                value: new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4676));
 
             migrationBuilder.UpdateData(
                 table: "Comments",
                 keyColumn: "Id",
                 keyValue: 13,
                 column: "CreatedAt",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 322, DateTimeKind.Local).AddTicks(741));
+                value: new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4680));
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 1,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 318, DateTimeKind.Local).AddTicks(7681));
+                column: "Itemtype",
+                value: "Folder");
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 2,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 321, DateTimeKind.Local).AddTicks(7360));
+                column: "Itemtype",
+                value: "Folder");
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 3,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 321, DateTimeKind.Local).AddTicks(7393));
+                column: "Itemtype",
+                value: "File");
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 4,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 321, DateTimeKind.Local).AddTicks(7399));
+                column: "Itemtype",
+                value: "Folder");
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 5,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 321, DateTimeKind.Local).AddTicks(7403));
+                column: "Itemtype",
+                value: "File");
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 6,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 321, DateTimeKind.Local).AddTicks(7418));
+                column: "Itemtype",
+                value: "Folder");
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 7,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 321, DateTimeKind.Local).AddTicks(7421));
+                column: "Itemtype",
+                value: "File");
 
             migrationBuilder.UpdateData(
-                table: "Files",
+                table: "SharedItem",
                 keyColumn: "Id",
                 keyValue: 8,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 321, DateTimeKind.Local).AddTicks(7425));
-
-            migrationBuilder.UpdateData(
-                table: "Files",
-                keyColumn: "Id",
-                keyValue: 9,
-                column: "LastModified",
-                value: new DateTime(2025, 1, 1, 19, 36, 27, 321, DateTimeKind.Local).AddTicks(7428));
+                column: "Itemtype",
+                value: "Folder");
         }
     }
 }

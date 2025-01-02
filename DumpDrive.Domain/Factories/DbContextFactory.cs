@@ -8,8 +8,9 @@ namespace DumpDrive.Domain.Factories
     {
         public static DumpDriveDbContext GetDumpDriveDbContext()
         {
-            var options = new DbContextOptionsBuilder()
-                .UseNpgsql("Host=localhost;Database=DumpDrive;User Id=postgres;Password=tici0")
+            var connectionString = Environment.GetEnvironmentVariable("DumpDrive");
+            var options = new DbContextOptionsBuilder<DumpDriveDbContext>()
+                .UseNpgsql(connectionString)
                 .Options;
 
             return new DumpDriveDbContext(options);

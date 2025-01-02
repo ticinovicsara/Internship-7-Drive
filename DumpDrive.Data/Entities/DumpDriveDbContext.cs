@@ -13,8 +13,8 @@ namespace DumpDrive.Data.Entities
         public DbSet<Folder> Folders { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
-        public DbSet<SharedItem> UserSharedFolders { get; set; }
-        public DbSet<SharedItem> UserSharedFiles { get; set; }
+        public DbSet<SharedFolder> UserSharedFolders { get; set; }
+        public DbSet<SharedFile> UserSharedFiles { get; set; }
 
         public DumpDriveDbContext(DbContextOptions options) : base(options)
         {
@@ -52,21 +52,31 @@ namespace DumpDrive.Data.Entities
                 .WithMany(u => u.AuditLogs)
                 .HasForeignKey(a => a.ChangedByUserId);
 
-            modelBuilder.Entity<SharedItem>()
-                .HasOne(si => si.Owner)
-                .WithMany(u => u.OwnedSharedItems)
-                .HasForeignKey(si => si.OwnerId)
-                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<SharedFolder>()
+                .HasKey(usf => new { usf.UserId, usf.FolderId });
 
-            modelBuilder.Entity<SharedItem>()
-                .HasOne(si => si.SharedWithUser)
-                .WithMany(u => u.SharedWithItems)
-                .HasForeignKey(si => si.SharedWithUserId)
-                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<SharedFolder>()
+                .HasOne(usf => usf.User)
+                .WithMany(u => u.SharedFolders)
+                .HasForeignKey(usf => usf.UserId);
 
-            modelBuilder.Entity<SharedItem>()
-                .Property(si => si.Itemtype)
-                .IsRequired(false);
+            modelBuilder.Entity<SharedFolder>()
+                .HasOne(usf => usf.Folder)
+                .WithMany(f => f.SharedUsers)
+                .HasForeignKey(usf => usf.FolderId);
+
+            modelBuilder.Entity<SharedFile>()
+                .HasKey(usf => new { usf.UserId, usf.FileId });
+
+            modelBuilder.Entity<SharedFile>()
+                .HasOne(usf => usf.User)
+                .WithMany(u => u.SharedFiles)
+                .HasForeignKey(usf => usf.UserId);
+
+            modelBuilder.Entity<UserSharedFile>()
+                .HasOne(usf => usf.File)
+                .WithMany(f => f.SharedUsers)
+                .HasForeignKey(usf => usf.FileId);
 
             DbSeeder.Seed(modelBuilder);
             base.OnModelCreating(modelBuilder);

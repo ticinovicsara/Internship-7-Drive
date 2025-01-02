@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DumpDrive.Data.Migrations
 {
     [DbContext(typeof(DumpDriveDbContext))]
-    [Migration("20250101184657_AddNewModels")]
-    partial class AddNewModels
+    [Migration("20250102130815_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,125 @@ namespace DumpDrive.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("DumpDrive.Data.Entities.Models.AuditLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ChangedByUserId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("FileId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChangedByUserId");
+
+                    b.HasIndex("FileId");
+
+                    b.ToTable("AuditLogs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ChangeType = 0,
+                            ChangedByUserId = 1,
+                            FileId = 1,
+                            Timestamp = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ChangeType = 0,
+                            ChangedByUserId = 2,
+                            FileId = 2,
+                            Timestamp = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ChangeType = 1,
+                            ChangedByUserId = 3,
+                            FileId = 3,
+                            Timestamp = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ChangeType = 0,
+                            ChangedByUserId = 4,
+                            FileId = 4,
+                            Timestamp = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ChangeType = 0,
+                            ChangedByUserId = 2,
+                            FileId = 5,
+                            Timestamp = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ChangeType = 1,
+                            ChangedByUserId = 3,
+                            FileId = 6,
+                            Timestamp = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ChangeType = 0,
+                            ChangedByUserId = 1,
+                            FileId = 7,
+                            Timestamp = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ChangeType = 0,
+                            ChangedByUserId = 3,
+                            FileId = 8,
+                            Timestamp = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ChangeType = 1,
+                            ChangedByUserId = 4,
+                            FileId = 9,
+                            Timestamp = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ChangeType = 0,
+                            ChangedByUserId = 5,
+                            FileId = 10,
+                            Timestamp = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ChangeType = 0,
+                            ChangedByUserId = 6,
+                            FileId = 11,
+                            Timestamp = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc)
+                        });
+                });
 
             modelBuilder.Entity("DumpDrive.Data.Entities.Models.Comment", b =>
                 {
@@ -40,9 +159,6 @@ namespace DumpDrive.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("DFileId")
-                        .HasColumnType("integer");
-
                     b.Property<int>("FileId")
                         .HasColumnType("integer");
 
@@ -51,7 +167,7 @@ namespace DumpDrive.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DFileId");
+                    b.HasIndex("FileId");
 
                     b.HasIndex("UserId");
 
@@ -62,7 +178,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             Id = 1,
                             Content = "Great resume!",
-                            CreatedAt = new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(496),
+                            CreatedAt = new DateTime(2025, 1, 2, 14, 8, 14, 244, DateTimeKind.Local).AddTicks(5295),
                             FileId = 1,
                             UserId = 1
                         },
@@ -70,7 +186,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             Id = 2,
                             Content = "Lovely!",
-                            CreatedAt = new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(521),
+                            CreatedAt = new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4581),
                             FileId = 2,
                             UserId = 2
                         },
@@ -78,89 +194,89 @@ namespace DumpDrive.Data.Migrations
                         {
                             Id = 3,
                             Content = "Nice!",
-                            CreatedAt = new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(526),
-                            FileId = 3,
-                            UserId = 4
+                            CreatedAt = new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4602),
+                            FileId = 9,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 4,
                             Content = "Cool!",
-                            CreatedAt = new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(534),
-                            FileId = 4,
-                            UserId = 1
+                            CreatedAt = new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4607),
+                            FileId = 8,
+                            UserId = 4
                         },
                         new
                         {
                             Id = 5,
                             Content = "Could be better.",
-                            CreatedAt = new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(539),
-                            FileId = 1,
-                            UserId = 1
+                            CreatedAt = new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4637),
+                            FileId = 7,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 6,
                             Content = "Beautiful!",
-                            CreatedAt = new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(548),
-                            FileId = 2,
-                            UserId = 3
+                            CreatedAt = new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4653),
+                            FileId = 7,
+                            UserId = 2
                         },
                         new
                         {
                             Id = 7,
                             Content = "I dont like this song!",
-                            CreatedAt = new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(555),
-                            FileId = 3,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Content = "Amazing!",
-                            CreatedAt = new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(561),
-                            FileId = 4,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Content = "Excellent plan!",
-                            CreatedAt = new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(568),
-                            FileId = 5,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Content = "Great presentation!",
-                            CreatedAt = new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(576),
+                            CreatedAt = new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4657),
                             FileId = 6,
                             UserId = 1
                         },
                         new
                         {
+                            Id = 8,
+                            Content = "Amazing!",
+                            CreatedAt = new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4660),
+                            FileId = 5,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Content = "Excellent plan!",
+                            CreatedAt = new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4664),
+                            FileId = 4,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Content = "Great presentation!",
+                            CreatedAt = new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4668),
+                            FileId = 3,
+                            UserId = 4
+                        },
+                        new
+                        {
                             Id = 11,
                             Content = "Nice.",
-                            CreatedAt = new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(583),
-                            FileId = 7,
-                            UserId = 1
+                            CreatedAt = new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4672),
+                            FileId = 3,
+                            UserId = 3
                         },
                         new
                         {
                             Id = 12,
                             Content = "Important archive data.",
-                            CreatedAt = new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(589),
-                            FileId = 8,
+                            CreatedAt = new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4676),
+                            FileId = 2,
                             UserId = 2
                         },
                         new
                         {
                             Id = 13,
                             Content = "Data needs cleanup.",
-                            CreatedAt = new DateTime(2025, 1, 1, 19, 46, 57, 83, DateTimeKind.Local).AddTicks(596),
-                            FileId = 9,
-                            UserId = 3
+                            CreatedAt = new DateTime(2025, 1, 2, 14, 8, 14, 248, DateTimeKind.Local).AddTicks(4680),
+                            FileId = 6,
+                            UserId = 1
                         });
                 });
 
@@ -173,7 +289,6 @@ namespace DumpDrive.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("FolderId")
@@ -206,9 +321,9 @@ namespace DumpDrive.Data.Migrations
                             Id = 1,
                             Content = "Some content for resume.pdf",
                             FolderId = 1,
-                            LastModified = new DateTime(2025, 1, 1, 19, 46, 57, 79, DateTimeKind.Local).AddTicks(6995),
+                            LastModified = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc),
                             Name = "resume.pdf",
-                            OwnerId = 0,
+                            OwnerId = 1,
                             Status = 0
                         },
                         new
@@ -216,19 +331,19 @@ namespace DumpDrive.Data.Migrations
                             Id = 2,
                             Content = "Image content for holiday.jpg",
                             FolderId = 2,
-                            LastModified = new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7353),
+                            LastModified = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc),
                             Name = "holiday.jpg",
-                            OwnerId = 0,
-                            Status = 1
+                            OwnerId = 2,
+                            Status = 0
                         },
                         new
                         {
                             Id = 3,
                             Content = "Audio content for song.mp3",
                             FolderId = 3,
-                            LastModified = new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7395),
+                            LastModified = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc),
                             Name = "song.mp3",
-                            OwnerId = 0,
+                            OwnerId = 4,
                             Status = 0
                         },
                         new
@@ -236,59 +351,59 @@ namespace DumpDrive.Data.Migrations
                             Id = 4,
                             Content = "Video content for movie.mp4",
                             FolderId = 4,
-                            LastModified = new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7403),
+                            LastModified = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc),
                             Name = "movie.mp4",
-                            OwnerId = 0,
-                            Status = 1
+                            OwnerId = 3,
+                            Status = 0
                         },
                         new
                         {
                             Id = 5,
                             Content = "Document content for project_plan.docx",
                             FolderId = 5,
-                            LastModified = new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7408),
+                            LastModified = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc),
                             Name = "project_plan.docx",
-                            OwnerId = 0,
+                            OwnerId = 2,
                             Status = 0
                         },
                         new
                         {
                             Id = 6,
                             Content = "Presentation content for presentation.pptx",
-                            FolderId = 5,
-                            LastModified = new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7427),
+                            FolderId = 6,
+                            LastModified = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc),
                             Name = "presentation.pptx",
-                            OwnerId = 0,
-                            Status = 1
+                            OwnerId = 1,
+                            Status = 0
                         },
                         new
                         {
                             Id = 7,
                             Content = "Report content for report.pdf",
-                            FolderId = 6,
-                            LastModified = new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7431),
+                            FolderId = 7,
+                            LastModified = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc),
                             Name = "report.pdf",
-                            OwnerId = 0,
+                            OwnerId = 2,
                             Status = 0
                         },
                         new
                         {
                             Id = 8,
                             Content = "Archive content for archive.zip",
-                            FolderId = 7,
-                            LastModified = new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7434),
+                            FolderId = 4,
+                            LastModified = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc),
                             Name = "archive.zip",
-                            OwnerId = 0,
-                            Status = 1
+                            OwnerId = 3,
+                            Status = 0
                         },
                         new
                         {
                             Id = 9,
                             Content = "Data content for data.csv",
-                            FolderId = 7,
-                            LastModified = new DateTime(2025, 1, 1, 19, 46, 57, 82, DateTimeKind.Local).AddTicks(7438),
+                            FolderId = 1,
+                            LastModified = new DateTime(2024, 12, 24, 10, 0, 0, 0, DateTimeKind.Utc),
                             Name = "data.csv",
-                            OwnerId = 0,
+                            OwnerId = 4,
                             Status = 0
                         });
                 });
@@ -304,14 +419,14 @@ namespace DumpDrive.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int?>("FolderId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("OwnerId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("ParentFolderId")
                         .HasColumnType("integer");
 
                     b.Property<int>("Status")
@@ -322,9 +437,9 @@ namespace DumpDrive.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OwnerId");
+                    b.HasIndex("FolderId");
 
-                    b.HasIndex("ParentFolderId");
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("Folders");
 
@@ -370,7 +485,7 @@ namespace DumpDrive.Data.Migrations
                             Id = 5,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Projects",
-                            OwnerId = 1,
+                            OwnerId = 3,
                             Status = 0,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -388,7 +503,7 @@ namespace DumpDrive.Data.Migrations
                             Id = 7,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Archives",
-                            OwnerId = 3,
+                            OwnerId = 1,
                             Status = 0,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
@@ -406,13 +521,16 @@ namespace DumpDrive.Data.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Itemtype")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("OwnerId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("SharedWithUserId")
+                    b.Property<int?>("SharedWithUserId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -421,7 +539,81 @@ namespace DumpDrive.Data.Migrations
 
                     b.HasIndex("SharedWithUserId");
 
-                    b.ToTable("SharedItems");
+                    b.ToTable("SharedItem");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ItemId = 101,
+                            Itemtype = "Folder",
+                            Name = "Document1",
+                            OwnerId = 1,
+                            SharedWithUserId = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ItemId = 102,
+                            Itemtype = "Folder",
+                            Name = "Folder1",
+                            OwnerId = 2,
+                            SharedWithUserId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ItemId = 103,
+                            Itemtype = "File",
+                            Name = "Picture1",
+                            OwnerId = 3,
+                            SharedWithUserId = 4
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ItemId = 104,
+                            Itemtype = "Folder",
+                            Name = "VideosFolder",
+                            OwnerId = 4,
+                            SharedWithUserId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ItemId = 105,
+                            Itemtype = "File",
+                            Name = "Document2",
+                            OwnerId = 1,
+                            SharedWithUserId = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ItemId = 106,
+                            Itemtype = "Folder",
+                            Name = "PhotosFolder",
+                            OwnerId = 2,
+                            SharedWithUserId = 4
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ItemId = 107,
+                            Itemtype = "File",
+                            Name = "VideoClip",
+                            OwnerId = 3,
+                            SharedWithUserId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ItemId = 108,
+                            Itemtype = "Folder",
+                            Name = "MusicFolder",
+                            OwnerId = 4,
+                            SharedWithUserId = 2
+                        });
                 });
 
             modelBuilder.Entity("DumpDrive.Data.Entities.Models.User", b =>
@@ -492,17 +684,40 @@ namespace DumpDrive.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("DumpDrive.Data.Entities.Models.AuditLog", b =>
+                {
+                    b.HasOne("DumpDrive.Data.Entities.Models.User", "ChangedByUser")
+                        .WithMany("AuditLogs")
+                        .HasForeignKey("ChangedByUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DumpDrive.Data.Entities.Models.DFile", "File")
+                        .WithMany("AuditLogs")
+                        .HasForeignKey("FileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ChangedByUser");
+
+                    b.Navigation("File");
+                });
+
             modelBuilder.Entity("DumpDrive.Data.Entities.Models.Comment", b =>
                 {
-                    b.HasOne("DumpDrive.Data.Entities.Models.DFile", null)
+                    b.HasOne("DumpDrive.Data.Entities.Models.DFile", "File")
                         .WithMany("Comments")
-                        .HasForeignKey("DFileId");
+                        .HasForeignKey("FileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DumpDrive.Data.Entities.Models.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("File");
 
                     b.Navigation("User");
                 });
@@ -528,16 +743,15 @@ namespace DumpDrive.Data.Migrations
 
             modelBuilder.Entity("DumpDrive.Data.Entities.Models.Folder", b =>
                 {
+                    b.HasOne("DumpDrive.Data.Entities.Models.Folder", null)
+                        .WithMany("SubFolders")
+                        .HasForeignKey("FolderId");
+
                     b.HasOne("DumpDrive.Data.Entities.Models.User", "Owner")
                         .WithMany("Folders")
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("DumpDrive.Data.Entities.Models.Folder", null)
-                        .WithMany("SubFolders")
-                        .HasForeignKey("ParentFolderId")
-                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Owner");
                 });
@@ -545,16 +759,15 @@ namespace DumpDrive.Data.Migrations
             modelBuilder.Entity("DumpDrive.Data.Entities.Models.SharedItem", b =>
                 {
                     b.HasOne("DumpDrive.Data.Entities.Models.User", "Owner")
-                        .WithMany()
+                        .WithMany("OwnedSharedItems")
                         .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("DumpDrive.Data.Entities.Models.User", "SharedWithUser")
-                        .WithMany()
+                        .WithMany("SharedWithItems")
                         .HasForeignKey("SharedWithUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Owner");
 
@@ -570,6 +783,8 @@ namespace DumpDrive.Data.Migrations
 
             modelBuilder.Entity("DumpDrive.Data.Entities.Models.DFile", b =>
                 {
+                    b.Navigation("AuditLogs");
+
                     b.Navigation("Comments");
 
                     b.Navigation("SharedWith");
@@ -584,11 +799,17 @@ namespace DumpDrive.Data.Migrations
 
             modelBuilder.Entity("DumpDrive.Data.Entities.Models.User", b =>
                 {
+                    b.Navigation("AuditLogs");
+
                     b.Navigation("Comments");
 
                     b.Navigation("Files");
 
                     b.Navigation("Folders");
+
+                    b.Navigation("OwnedSharedItems");
+
+                    b.Navigation("SharedWithItems");
                 });
 #pragma warning restore 612, 618
         }
