@@ -1,21 +1,27 @@
-﻿namespace DumpDrive.Data.Entities.Models
+﻿namespace Drive.Data.Entities.Models
 {
     public class Comment
     {
-        public int Id { get; set; }
-        public int UserId { get; set; }
-        public string Content { get; set; }
-        public int FileId { get; set; }
-        public User? User { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DFile? File { get; set; }
-
-        public Comment(string content, int fileId, int userId)
+        public Comment(string content)
         {
             Content = content;
-            FileId = fileId;
-            UserId = userId;
-            CreatedAt = DateTime.UtcNow;
         }
+
+        public Comment(string content, int userId, int itemId)
+        {
+            Content = content;
+            UserId = userId;
+            ItemId = itemId;
+        }
+
+        public int CommentId { get; set; }
+        public string Content { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        public int ItemId { get; set; }
+        public Item? Item { get; set; }
+
+        public int UserId { get; set; }
+        public User? User { get; set; }
     }
 }

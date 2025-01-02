@@ -85,8 +85,8 @@ namespace DumpDrive.Data.Seeds
                     new SharedFolder { UserId = 2, FolderId = 6 },
                     new SharedFolder { UserId = 3, FolderId = 4 },
                     new SharedFolder { UserId = 4, FolderId = 8 },
-                    new SharedFolder { UserId = 1, FolderId = 10 },
-                    new SharedFolder { UserId = 2, FolderId = 10 },
+                    new SharedFolder { UserId = 1, FolderId = 5 },
+                    new SharedFolder { UserId = 2, FolderId = 9 },
                     new SharedFolder { UserId = 3, FolderId = 2 },
                     new SharedFolder { UserId = 4, FolderId = 4 }
                 });
@@ -98,8 +98,8 @@ namespace DumpDrive.Data.Seeds
                     new SharedFile { UserId = 2, FileId = 4 },
                     new SharedFile { UserId = 3, FileId = 6 },
                     new SharedFile { UserId = 4, FileId = 8 },
-                    new SharedFile { UserId = 1, FileId = 10 },
-                    new SharedFile { UserId = 2, FileId = 12 },
+                    new SharedFile { UserId = 1, FileId = 1 },
+                    new SharedFile { UserId = 2, FileId = 3 },
                     new SharedFile { UserId = 3, FileId = 4 },
                     new SharedFile { UserId = 4, FileId = 6 }
                 });
