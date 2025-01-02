@@ -1,111 +1,93 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
+﻿using DumpDrive.Data.Seeds;
 using DumpDrive.Data.Entities.Models;
-using DumpDrive.Data.Seeds;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 
 namespace DumpDrive.Data.Entities
 {
     public class DumpDriveDbContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
-        public DbSet<DFile> Files { get; set; }
-        public DbSet<Folder> Folders { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<AuditLog> AuditLogs { get; set; }
-        public DbSet<SharedFolder> UserSharedFolders { get; set; }
-        public DbSet<SharedFile> UserSharedFiles { get; set; }
-
         public DumpDriveDbContext(DbContextOptions options) : base(options)
         {
+
         }
+
+        public DbSet<User> Users => Set<User>();
+        public DbSet<DDrive> Drives => Set<DDrive>();
+        public DbSet<Item> Items => Set<Item>();
+        public DbSet<Folder> Folders => Set<Folder>();
+        public DbSet<Files> Files => Set<Files>();
+        public DbSet<SharedItem> SharedItems => Set<SharedItem>();
+        public DbSet<Comment> Comments => Set<Comment>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Folder>()
-                .HasOne(f => f.Owner)
-                .WithMany(u => u.Folders)
-                .HasForeignKey(f => f.OwnerId);
+            modelBuilder.Entity<Item>()
+               .HasDiscriminator<string>("Item_type")
+               .HasValue<Folder>("Folder")
+               .HasValue<Files>("File");
 
-            modelBuilder.Entity<DFile>()
-                .HasOne(f => f.Folder)
-                .WithMany(f => f.Files)
-                .HasForeignKey(f => f.FolderId);
+            modelBuilder.Entity<Item>()
+               .HasOne<Folder>()
+               .WithMany(f => f.Items)
+               .HasForeignKey(i => i.ParentFolderId)
+               .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Drive)
+                .WithOne(d => d.User)
+                .HasForeignKey<DDrive>(d => d.UserId);
+
+            modelBuilder.Entity<DDrive>()
+                .HasMany(d => d.Items)
+                .WithOne(i => i.Drive)
+                .HasForeignKey(i => i.DriveId);
+
+            modelBuilder.Entity<SharedItem>()
+                .HasOne(s => s.Item)
+                .WithMany()
+                .HasForeignKey(s => s.ItemId);
+
+            modelBuilder.Entity<SharedItem>()
+                .HasOne(s => s.User)
+                .WithMany(u => u.SharedItems)
+                .HasForeignKey(s => s.UserId);
+
+            modelBuilder.Entity<Comment>()
+                .HasOne(c => c.Item)
+                .WithMany(i => i.Comments)
+                .HasForeignKey(c => c.ItemId);
 
             modelBuilder.Entity<Comment>()
                 .HasOne(c => c.User)
                 .WithMany(u => u.Comments)
                 .HasForeignKey(c => c.UserId);
 
-            modelBuilder.Entity<Comment>()
-                .HasOne(c => c.File)
-                .WithMany(f => f.Comments)
-                .HasForeignKey(c => c.FileId);
-
-            modelBuilder.Entity<AuditLog>()
-                .HasOne(a => a.File)
-                .WithMany(f => f.AuditLogs)
-                .HasForeignKey(a => a.FileId);
-
-            modelBuilder.Entity<AuditLog>()
-                .HasOne(a => a.ChangedByUser)
-                .WithMany(u => u.AuditLogs)
-                .HasForeignKey(a => a.ChangedByUserId);
-
-            modelBuilder.Entity<SharedFolder>()
-                .HasKey(usf => new { usf.UserId, usf.FolderId });
-
-            modelBuilder.Entity<SharedFolder>()
-                .HasOne(usf => usf.User)
-                .WithMany(u => u.SharedFolders)
-                .HasForeignKey(usf => usf.UserId);
-
-            modelBuilder.Entity<SharedFolder>()
-                .HasOne(usf => usf.Folder)
-                .WithMany(f => f.SharedUsers)
-                .HasForeignKey(usf => usf.FolderId);
-
-            modelBuilder.Entity<SharedFile>()
-                .HasKey(usf => new { usf.UserId, usf.FileId });
-
-            modelBuilder.Entity<SharedFile>()
-                .HasOne(usf => usf.User)
-                .WithMany(u => u.SharedFiles)
-                .HasForeignKey(usf => usf.UserId);
-
-            modelBuilder.Entity<SharedFile>()
-                .HasOne(usf => usf.File)
-                .WithMany(f => f.SharedUsers)
-                .HasForeignKey(usf => usf.FileId);
-
             DbSeeder.Seed(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.ConfigureWarnings(warnings =>
+                   warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+        }
     }
 
-    public class DumpDriveDbContextFactory : IDesignTimeDbContextFactory<DumpDriveDbContext>
+    public class DriveDbContextFactory : IDesignTimeDbContextFactory<DumpDriveDbContext>
     {
         public DumpDriveDbContext CreateDbContext(string[] args)
         {
-            var currentDirectory = Directory.GetCurrentDirectory();
-            var presentationLayerPath = Path.Combine(currentDirectory, "..", "DumpDrive.Presentation");
-
-            if (!Directory.Exists(presentationLayerPath))
-                throw new DirectoryNotFoundException($"Directory '{presentationLayerPath}' not found.");
-
-            var configFilePath = Path.Combine(presentationLayerPath, "App.config.xml");
-
-            if (!File.Exists(configFilePath))
-                throw new FileNotFoundException($"Configuration file '{configFilePath}' not found.");
-
             var config = new ConfigurationBuilder()
-                .SetBasePath(presentationLayerPath)
-                .AddXmlFile(configFilePath)
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddXmlFile("App.config")
                 .Build();
 
             config.Providers
                 .First()
-                .TryGet("connectionStrings:add:DumpDrive:connectionString", out var connectionString);
+                .TryGet("connectionStrings:add:Drive:connectionString", out var connectionString);
 
             var options = new DbContextOptionsBuilder<DumpDriveDbContext>()
                 .UseNpgsql(connectionString)
@@ -114,5 +96,4 @@ namespace DumpDrive.Data.Entities
             return new DumpDriveDbContext(options);
         }
     }
-
 }

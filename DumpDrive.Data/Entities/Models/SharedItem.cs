@@ -1,4 +1,6 @@
-﻿namespace Drive.Data.Entities.Models
+﻿using DummpDrive.Data.Entities.Models;
+
+namespace DumpDrive.Data.Entities.Models
 {
     public class SharedItem
     {

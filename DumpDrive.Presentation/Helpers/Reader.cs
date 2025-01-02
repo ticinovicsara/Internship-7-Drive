@@ -46,12 +46,6 @@ namespace DumpDrive.Presentation.Helpers
             return !isEmpty;
         }
 
-        public static void ReadInput(string message, out string input)
-        {
-            Console.WriteLine(message);
-            input = Console.ReadLine() ?? string.Empty;
-        }
-
 
         public static bool TryReadEmail(string message, out string email)
         {
@@ -141,6 +135,12 @@ namespace DumpDrive.Presentation.Helpers
                 Writer.Error("Invalid number. Please try again.");
             }
             return number;
+        }
+
+        public static void PressAnyKey()
+        {
+            Console.WriteLine("\nPress any key to continue...");
+            Console.ReadKey(intercept: true);
         }
     }
 

@@ -10,35 +10,21 @@ namespace DumpDrive.Domain.Repositories
         {
         }
 
-        public ResponseResultType AddUser(User user)
+        public ResponseResultType Add(string email, string password)
         {
-            DbContext.Users.Add(user);
-
-            return SaveChanges();
-        }
-
-        public ResponseResultType Create(string email, string password)
-        {
-            if (DbContext.Users.Any(u => u.Email == email))
-            {
-                return ResponseResultType.Conflict;
-            }
-
-            var user = new User(email, password, "Name", "Surname");
+            var user = new User(email, password);
 
             DbContext.Users.Add(user);
 
             return SaveChanges();
         }
 
-
-        public ResponseResultType Update(User user, int id)
+        public ResponseResultType Update(User user, int userId)
         {
-            var userToUpdate = GetById(id);
-            if (userToUpdate is null)
-            {
+            var userToUpdate = DbContext.Users.Find(userId);
+
+            if (userToUpdate == null)
                 return ResponseResultType.NotFound;
-            }
 
             userToUpdate.Email = user.Email;
             userToUpdate.Password = user.Password;
@@ -46,10 +32,10 @@ namespace DumpDrive.Domain.Repositories
             return SaveChanges();
         }
 
-        public User? GetByEmailAndPassword(string email, string password) => DbContext.Users.FirstOrDefault(u => u.Password == password && u.Email == email);
-        public User? GetById(int id) => DbContext.Users.FirstOrDefault(u => u.Id == id);
+        public User? GetById(int userId) => DbContext.Users.FirstOrDefault(u => u.Id == userId);
         public User? GetByEmail(string email) => DbContext.Users.FirstOrDefault(u => u.Email == email);
 
-        public ICollection<User> GetAll() => DbContext.Users.ToList();
+        public List<Folder> GetUserFolders(User user) => DbContext.Folders.Where(f => f.DriveId == user.DriveId).ToList();
+        public List<Files> GetUserFiles(User user) => DbContext.Files.Where(f => f.DriveId == user.DriveId).ToList();
     }
 }

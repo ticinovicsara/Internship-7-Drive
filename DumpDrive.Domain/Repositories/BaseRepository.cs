@@ -1,9 +1,9 @@
-﻿using DumpDrive.Data.Entities;
-using DumpDrive.Domain.Enums;
+﻿using DumpDrive.Domain.Enums;
+using DumpDrive.Data.Entities;
 
 namespace DumpDrive.Domain.Repositories
 {
-    public class BaseRepository
+    public abstract class BaseRepository
     {
         protected readonly DumpDriveDbContext DbContext;
 

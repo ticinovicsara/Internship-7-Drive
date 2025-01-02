@@ -1,19 +1,21 @@
-﻿namespace Drive.Data.Entities.Models
+﻿using DummpDrive.Data.Entities.Models;
+
+namespace DumpDrive.Data.Entities.Models
 {
-    public class Disk
+    public class DDrive
     {
-        public Disk(string name)
+        public DDrive(string name)
         {
             Name = name;
         }
 
-        public Disk(string name, int userId)
+        public DDrive(string name, int userId)
         {
             Name = name;
             UserId = userId;
         }
 
-        public int DiskId { get; set; }
+        public int DriveId { get; set; }
         public string Name { get; set; }
         public int UserId { get; set; }
         public User User { get; set; } = null!;

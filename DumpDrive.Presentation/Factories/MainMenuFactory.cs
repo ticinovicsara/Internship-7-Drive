@@ -1,4 +1,6 @@
-﻿using DumpDrive.Domain.Repositories;
+﻿using DumpDrive.Data.Entities.Models;
+using DumpDrive.Domain.Factories;
+using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Abstractions;
 using DumpDrive.Presentation.Actions;
 using DumpDrive.Presentation.Extensions;
@@ -7,26 +9,13 @@ namespace DumpDrive.Presentation.Factories
 {
     public class MainMenuFactory
     {
-        private readonly SharedRepository _sharedRepository;
-        private readonly DriveRepository _driveRepository;
-        private readonly UserRepository _userRepository;
-        private readonly int _userId;
-
-        public MainMenuFactory(SharedRepository sharedRepository, DriveRepository driveRepository, UserRepository userRepository, int userId)
-        {
-            _sharedRepository = sharedRepository;
-            _driveRepository = driveRepository;
-            _userRepository = userRepository;
-            _userId = userId;
-        }
-
-        public IList<IAction> Create()
+        public IList<IAction> Create(User user)
         {
             var actions = new List<IAction>
             {
-                 new MyDriveAction(_driveRepository, _sharedRepository, _userRepository),
-                 new SharedWithMeAction(_sharedRepository),
-                 new ProfileAction(_userRepository, _userId),
+                new DriveActions(RepositoryFactory.Create<SharedItemRepository>() ,RepositoryFactory.Create<ItemRepository>(), new CurrentFolder(), RepositoryFactory.Create<CommentRepository>(),RepositoryFactory.Create<FolderRepository>(),RepositoryFactory.Create<FileRepository>(),new Stack<Folder?>(), RepositoryFactory.Create<UserRepository>(),user),
+                new SharedItemsActions(RepositoryFactory.Create<FileRepository>(), RepositoryFactory.Create<ItemRepository>(), RepositoryFactory.Create<CommentRepository>(), RepositoryFactory.Create<UserRepository>(), RepositoryFactory.Create<SharedItemRepository>(), user),
+                new ChangeProfileSettingsActions(user),
                 new ExitMenuAction()
             };
 

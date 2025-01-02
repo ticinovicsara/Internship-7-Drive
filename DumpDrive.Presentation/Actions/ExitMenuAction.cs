@@ -4,7 +4,6 @@ namespace DumpDrive.Presentation.Actions
 {
     public class ExitMenuAction : IAction
     {
-        public int MenuIndex { get; set; }
         public string Name { get; set; } = "Exit";
 
         public ExitMenuAction()
@@ -13,7 +12,7 @@ namespace DumpDrive.Presentation.Actions
 
         public void Open()
         {
-            Console.WriteLine("Izlaz iz trenutnog izbornika...");
+            Console.WriteLine("Exiting...");
             Thread.Sleep(500);
         }
     }

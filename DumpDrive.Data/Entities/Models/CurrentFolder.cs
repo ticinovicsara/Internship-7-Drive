@@ -1,4 +1,4 @@
-﻿namespace Drive.Data.Entities.Models
+﻿namespace DumpDrive.Data.Entities.Models
 {
     public class CurrentFolder
     {

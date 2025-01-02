@@ -2,28 +2,30 @@
 using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Factories;
 using DumpDrive.Presentation.Helpers;
+using DumpDrive.Data.Entities.Models;
 
 namespace DumpDrive.Presentation.Actions
 {
     public class LoginAction : IAction
     {
-        private readonly MainMenuFactory _mainMenuFactory;
         private readonly UserRepository _userRepository;
 
         public int MenuIndex { get; set; }
         public string Name { get; set; } = "Login";
 
-        public LoginAction(MainMenuFactory mainMenuFactory, UserRepository userRepository)
+        public LoginAction(UserRepository userRepository)
         {
-            _mainMenuFactory = mainMenuFactory;
             _userRepository = userRepository;
         }
 
         public void Open()
         {
+            Console.WriteLine("Login:\n\n");
             string email;
             while (!Reader.TryReadEmail("\nEnter email:", out email))
             {
+                if (email == "exit")
+                    return;
                 Console.WriteLine("Please enter a valid email address.");
             }
 
@@ -33,23 +35,20 @@ namespace DumpDrive.Presentation.Actions
                 Console.WriteLine("Password cannot be empty.");
             }
 
-            var user = _userRepository.GetByEmailAndPassword(email, password);
-            if(user != null)
-            {
-                UserContext.UserId = user.Id;
-            }
+            User user = _userRepository.GetByEmail(email);
 
             if (user == null)
             {
                 Console.Clear();
-                Console.WriteLine("Invalid credentials. Please wait 30 seconds before retrying.\n");
-                Thread.Sleep(30000);
+                Console.WriteLine("Invalid credentials. Please wait before retrying.\n");
+                Thread.Sleep(3000);
                 return;
             }
 
             Console.Clear();
             Console.WriteLine($"Welcome {user.Name}!");
-            Application.SetMenu(_mainMenuFactory.Create());
+            var userActions = MainMenuFactory.Create(user);
         }
+
     }
 }

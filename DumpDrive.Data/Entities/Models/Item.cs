@@ -1,4 +1,4 @@
-﻿namespace Drive.Data.Entities.Models
+﻿namespace DumpDrive.Data.Entities.Models
 {
     public abstract class Item
     {
@@ -12,8 +12,8 @@
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? LastChangedAt { get; set; }
 
-        public int DiskId { get; set; }
-        public Disk? Disk { get; set; }
+        public int DriveId { get; set; }
+        public DDrive? Drive { get; set; }
 
         public int? ParentFolderId { get; set; }
         public Folder? ParentFolder { get; set; }

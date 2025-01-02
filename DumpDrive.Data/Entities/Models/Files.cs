@@ -1,4 +1,6 @@
-﻿namespace Drive.Data.Entities.Models
+﻿using DummpDrive.Data.Entities.Models;
+
+namespace DumpDrive.Data.Entities.Models
 {
     public class Files : Item
     {
@@ -10,7 +12,7 @@
         {
             Content = content;
             ParentFolderId = parentFolderId;
-            DiskId = diskId;
+            DriveId = diskId;
         }
         public string Content { get; set; }
     }
