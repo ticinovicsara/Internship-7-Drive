@@ -3,6 +3,7 @@ using System;
 using DumpDrive.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DumpDrive.Data.Migrations
 {
     [DbContext(typeof(DumpDriveDbContext))]
-    partial class DumpDriveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250102183032_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +59,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 1,
                             Content = "Komentar 1",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(8679),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(8594),
                             ItemId = 15,
                             UserId = 1
                         },
@@ -64,7 +67,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 2,
                             Content = "Komentar 2",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9485),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(36),
                             ItemId = 16,
                             UserId = 1
                         },
@@ -72,7 +75,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 3,
                             Content = "Komentar 3",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9487),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(39),
                             ItemId = 17,
                             UserId = 1
                         },
@@ -80,7 +83,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 4,
                             Content = "Komentar 4",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9488),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(41),
                             ItemId = 18,
                             UserId = 2
                         },
@@ -88,7 +91,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 5,
                             Content = "Komentar 5",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9489),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(43),
                             ItemId = 19,
                             UserId = 3
                         },
@@ -96,7 +99,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 6,
                             Content = "Komentar 6",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9493),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(53),
                             ItemId = 20,
                             UserId = 2
                         },
@@ -104,7 +107,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 7,
                             Content = "Komentar 7",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9494),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(54),
                             ItemId = 21,
                             UserId = 1
                         },
@@ -112,7 +115,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 8,
                             Content = "Komentar 8",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9495),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(57),
                             ItemId = 22,
                             UserId = 3
                         },
@@ -120,7 +123,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 9,
                             Content = "Komentar 9",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9497),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(58),
                             ItemId = 23,
                             UserId = 2
                         },
@@ -128,7 +131,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 10,
                             Content = "Komentar 10",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9499),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(62),
                             ItemId = 24,
                             UserId = 1
                         },
@@ -136,7 +139,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 11,
                             Content = "Komentar 11",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9500),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(64),
                             ItemId = 25,
                             UserId = 3
                         },
@@ -144,7 +147,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 12,
                             Content = "Komentar 12",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9501),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(66),
                             ItemId = 26,
                             UserId = 2
                         },
@@ -152,7 +155,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 13,
                             Content = "Komentar 13",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9503),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(67),
                             ItemId = 27,
                             UserId = 1
                         },
@@ -160,7 +163,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 14,
                             Content = "Komentar 14",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9504),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(69),
                             ItemId = 28,
                             UserId = 2
                         },
@@ -168,7 +171,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 15,
                             Content = "Komentar 15",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9505),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(71),
                             ItemId = 29,
                             UserId = 3
                         },
@@ -176,7 +179,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 16,
                             Content = "Komentar 16",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9507),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(73),
                             ItemId = 15,
                             UserId = 1
                         },
@@ -184,7 +187,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 17,
                             Content = "Komentar 17",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9508),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(75),
                             ItemId = 16,
                             UserId = 2
                         },
@@ -192,7 +195,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 18,
                             Content = "Komentar 18",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9565),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(78),
                             ItemId = 17,
                             UserId = 3
                         },
@@ -200,7 +203,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 19,
                             Content = "Komentar 19",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9567),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(80),
                             ItemId = 18,
                             UserId = 1
                         },
@@ -208,7 +211,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 20,
                             Content = "Komentar 20",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9568),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(82),
                             ItemId = 19,
                             UserId = 2
                         },
@@ -216,7 +219,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 21,
                             Content = "Komentar 21",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9569),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(83),
                             ItemId = 20,
                             UserId = 3
                         },
@@ -224,7 +227,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 22,
                             Content = "Komentar 22",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9571),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(86),
                             ItemId = 21,
                             UserId = 1
                         },
@@ -232,7 +235,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 23,
                             Content = "Komentar 23",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9572),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(88),
                             ItemId = 22,
                             UserId = 2
                         },
@@ -240,7 +243,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 24,
                             Content = "Komentar 24",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9573),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(89),
                             ItemId = 23,
                             UserId = 3
                         },
@@ -248,7 +251,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 25,
                             Content = "Komentar 25",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9575),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(91),
                             ItemId = 24,
                             UserId = 1
                         },
@@ -256,7 +259,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 26,
                             Content = "Komentar 26",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9576),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(93),
                             ItemId = 25,
                             UserId = 2
                         },
@@ -264,7 +267,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 27,
                             Content = "Komentar 27",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9577),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(94),
                             ItemId = 26,
                             UserId = 3
                         },
@@ -272,7 +275,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 28,
                             Content = "Komentar 28",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9578),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(96),
                             ItemId = 27,
                             UserId = 1
                         },
@@ -280,7 +283,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 29,
                             Content = "Komentar 29",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9580),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(98),
                             ItemId = 28,
                             UserId = 2
                         },
@@ -288,7 +291,7 @@ namespace DumpDrive.Data.Migrations
                         {
                             CommentId = 30,
                             Content = "Komentar 30",
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(9581),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 491, DateTimeKind.Utc).AddTicks(100),
                             ItemId = 29,
                             UserId = 3
                         });
@@ -510,13 +513,13 @@ namespace DumpDrive.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("users", (string)null);
+                    b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 40, DateTimeKind.Utc).AddTicks(1532),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 488, DateTimeKind.Utc).AddTicks(2345),
                             DriveId = 1,
                             Email = "luka@gmail.com",
                             Name = "Luka",
@@ -525,7 +528,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 40, DateTimeKind.Utc).AddTicks(2822),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 488, DateTimeKind.Utc).AddTicks(5560),
                             DriveId = 2,
                             Email = "ante@gmail.com",
                             Name = "Anto",
@@ -534,7 +537,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 40, DateTimeKind.Utc).AddTicks(2826),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 488, DateTimeKind.Utc).AddTicks(5565),
                             DriveId = 3,
                             Email = "mate@gmail.com",
                             Name = "Ana",
@@ -556,7 +559,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 15,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7490),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6190),
                             DriveId = 1,
                             Name = "domaci.docx",
                             ParentFolderId = 1,
@@ -565,7 +568,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 16,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7758),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6721),
                             DriveId = 1,
                             Name = "predavanje.txt",
                             ParentFolderId = 2,
@@ -574,7 +577,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 17,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7760),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6725),
                             DriveId = 1,
                             Name = "preza.pdf",
                             ParentFolderId = 3,
@@ -583,7 +586,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 18,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7763),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6727),
                             DriveId = 1,
                             Name = "osobni-dokument.docx",
                             ParentFolderId = 5,
@@ -592,7 +595,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 19,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7765),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6729),
                             DriveId = 1,
                             Name = "Review.txt",
                             Content = "Review"
@@ -600,7 +603,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 20,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7768),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6735),
                             DriveId = 1,
                             Name = "Recepti.docx",
                             Content = "Content for Recepti"
@@ -608,7 +611,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 21,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7799),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6737),
                             DriveId = 1,
                             Name = "notes.txt",
                             ParentFolderId = 2,
@@ -617,7 +620,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 22,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7801),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6739),
                             DriveId = 1,
                             Name = "summary.pdf",
                             ParentFolderId = 6,
@@ -626,7 +629,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 23,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7803),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6742),
                             DriveId = 1,
                             Name = "picture-description.txt",
                             ParentFolderId = 4,
@@ -635,7 +638,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 24,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7806),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6745),
                             DriveId = 1,
                             Name = "tasklist.docx",
                             ParentFolderId = 9,
@@ -644,7 +647,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 25,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7808),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6748),
                             DriveId = 2,
                             Name = "thesis.docx",
                             ParentFolderId = 10,
@@ -653,7 +656,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 26,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7809),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6750),
                             DriveId = 3,
                             Name = "system-notes.txt",
                             ParentFolderId = 11,
@@ -662,7 +665,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 27,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7811),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6752),
                             DriveId = 3,
                             Name = "linux-guide.pdf",
                             ParentFolderId = 12,
@@ -671,7 +674,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 28,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7813),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6754),
                             DriveId = 3,
                             Name = "windows-faq.docx",
                             ParentFolderId = 13,
@@ -680,7 +683,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 29,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(7814),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(6932),
                             DriveId = 3,
                             Name = "study-plan.txt",
                             ParentFolderId = 14,
@@ -698,14 +701,14 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 2,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(5272),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(2520),
                             DriveId = 1,
                             Name = "Fesb-predavanja"
                         },
                         new
                         {
                             ItemId = 3,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(6119),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(3711),
                             DriveId = 1,
                             Name = "Web-prog",
                             ParentFolderId = 2
@@ -713,14 +716,14 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 4,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(6411),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(4166),
                             DriveId = 1,
                             Name = "Slike"
                         },
                         new
                         {
                             ItemId = 1,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(6412),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(4168),
                             DriveId = 1,
                             Name = "Moje slike",
                             ParentFolderId = 4
@@ -728,14 +731,14 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 5,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(6414),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(4171),
                             DriveId = 1,
                             Name = "Dokumenti"
                         },
                         new
                         {
                             ItemId = 6,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(6427),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(4194),
                             DriveId = 1,
                             Name = "Projektni-zadaci",
                             ParentFolderId = 2
@@ -743,28 +746,28 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 7,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(6430),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(4197),
                             DriveId = 2,
                             Name = "Recepti"
                         },
                         new
                         {
                             ItemId = 8,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(6431),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(4200),
                             DriveId = 2,
                             Name = "Svasta"
                         },
                         new
                         {
                             ItemId = 9,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(6433),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(4203),
                             DriveId = 2,
                             Name = "Projekti"
                         },
                         new
                         {
                             ItemId = 10,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(6435),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(4206),
                             DriveId = 2,
                             Name = "Zavrsni-rad",
                             ParentFolderId = 9
@@ -772,14 +775,14 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 11,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(6437),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(4209),
                             DriveId = 3,
                             Name = "Operacijski-sustavi"
                         },
                         new
                         {
                             ItemId = 12,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(6438),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(4211),
                             DriveId = 3,
                             Name = "Linux",
                             ParentFolderId = 11
@@ -787,7 +790,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 13,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(6440),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(4213),
                             DriveId = 3,
                             Name = "Windows",
                             ParentFolderId = 11
@@ -795,7 +798,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 14,
-                            CreatedAt = new DateTime(2025, 1, 2, 18, 38, 8, 41, DateTimeKind.Utc).AddTicks(6442),
+                            CreatedAt = new DateTime(2025, 1, 2, 18, 30, 31, 490, DateTimeKind.Utc).AddTicks(4216),
                             DriveId = 3,
                             Name = "Folder-za-faks"
                         });

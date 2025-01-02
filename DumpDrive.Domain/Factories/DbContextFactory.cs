@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Configuration
-using DummpDrive.Data.Entities;
+using System.Configuration;
+using DumpDrive.Data.Entities;
 
 namespace DumpDrive.Domain.Factories
 {
     public static class DbContextFactory
     {
-        public static DumpDriveDbContext GetDriveDbContext()
+        public static DumpDriveDbContext GetDumpDriveDbContext()
         {
             var options = new DbContextOptionsBuilder()
-                .UseNpgsql(ConfigurationManager.ConnectionStrings["DumpDrive"].ConnectionString)
+                .UseNpgsql("Host=localhost;Database=DumpDrive;User Id=postgres;Password=tici0")
                 .Options;
 
             return new DumpDriveDbContext(options);

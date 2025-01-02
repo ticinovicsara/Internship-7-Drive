@@ -30,7 +30,7 @@ namespace DumpDrive.Presentation.Actions
 
             if (comments.Count == 0)
             {
-                Writer.DisplayInfo("No comments found.\n");
+                Writer.Write("No comments found.\n");
                 return;
             }
 

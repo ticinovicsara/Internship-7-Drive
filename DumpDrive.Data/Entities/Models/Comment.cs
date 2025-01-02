@@ -1,6 +1,4 @@
-﻿using DummpDrive.Data.Entities.Models;
-
-namespace DumpDrive.Data.Entities.Models
+﻿namespace DumpDrive.Data.Entities.Models
 {
     public class Comment
     {

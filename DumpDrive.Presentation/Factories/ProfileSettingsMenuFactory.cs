@@ -3,12 +3,13 @@ using DumpDrive.Domain.Factories;
 using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Abstractions;
 using DumpDrive.Presentation.Actions;
+using DumpDrive.Presentation.Extensions;
 
 namespace DumpDrive.Presentation.Factories
 {
     public class ProfileSettingsMenuFactory
     {
-        public static IList<IAction> CreateActions(User user)
+        public static IList<IAction> Create(User user)
         {
             var actions = new List<IAction>
             {
@@ -17,6 +18,7 @@ namespace DumpDrive.Presentation.Factories
                 new ExitMenuAction(),
             };
 
+            actions.SetActionIndexes();
             return actions;
         }
     }

@@ -17,6 +17,7 @@ namespace DumpDrive.Presentation.Factories
                 new ExitMenuAction()
             };
 
+            actions.SetActionIndexes();
             return actions;
         }
     }

@@ -30,14 +30,14 @@ namespace DumpDrive.Presentation.Actions
             string email;
             do
             {
-                email = Reader.TryReadEmail("Enter your new email address");
+                Reader.TryReadEmail("Enter your new email address", out email);
             }
             while (Reader.IsEmailAlreadyInUse(email, _userRepository));
 
             _user.Email = email;
             var result = _userRepository.Update(_user, _user.Id);
 
-            Writer.DisplayInfo(result == ResponseResultType.Success
+            Writer.Write(result == ResponseResultType.Success
                  ? "\nEmail updated successfully!"
                  : "\nFailed to update email. Please try again.");
 

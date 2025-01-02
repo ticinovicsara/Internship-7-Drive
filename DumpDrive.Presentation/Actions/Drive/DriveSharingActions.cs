@@ -2,21 +2,19 @@
 using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Helpers;
 using DumpDrive.Domain.Enums;
+using Drive.Presentation.Helpers;
 
 namespace DumpDrive.Presentation.Actions
 {
     public class DriveSharingActions
     {
         private readonly UserRepository _userRepository;
-
         private readonly SharedItemRepository _sharedItemRepository;
-
-        private readonly DiskActionHelper _commandHelper;
-
+        private readonly DriveActionHelper _commandHelper;
         private readonly ItemRepository _itemRepository;
 
         private readonly User _user;
-        public DriveSharingActions(User user, ItemRepository itemRepository, SharedItemRepository sharedItemRepository,UserRepository userRepository, DiskActionHelper commandHelper)
+        public DriveSharingActions(User user, ItemRepository itemRepository, SharedItemRepository sharedItemRepository,UserRepository userRepository, DriveActionHelper commandHelper)
         {
             _user = user;
             _itemRepository = itemRepository;
@@ -37,7 +35,7 @@ namespace DumpDrive.Presentation.Actions
             var userToReceiveItem = _userRepository.GetByEmail(userEmail);
             if (userToReceiveItem is null || userToReceiveItem.Email == _user.Email)
             {
-                Writer.DisplayError($"User {userEmail} does not exist\n");
+                Writer.Error($"User {userEmail} does not exist\n");
                 return;
             }
 
@@ -45,7 +43,7 @@ namespace DumpDrive.Presentation.Actions
             if (selectedItem == null) 
                 return;
 
-            if (Reader.IsAlreadyShared(itemName, userToReceiveItem.UserId, _sharedItemRepository))
+            if (Reader.IsAlreadyShared(itemName, userToReceiveItem.Id, _sharedItemRepository))
                 return;
 
             ShareSelectedItem(selectedItem, userToReceiveItem, itemName, userEmail);
@@ -69,23 +67,23 @@ namespace DumpDrive.Presentation.Actions
             }
             else
             {
-                Writer.DisplayError($"Item {itemName} does not exist\n");
+                Writer.Error($"Item {itemName} does not exist\n");
                 return null;
             }
         }
 
         private void ShareSelectedItem(Item selectedItem, User userToReceiveItem, string itemName, string userEmail)
         {
-            var itemToShare = new SharedItem(selectedItem.ItemId, userToReceiveItem.UserId, selectedItem.Name);
+            var itemToShare = new SharedItem(selectedItem.ItemId, userToReceiveItem.Id, selectedItem.Name);
             var result = _sharedItemRepository.Add(itemToShare);
 
             if (result == ResponseResultType.Success)
             {
-                Writer.DisplaySuccess($"Item {itemName} shared with user {userEmail}\n");
+                Writer.Write($"Item {itemName} shared with user {userEmail}\n");
             }
             else
             {
-                Writer.DisplayError($"Failed to share item {itemName} with user {userEmail}\n");
+                Writer.Error($"Failed to share item {itemName} with user {userEmail}\n");
             }
         }
 
@@ -93,14 +91,14 @@ namespace DumpDrive.Presentation.Actions
         {
             foreach (var subFolder in folder.Items.OfType<Folder>())
             {
-                var sharedSubFolder = new SharedItem(subFolder.ItemId, userToReceiveItem.UserId, subFolder.Name);
+                var sharedSubFolder = new SharedItem(subFolder.ItemId, userToReceiveItem.Id, subFolder.Name);
                 _sharedItemRepository.Add(sharedSubFolder);
                 ShareFolderContents(subFolder, userToReceiveItem);
             }
 
             foreach (var file in folder.Items.OfType<Files>())
             {
-                var sharedFile = new SharedItem(file.ItemId, userToReceiveItem.UserId, file.Name);
+                var sharedFile = new SharedItem(file.ItemId, userToReceiveItem.Id, file.Name);
                 _sharedItemRepository.Add(sharedFile);
             }
         }
@@ -116,17 +114,17 @@ namespace DumpDrive.Presentation.Actions
             var user = _userRepository.GetByEmail(userEmail);
             if (user is null)
             {
-                Writer.DisplayError($"User {userEmail} does not exist\n");
+                Writer.Error($"User {userEmail} does not exist\n");
                 return;
             }
 
-            var sharedItem = GetSharedItem(itemName, user.UserId);
+            var sharedItem = GetSharedItem(itemName, user.Id);
             if (sharedItem == null) return;
 
             var fullSharedItem = _itemRepository.GetByItemIdWithItems(sharedItem.ItemId);
 
             if (fullSharedItem is Folder folder)
-                StopSharingFolderContents(folder, user.UserId);
+                StopSharingFolderContents(folder, user.Id);
             
             StopSharing(sharedItem, itemName, userEmail);
         }
@@ -136,7 +134,7 @@ namespace DumpDrive.Presentation.Actions
             var sharedItem = _sharedItemRepository.GetByNameAndUserId(itemName, userId);
 
             if (sharedItem == null)
-                Writer.DisplayError($"Item {itemName} is not shared or does not exist\n");
+                Writer.Error($"Item {itemName} is not shared or does not exist\n");
 
             return sharedItem;
         }
@@ -146,11 +144,11 @@ namespace DumpDrive.Presentation.Actions
             var result = _sharedItemRepository.Delete(sharedItem.SharedItemId);
             if (result == ResponseResultType.Success)
             {
-                Writer.DisplaySuccess($"You stopped sharing item {itemName} with user {userEmail}\n");
+                Writer.Write($"You stopped sharing item {itemName} with user {userEmail}\n");
             }
             else
             {
-                Writer.DisplayError($"Failed to stop sharing item {itemName} with user {userEmail}\n");
+                Writer.Error($"Failed to stop sharing item {itemName} with user {userEmail}\n");
             }
         }
 

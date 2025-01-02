@@ -2,28 +2,46 @@
 using DumpDrive.Data.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
+using System.Configuration;
 
 namespace DumpDrive.Data.Entities
 {
     public class DumpDriveDbContext : DbContext
     {
+        private readonly IConfiguration _configuration;
+
         public DumpDriveDbContext(DbContextOptions options) : base(options)
         {
-
         }
 
-        public DbSet<User> Users => Set<User>();
-        public DbSet<DDrive> Drives => Set<DDrive>();
-        public DbSet<Item> Items => Set<Item>();
-        public DbSet<Folder> Folders => Set<Folder>();
-        public DbSet<Files> Files => Set<Files>();
-        public DbSet<SharedItem> SharedItems => Set<SharedItem>();
-        public DbSet<Comment> Comments => Set<Comment>();
+        public DumpDriveDbContext(DbContextOptions<DumpDriveDbContext> options, IConfiguration configuration) : base(options)
+        {
+            _configuration = configuration;
+        }
+
+        public DbSet<User> Users {  get; set; }
+        public DbSet<DDrive> Drives { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Folder> Folders { get; set; }
+        public DbSet<Files> Files { get; set; }
+        public DbSet<SharedItem> SharedItems { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                var connectionString = _configuration.GetConnectionString("DumpDrive");
+                optionsBuilder.UseNpgsql(connectionString);
+            }
+        }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>().ToTable("users");
+
             modelBuilder.Entity<Item>()
                .HasDiscriminator<string>("Item_type")
                .HasValue<Folder>("Folder")
@@ -39,6 +57,9 @@ namespace DumpDrive.Data.Entities
                 .HasOne(u => u.Drive)
                 .WithOne(d => d.User)
                 .HasForeignKey<DDrive>(d => d.UserId);
+
+            modelBuilder.Entity<DDrive>()
+                .HasKey(d => d.DriveId);
 
             modelBuilder.Entity<DDrive>()
                 .HasMany(d => d.Items)
@@ -68,26 +89,28 @@ namespace DumpDrive.Data.Entities
             DbSeeder.Seed(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.ConfigureWarnings(warnings =>
-                   warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
-        }
     }
 
-    public class DriveDbContextFactory : IDesignTimeDbContextFactory<DumpDriveDbContext>
+public class DriveDbContextFactory : IDesignTimeDbContextFactory<DumpDriveDbContext>
     {
         public DumpDriveDbContext CreateDbContext(string[] args)
         {
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddXmlFile("App.config")
-                .Build();
+            var currentDirectory = Directory.GetCurrentDirectory();
+            var presentationLayerPath = Path.Combine(currentDirectory, "..", "DumpDrive.Presentation");
 
-            config.Providers
-                .First()
-                .TryGet("connectionStrings:add:Drive:connectionString", out var connectionString);
+            if (!Directory.Exists(presentationLayerPath))
+                throw new DirectoryNotFoundException($"Directory '{presentationLayerPath}' not found.");
+
+            var configFilePath = Path.Combine(presentationLayerPath, "App.config.xml");
+
+            if (!File.Exists(configFilePath))
+                throw new FileNotFoundException($"Configuration file '{configFilePath}' not found.");
+
+            var config = System.Configuration.ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var connectionString = config.ConnectionStrings.ConnectionStrings["DumpDrive"]?.ConnectionString;
+
+            if (string.IsNullOrEmpty(connectionString))
+                throw new InvalidOperationException("Connection string 'DumpDrive' not found or is empty.");
 
             var options = new DbContextOptionsBuilder<DumpDriveDbContext>()
                 .UseNpgsql(connectionString)
@@ -96,4 +119,5 @@ namespace DumpDrive.Data.Entities
             return new DumpDriveDbContext(options);
         }
     }
+
 }

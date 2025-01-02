@@ -65,8 +65,8 @@ namespace DumpDrive.Presentation.Actions
             }
 
             RepositoryFactory.Create<UserRepository>().Add(email, password);
-            Console.WriteLine("Registration successful! You can now log in.");
-            Application.SetMenu(_mainMenuFactory.Create());
+            Console.WriteLine("Registration successful! You can now log in.\n");
+            Reader.PressAnyKey();
         }
     }
 }

@@ -2,6 +2,7 @@
 using DumpDrive.Domain.Repositories;
 using DumpDrive.Data.Entities.Models;
 using DumpDrive.Presentation.Helpers;
+using Drive.Presentation.Helpers;
 
 namespace DumpDrive.Presentation.Actions
 {
@@ -31,7 +32,7 @@ namespace DumpDrive.Presentation.Actions
         {
             Console.Clear();
 
-            var commandHelper = new DiskActionHelper(_itemRepository, _sharedItemRepository, _user);
+            var commandHelper = new DriveActionHelper(_itemRepository, _sharedItemRepository, _user);
             var sharingActions = new DriveSharingActions(_user,_itemRepository, _sharedItemRepository, _userRepository, commandHelper);
             var sharedItemActions = new SharedItemCommandActions(_sharedItemRepository, _itemRepository, _user, sharingActions);
             var itemActions = new DriveItemActions(commandHelper, _fileRepository, _userRepository, _commentRepository);

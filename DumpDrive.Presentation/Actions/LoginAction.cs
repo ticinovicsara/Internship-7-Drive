@@ -47,7 +47,29 @@ namespace DumpDrive.Presentation.Actions
 
             Console.Clear();
             Console.WriteLine($"Welcome {user.Name}!");
-            var userActions = MainMenuFactory.Create(user);
+
+            var mainMenuFactory = new MainMenuFactory();
+            var userActions = mainMenuFactory.Create(user);
+
+            while (true)
+            {
+                Console.WriteLine("\nMain Menu:");
+                foreach (var action in userActions)
+                {
+                    Console.WriteLine($"{action.MenuIndex}. {action.Name}");
+                }
+
+                Console.Write("\nSelect an option: ");
+                if (!int.TryParse(Console.ReadLine(), out int choice) || choice < 0 || choice >= userActions.Count)
+                {
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    continue;
+                }
+
+                userActions[choice].Open();
+                if (userActions[choice] is ExitMenuAction)
+                    break;
+            }
         }
 
     }

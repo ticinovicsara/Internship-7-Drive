@@ -18,10 +18,10 @@ namespace DumpDrive.Presentation.Actions
 
         public void Open()
         {
-            var settingsActions = ProfileSettingsMenuFactory.CreateActions(_user);
+            var settingsActions = ProfileSettingsMenuFactory.Create(_user);
 
             Console.Clear();
-            settingsActions.PrintActions("========== Profile Settings ==========\n");
+            settingsActions.PrintActionsAndOpen();
         }       
     }
 }

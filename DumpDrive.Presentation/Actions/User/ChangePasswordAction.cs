@@ -32,7 +32,7 @@ namespace DumpDrive.Presentation.Actions
             _user.Password = password;
             var result = _userRepository.Update(_user, _user.Id);
 
-            Writer.DisplayInfo(result == ResponseResultType.Success
+            Writer.Write(result == ResponseResultType.Success
                   ? "\nPassword updated successfully!"
                   : "\nFailed to update Password. Please try again.;");
 

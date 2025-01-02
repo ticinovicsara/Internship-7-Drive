@@ -2,12 +2,13 @@
 using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Helpers;
 using DumpDrive.Domain.Enums;
+using Drive.Presentation.Helpers;
 
 namespace DumpDrive.Presentation.Actions
 {
     public class DriveItemActions
     {
-        private readonly DiskActionHelper _commandHelper;
+        private readonly DriveActionHelper _commandHelper;
 
         private readonly UserRepository _userRepository;
 
@@ -23,7 +24,7 @@ namespace DumpDrive.Presentation.Actions
 
         private readonly User _user;
 
-        public DriveItemActions(ItemRepository itemRepository, CurrentFolder? currentFolder, CommentRepository commentRepository, FolderRepository folderRepository, FileRepository filesRepository, UserRepository userRepository, User user, DiskActionHelper commandHelper)
+        public DriveItemActions(ItemRepository itemRepository, CurrentFolder? currentFolder, CommentRepository commentRepository, FolderRepository folderRepository, FileRepository filesRepository, UserRepository userRepository, User user, DriveActionHelper commandHelper)
         {
             _itemRepository = itemRepository;
             _commentRepository = commentRepository;
@@ -35,7 +36,7 @@ namespace DumpDrive.Presentation.Actions
             _commandHelper = commandHelper;
         }
 
-        public DriveItemActions(DiskActionHelper commandHelper, FileRepository filesRepository, UserRepository userRepository, CommentRepository commentRepository) 
+        public DriveItemActions(DriveActionHelper commandHelper, FileRepository filesRepository, UserRepository userRepository, CommentRepository commentRepository) 
         {
             _commandHelper = commandHelper;
             _filesRepository = filesRepository;
@@ -84,7 +85,7 @@ namespace DumpDrive.Presentation.Actions
 
             if (name.Length == 0)
             {
-                Writer.DisplayError("Name cannot be empty\n");
+                Writer.Error("Name cannot be empty\n");
                 return false;
             }
 
@@ -115,7 +116,7 @@ namespace DumpDrive.Presentation.Actions
             }
             else
             {
-                Writer.DisplayError($"{(itemType == "folder" ? "Folder" : "File")} {itemName} does not exist in this location\n");
+                Writer.Error($"{(itemType == "folder" ? "Folder" : "File")} {itemName} does not exist in this location\n");
             }
         }
 
@@ -136,7 +137,7 @@ namespace DumpDrive.Presentation.Actions
             }
             else
             {
-                Writer.DisplayError("Invalid command. Try again.\n");
+                Writer.Error("Invalid command. Try again.\n");
                 return (null, null);
             }
 
@@ -173,7 +174,7 @@ namespace DumpDrive.Presentation.Actions
             var folder = _folderRepository.GetByName(oldName, _user);
             if (folder is null)
             {
-                Writer.DisplayError($"Folder {oldName} does not exist\n");
+                Writer.Error($"Folder {oldName} does not exist\n");
                 return;
             }
 
@@ -182,7 +183,7 @@ namespace DumpDrive.Presentation.Actions
 
             if (result != ResponseResultType.Success)
             {
-                Writer.DisplayError($"Failed to rename folder '{oldName}'. Please try again.\n");
+                Writer.Error($"Failed to rename folder '{oldName}'. Please try again.\n");
                 return;
             }
 
@@ -194,7 +195,7 @@ namespace DumpDrive.Presentation.Actions
             var file = _filesRepository.GetByName(oldName, _user);
             if (file is null)
             {
-                Writer.DisplayError($"File {oldName} does not exist\n");
+                Writer.Error($"File {oldName} does not exist\n");
                 return;
             }
 
@@ -203,7 +204,7 @@ namespace DumpDrive.Presentation.Actions
              
             if (result != ResponseResultType.Success)
             {
-                Writer.DisplayError($"Failed to rename file '{oldName}'. Please try again.\n");
+                Writer.Error($"Failed to rename file '{oldName}'. Please try again.\n");
                 return;
             }
 
@@ -217,7 +218,7 @@ namespace DumpDrive.Presentation.Actions
 
             if (file == null)
             {
-                Writer.DisplayError($"File {fileName} does not exist or is not shared with you\n");
+                Writer.Error($"File {fileName} does not exist or is not shared with you\n");
                 return;
             }
 
@@ -276,12 +277,12 @@ namespace DumpDrive.Presentation.Actions
         private void SaveFile(List<string> lines, Files file, string fileName, bool isShared)
         {
             var contents = string.Join("\n", lines);
-            var updatedFile = new Files(fileName, contents, file.ParentFolderId, file.DiskId);
+            var updatedFile = new Files(fileName, contents, file.ParentFolderId, file.DriveId);
             _filesRepository.Update(updatedFile, file.ItemId);
 
             file.Content = updatedFile.Content;
 
-            Writer.DisplayInfo("\nSaving...");
+            Writer.Write("\nSaving...");
             Reader.PressAnyKey();
 
             if (isShared)
@@ -292,7 +293,7 @@ namespace DumpDrive.Presentation.Actions
 
         private void CancelEditing(bool isShared)
         {
-            Writer.DisplayInfo("\nExiting without saving...");
+            Writer.Write("\nExiting without saving...");
             Reader.PressAnyKey();
 
             if (isShared)
