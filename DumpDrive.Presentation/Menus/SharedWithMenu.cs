@@ -3,7 +3,7 @@ using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Abstractions;
 using DumpDrive.Presentation.Helpers;
 
-namespace DumpDrive.Presentation.Actions.Menus.SharedWith
+namespace DumpDrive.Presentation.Menus
 {
     public class SharedWithMenu : IAction
     {

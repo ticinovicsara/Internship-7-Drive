@@ -4,9 +4,9 @@ using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Abstractions;
 using DumpDrive.Presentation.Helpers;
 
-namespace DumpDrive.Presentation.Actions.Menus.MyDrive
+namespace DumpDrive.Presentation.Menus
 {
-    public class HandleDrive : IAction
+    public class DriveMenu : IAction
     {
         private readonly DriveRepository _driveRepository;
         private readonly SharedRepository _sharedRepository;
@@ -16,7 +16,7 @@ namespace DumpDrive.Presentation.Actions.Menus.MyDrive
         public int MenuIndex { get; set; }
         public string Name { get; set; } = "Manage Drive Contents\n";
 
-        public HandleDrive(DriveRepository driveRepository, SharedRepository sharedRepository, UserRepository userRepository, int userId)
+        public DriveMenu(DriveRepository driveRepository, SharedRepository sharedRepository, UserRepository userRepository, int userId)
         {
             _driveRepository = driveRepository;
             _sharedRepository = sharedRepository;

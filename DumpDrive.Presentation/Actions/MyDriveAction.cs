@@ -1,8 +1,7 @@
 ﻿using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Abstractions;
 using DumpDrive.Presentation.Helpers;
-using DumpDrive.Presentation.Actions.Menus.MyDrive;
-using DumpDrive.Presentation.Actions.Menus.MyDrive;
+using DumpDrive.Presentation.Menus;
 
 namespace DumpDrive.Presentation.Actions
 {

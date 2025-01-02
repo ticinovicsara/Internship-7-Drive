@@ -1,8 +1,7 @@
 ﻿using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Abstractions;
-using DumpDrive.Presentation.Actions.Menus.SharedWith;
-using DumpDrive.Presentation.Extensions;
 using DumpDrive.Presentation.Helpers;
+using DumpDrive.Presentation.Menus;
 
 namespace DumpDrive.Presentation.Actions
 {
@@ -23,13 +22,9 @@ namespace DumpDrive.Presentation.Actions
         {
             var userId = UserContext.UserId;
 
-            var actions = new List<IAction>
-            {
-                 new SharedWithMenu(_sharedRepository, userId),
-                new ExitMenuAction()
-            };
+            var sharedMenu = new SharedWithMenu(_sharedRepository, userId);
 
-            actions.SetActionIndexes();
+            sharedMenu.Open();
         }
     }
 }

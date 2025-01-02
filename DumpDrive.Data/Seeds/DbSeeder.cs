@@ -81,15 +81,15 @@ namespace DumpDrive.Data.Seeds
             builder.Entity<SharedItem>()
                 .HasData(new List<SharedItem>
                 {
-                    new SharedItem("Document1", "File") { Id = 1, OwnerId = 1, ItemId = 101, SharedWithUserId = 2 },
-                    new SharedItem("Folder1", "Folder") { Id = 2, OwnerId = 2, ItemId = 102, SharedWithUserId = 3 },
-                    new SharedItem("Picture1", "File") { Id = 3, OwnerId = 3, ItemId = 103, SharedWithUserId = 4 },
-                    new SharedItem("VideosFolder", "Folder") { Id = 4, OwnerId = 4, ItemId = 104, SharedWithUserId = 1 },
+                    new SharedItem("Document1", ItemType.Folder) { Id = 1, OwnerId = 1, ItemId = 101, SharedWithUserId = 2 },
+                    new SharedItem("Folder1", ItemType.Folder) { Id = 2, OwnerId = 2, ItemId = 102, SharedWithUserId = 3 },
+                    new SharedItem("Picture1", ItemType.File) { Id = 3, OwnerId = 3, ItemId = 103, SharedWithUserId = 4 },
+                    new SharedItem("VideosFolder", ItemType.Folder) { Id = 4, OwnerId = 4, ItemId = 104, SharedWithUserId = 1 },
         
-                    new SharedItem("Document2", "File") { Id = 5, OwnerId = 1, ItemId = 105, SharedWithUserId = 3 },
-                    new SharedItem("PhotosFolder", "Folder") { Id = 6, OwnerId = 2, ItemId = 106, SharedWithUserId = 4 },
-                    new SharedItem("VideoClip", "File") { Id = 7, OwnerId = 3, ItemId = 107, SharedWithUserId = 1 },
-                    new SharedItem("MusicFolder", "Folder") { Id = 8, OwnerId = 4, ItemId = 108, SharedWithUserId = 2 }
+                    new SharedItem("Document2", ItemType.File) { Id = 5, OwnerId = 1, ItemId = 105, SharedWithUserId = 3 },
+                    new SharedItem("PhotosFolder", ItemType.Folder) { Id = 6, OwnerId = 2, ItemId = 106, SharedWithUserId = 4 },
+                    new SharedItem("VideoClip", ItemType.File) { Id = 7, OwnerId = 3, ItemId = 107, SharedWithUserId = 1 },
+                    new SharedItem("MusicFolder", ItemType.Folder) { Id = 8, OwnerId = 4, ItemId = 108, SharedWithUserId = 2 }
                 });
 
 
