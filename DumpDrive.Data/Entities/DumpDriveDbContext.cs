@@ -73,7 +73,7 @@ namespace DumpDrive.Data.Entities
                 .WithMany(u => u.SharedFiles)
                 .HasForeignKey(usf => usf.UserId);
 
-            modelBuilder.Entity<UserSharedFile>()
+            modelBuilder.Entity<SharedFile>()
                 .HasOne(usf => usf.File)
                 .WithMany(f => f.SharedUsers)
                 .HasForeignKey(usf => usf.FileId);
