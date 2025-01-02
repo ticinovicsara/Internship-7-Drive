@@ -14,7 +14,6 @@ namespace DumpDrive.Presentation.Helpers
         {
             Console.WriteLine(message);
             Thread.Sleep(1000);
-            Console.WriteLine("\n\n");
         }
 
         public static string CaptchaGenerator()
@@ -29,24 +28,23 @@ namespace DumpDrive.Presentation.Helpers
         {
             Console.WriteLine("\nclear                                       - Clear terminal");
             Console.WriteLine("help                                        - Display all commands");
-            Console.WriteLine("stvori mapu 'ime mape'                      - Create a folder with the specified name");
-            Console.WriteLine("stvori datoteku 'ime datoteke'              - Create a file with the specified name");
-            Console.WriteLine("uđi u mapu 'ime mape'                       - Navigate into the specified folder");
-            Console.WriteLine("uredi datoteku 'ime datoteke'               - Edit the specified file");
-            Console.WriteLine("izbrisi mapu/datoteku 'ime mape/datoteke'   - Delete the specified folder or file");
-            Console.WriteLine("promjeni naziv mape/datoteke 'ime' u 'novo' - Rename a folder or file");
-            Console.WriteLine("podijeli mapu/datoteku s 'email'            - Share a folder or file");
-            Console.WriteLine("prestani dijeliti 'mapu/datoteku' s 'email' - Stop shearing a folder or file");
-            Console.WriteLine("nazad                                       - Return to the previous folder");
-            Console.WriteLine("navigacijski mod                            - Navigation mode\n");
+            Console.WriteLine("make folder 'folder name'                   - Create a folder with the specified name");
+            Console.WriteLine("make file 'filename'                        - Create a file with the specified name");
+            Console.WriteLine("cd 'folder name'                            - Navigate into the specified folder");
+            Console.WriteLine("edit file 'filename'                        - Edit the specified file");
+            Console.WriteLine("delete folder/file 'folder/file name'       - Delete the specified folder or file");
+            Console.WriteLine("change name folder/file 'name' in 'new'     - Rename a folder or file");
+            Console.WriteLine("share folder/file with 'email'              - Share a folder or file");
+            Console.WriteLine("stop sharing 'folder/file' with 'email'     - Stop shsaring a folder or file");
+            Console.WriteLine("back                                        - Return to the previous folder");
         }
 
         public static void PrintCommentCommands()
         {
             Console.WriteLine("\nhelp                           - Display all commands");
-            Console.WriteLine("dodaj komentar                 - Add a new comment");
-            Console.WriteLine("uredi komentar                 - Edit a comment");
-            Console.WriteLine("izbriši komentar               - Delete a comment\n");
+            Console.WriteLine("add comment");
+            Console.WriteLine("edit comment");
+            Console.WriteLine("delete comment\n");
         }
 
         public static void PrintComments(List<Comment> comments, UserRepository userRepository)
@@ -150,7 +148,6 @@ namespace DumpDrive.Presentation.Helpers
             PrintFolders(folders);
             Console.WriteLine("");
             PrintFiles(files);
-
         }
     }
 }

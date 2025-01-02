@@ -42,9 +42,9 @@ namespace DumpDrive.Presentation.Actions
             {
                   { command => Reader.IsCommand(command, "help"), _ => Writer.PrintReducedCommands() },
 
-                  { command => Reader.StartsWithCommand(command, "izbrisi"), sharedItemActions.DeleteSharedItem },
+                  { command => Reader.StartsWithCommand(command, "delete"), sharedItemActions.DeleteSharedItem },
 
-                  { command => Reader.StartsWithCommand(command, "uredi datoteku"), command => itemActions.EditFileContents(command, true) }
+                  { command => Reader.StartsWithCommand(command, "edit file"), command => itemActions.EditFileContents(command, true) }
             };
 
             Reader.TryReadCommand(commandDictionary);

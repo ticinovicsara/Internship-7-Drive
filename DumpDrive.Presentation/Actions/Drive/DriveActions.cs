@@ -38,6 +38,7 @@ namespace DumpDrive.Presentation.Actions
             var commandHelper = new DriveActionHelper(_user, _userRepository, _currentFolder);
             var sharingActions = new DriveSharingActions(_user, _itemRepository, _sharedItemRepository, _userRepository, commandHelper);
             var itemActions = new DriveItemActions(_itemRepository, _currentFolder, _commentRepository, _folderRepository, _filesRepository, _userRepository, _user, commandHelper);
+            var navigationActions = new DriveNavigationActions(_currentFolder, _folderHistory, commandHelper, itemActions);
 
             commandHelper.DisplayFolderContents();
 
@@ -51,6 +52,8 @@ namespace DumpDrive.Presentation.Actions
 
                 { command => Reader.StartsWithCommand(command, "make file"), itemActions.CreateFileInCurrentLocation},
 
+                { command => Reader.StartsWithCommand(command, "cd"), navigationActions.NavigateToFolder},
+
                 { command => Reader.StartsWithCommand(command, "edit file"), command => itemActions.EditFileContents(command, false) },
 
                 { command => Reader.StartsWithCommand(command, "delete"), itemActions.DeleteItem },
@@ -60,6 +63,8 @@ namespace DumpDrive.Presentation.Actions
                 { command => Reader.StartsWithCommand(command, "share"), sharingActions.ShareItem },
 
                 { command => Reader.StartsWithCommand(command, "stop sharing"), sharingActions.StopSharingItem },
+
+                { command => Reader.IsCommand(command, "back"), _ => navigationActions.ReturnToPreviousFolder() }
 
             };
 

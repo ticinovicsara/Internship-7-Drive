@@ -131,11 +131,14 @@ namespace DumpDrive.Presentation.Helpers
         {
             while (true)
             {
-                TryReadInput("\n\nEnter a command ('help' to see all commands or 'exit')", out var command);
+                TryReadInput("\nEnter a command ('help' to see all commands or 'exit')", out var command);
                 command = command.Trim();
 
                 if (IsCommand(command, "exit"))
+                {
+                    Console.Clear();
                     break;
+                }
 
                 var matchedCommand = commandDictionary.Keys.FirstOrDefault(predicate => predicate(command));
 
@@ -145,7 +148,7 @@ namespace DumpDrive.Presentation.Helpers
                 }
                 else
                 {
-                    Writer.Error("Invalid command. Try again.\n");
+                    Writer.Error("Invalid command. Try again.");
                 }
             }
         }

@@ -24,7 +24,7 @@ namespace DumpDrive.Presentation.Actions
         }
         public void DeleteSharedItem(string command)
         {
-            var itemName = command.Substring("izbrisi".Length).Trim();
+            var itemName = command.Substring("delete".Length).Trim();
 
             var sharedItem = _diskSharingActions.GetSharedItem(itemName, _user.Id);
             if (sharedItem == null) return;

@@ -15,6 +15,7 @@ namespace DumpDrive.Presentation.Actions
         {
             Console.WriteLine("Exiting...");
             Thread.Sleep(500);
+            Console.Clear();
         }
     }
 }

@@ -30,11 +30,11 @@ namespace DumpDrive.Presentation.Actions
             {
                 { command => Reader.IsCommand(command, "help"), _=> Writer.PrintCommentCommands() },
 
-                { command => Reader.IsCommand(command, "dodaj komentar"), _ => commentCommandActions.AddComment() },
+                { command => Reader.IsCommand(command, "add comment"), _ => commentCommandActions.AddComment() },
 
-                { command => Reader.IsCommand(command, "uredi komentar"), _=> commentCommandActions.EditComment() },
+                { command => Reader.IsCommand(command, "edit comment"), _=> commentCommandActions.EditComment() },
 
-                { command => Reader.IsCommand(command, "izbrisi komentar"), _=> commentCommandActions.DeleteComment() }
+                { command => Reader.IsCommand(command, "delete comment"), _=> commentCommandActions.DeleteComment() }
             };
 
             Reader.TryReadCommand(commandDictionary);

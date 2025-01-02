@@ -14,6 +14,7 @@ namespace DumpDrive.Presentation.Actions
 
         public int MenuIndex { get; set; }
         public string Name { get; set; } = "Change Email";
+
         public ChangeEmailAction(UserRepository userRepository, User user)
         {
             _userRepository = userRepository;

@@ -3,6 +3,7 @@ using DumpDrive.Domain.Repositories;
 using DumpDrive.Presentation.Factories;
 using DumpDrive.Presentation.Helpers;
 using DumpDrive.Data.Entities.Models;
+using DumpDrive.Presentation.Extensions;
 
 namespace DumpDrive.Presentation.Actions
 {
@@ -51,10 +52,11 @@ namespace DumpDrive.Presentation.Actions
 
             var mainMenuFactory = new MainMenuFactory();
             var userActions = mainMenuFactory.Create(user);
+            userActions.SetActionIndexes();
 
             while (true)
             {
-                Console.WriteLine("\nMain Menu:");
+                Console.WriteLine("Main Menu:\n");
                 foreach (var action in userActions)
                 {
                     Console.WriteLine($"{action.MenuIndex}. {action.Name}");
@@ -67,8 +69,8 @@ namespace DumpDrive.Presentation.Actions
                     continue;
                 }
 
-                userActions[choice].Open();
-                if (userActions[choice] is ExitMenuAction)
+                userActions[choice - 1].Open();
+                if (userActions[choice - 1] is ExitMenuAction)
                     break;
             }
         }
