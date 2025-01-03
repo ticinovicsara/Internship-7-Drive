@@ -38,9 +38,15 @@ namespace DumpDrive.Presentation.Actions
             _user.Email = email;
             var result = _userRepository.Update(_user, _user.Id);
 
-            Writer.Write(result == ResponseResultType.Success
-                 ? "\nEmail updated successfully!"
-                 : "\nFailed to update email. Please try again.");
+            if (result == ResponseResultType.Success)
+            {
+                Writer.Write("\nEmail updated successfully!");
+            }
+            else
+            {
+                Writer.Write("\nFailed to update email. Please try again.");
+            }
+
 
             Reader.PressAnyKey();
         }

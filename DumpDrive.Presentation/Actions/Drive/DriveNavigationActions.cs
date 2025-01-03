@@ -5,20 +5,17 @@ namespace DumpDrive.Presentation.Actions
 {
     public class DriveNavigationActions
     {
-        private readonly CurrentFolder? _currentFolder;
+        private readonly FolderContext? _currentFolder;
 
         private readonly Stack<Folder?> _folderHistory;
 
         private readonly DriveActionHelper _commandHelper;
 
-        private readonly DriveItemActions _itemActions;
-
-        public DriveNavigationActions(CurrentFolder? currentFolder, Stack<Folder?> folderHistory, DriveActionHelper diskActionHelper, DriveItemActions itemactions)
+        public DriveNavigationActions(FolderContext? currentFolder, Stack<Folder?> folderHistory, DriveActionHelper diskActionHelper, DriveItemActions itemactions)
         {
             _currentFolder = currentFolder;
             _folderHistory = folderHistory;
             _commandHelper = diskActionHelper;
-            _itemActions = itemactions;
         }
 
         public void NavigateToFolder(string command)

@@ -11,7 +11,7 @@ namespace DumpDrive.Presentation.Actions
 
         private readonly UserRepository _userRepository;
         private readonly Stack<Folder?> _folderHistory;
-        private readonly CurrentFolder _currentFolder;
+        private readonly FolderContext _currentFolder;
         private readonly CommentRepository _commentRepository;
         private readonly FolderRepository _folderRepository;
         private readonly FileRepository _filesRepository;
@@ -20,7 +20,7 @@ namespace DumpDrive.Presentation.Actions
 
         public int MenuIndex { get; set; }
         public string Name { get; set; } = "My Drive";
-        public DriveActions(SharedItemRepository sharedItemRepository,ItemRepository itemRepository ,CurrentFolder currentFolder, CommentRepository commentRepository, FolderRepository folderRepository, FileRepository fileRepository, Stack<Folder?> folderHistory,UserRepository userRepository ,User user)
+        public DriveActions(SharedItemRepository sharedItemRepository,ItemRepository itemRepository , FolderContext currentFolder, CommentRepository commentRepository, FolderRepository folderRepository, FileRepository fileRepository, Stack<Folder?> folderHistory,UserRepository userRepository ,User user)
         {
             _sharedItemRepository = sharedItemRepository;
             _itemRepository = itemRepository;
@@ -30,7 +30,7 @@ namespace DumpDrive.Presentation.Actions
             _commentRepository = commentRepository;
             _folderRepository = folderRepository;
             _filesRepository = fileRepository;
-            _currentFolder = new CurrentFolder();
+            _currentFolder = new FolderContext();
         }
 
         public void Open()
@@ -64,7 +64,7 @@ namespace DumpDrive.Presentation.Actions
 
                 { command => Reader.StartsWithCommand(command, "stop sharing"), sharingActions.StopSharingItem },
 
-                { command => Reader.IsCommand(command, "back"), _ => navigationActions.ReturnToPreviousFolder() }
+                { command => Reader.IsCommand(command, "return"), _ => navigationActions.ReturnToPreviousFolder() }
 
             };
 

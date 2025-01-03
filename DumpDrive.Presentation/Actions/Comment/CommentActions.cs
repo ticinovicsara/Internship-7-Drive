@@ -7,12 +7,10 @@ namespace DumpDrive.Presentation.Actions
     public class CommentActions
     {
         private readonly User _user;
-
         private readonly UserRepository _userRepository;
-
         private readonly CommentRepository _commentRepository;
-
         private readonly int _itemId;
+
         public CommentActions(UserRepository userRepository,CommentRepository commentRepository, int itemId, User user)
         {
             _userRepository = userRepository;

@@ -4,6 +4,7 @@ using DumpDrive.Presentation.Factories;
 using DumpDrive.Presentation.Helpers;
 using DumpDrive.Data.Entities.Models;
 using DumpDrive.Presentation.Extensions;
+using Npgsql;
 
 namespace DumpDrive.Presentation.Actions
 {
@@ -31,12 +32,6 @@ namespace DumpDrive.Presentation.Actions
                 Console.WriteLine("Please enter a valid email address.");
             }
 
-            string password;
-            while (!Reader.TryReadPassword("\nEnter password:", out password))
-            {
-                Console.WriteLine("Password cannot be empty.");
-            }
-
             User user = _userRepository.GetByEmail(email);
 
             if (user == null)
@@ -45,6 +40,13 @@ namespace DumpDrive.Presentation.Actions
                 Console.WriteLine("Invalid credentials. Please wait before retrying.\n");
                 Thread.Sleep(3000);
                 return;
+            }
+
+            string password;
+            string userPass = user.Password;
+            while (!Reader.PasswordCheck("\nEnter password:", userPass))
+            {
+                Console.WriteLine("Invalid credentials. Please wait before retrying.\n");
             }
 
             Console.Clear();
@@ -62,7 +64,7 @@ namespace DumpDrive.Presentation.Actions
                     Console.WriteLine($"{action.MenuIndex}. {action.Name}");
                 }
 
-                Console.Write("\nSelect an option: ");
+                Console.Write("\n: ");
                 if (!int.TryParse(Console.ReadLine(), out int choice) || choice < 0 || choice >= userActions.Count)
                 {
                     Console.WriteLine("Invalid choice. Please try again.");

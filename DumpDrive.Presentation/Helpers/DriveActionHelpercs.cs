@@ -9,18 +9,13 @@ namespace DumpDrive.Presentation.Helpers
     {
 
         private readonly User _user;
-
         private readonly UserRepository _userRepository;
-
-        private readonly CurrentFolder? _currentFolder;
-
+        private readonly FolderContext? _currentFolder;
         private readonly SharedItemRepository _sharedItemRepository;
-
         private readonly ItemRepository _itemRepository;
-
         private readonly FileRepository _filesRepository = RepositoryFactory.Create<FileRepository>();
 
-        public DriveActionHelper(User user, UserRepository userRepository, CurrentFolder? currentFolder)
+        public DriveActionHelper(User user, UserRepository userRepository, FolderContext? currentFolder)
         {
             _user = user;
             _userRepository = userRepository;

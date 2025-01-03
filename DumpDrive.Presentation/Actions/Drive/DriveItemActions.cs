@@ -8,22 +8,16 @@ namespace DumpDrive.Presentation.Actions
     public class DriveItemActions
     {
         private readonly DriveActionHelper _commandHelper;
-
         private readonly UserRepository _userRepository;
-
         private readonly CommentRepository _commentRepository;
-
-        private readonly CurrentFolder? _currentFolder;
-
+        private readonly FolderContext? _currentFolder;
         private readonly FolderRepository _folderRepository;
-
         private readonly FileRepository _filesRepository;
-
         private readonly ItemRepository _itemRepository;
 
         private readonly User _user;
 
-        public DriveItemActions(ItemRepository itemRepository, CurrentFolder? currentFolder, CommentRepository commentRepository, FolderRepository folderRepository, FileRepository filesRepository, UserRepository userRepository, User user, DriveActionHelper commandHelper)
+        public DriveItemActions(ItemRepository itemRepository, FolderContext? currentFolder, CommentRepository commentRepository, FolderRepository folderRepository, FileRepository filesRepository, UserRepository userRepository, User user, DriveActionHelper commandHelper)
         {
             _itemRepository = itemRepository;
             _commentRepository = commentRepository;
@@ -229,16 +223,22 @@ namespace DumpDrive.Presentation.Actions
                 ? new List<string>()
                 : fileContent.Trim().Split('\n').Where(line => !string.IsNullOrEmpty(line)).ToList();
 
+            Console.WriteLine($"Editing file: {fileName}\nType ':save' to save and exit, or 'exit' to cancel editing.\n");
+
+
             EditFile(lines, file, fileName, isShared);
+ 
         }
 
         private void EditFile(List<string> lines, Files file, string fileName, bool isShared)
         {
+            bool result = false;
             int activeLineIndex = lines.Count;
+
+            Writer.PrintFileContents(lines);
 
             while (true)
             {
-                Writer.PrintFileContents(lines);
                 Console.Write("> ");
                 var input = Console.ReadLine().Trim();
 
@@ -267,6 +267,9 @@ namespace DumpDrive.Presentation.Actions
                 case ":open comments":
                     OpenComments(file.ItemId);
                     return false;
+
+                case ":exit":
+                    return true;
 
                 default:
                     HandleDefaultInput(input, lines, ref activeLineIndex);

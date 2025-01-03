@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DumpDrive.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigrationdotnet : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -148,9 +148,9 @@ namespace DumpDrive.Data.Migrations
                 columns: new[] { "Id", "CreatedAt", "DriveId", "Email", "Name", "Password" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 1, 2, 20, 40, 56, 227, DateTimeKind.Utc).AddTicks(3247), 1, "marko@gmail.com", "Marko", "12345" },
-                    { 2, new DateTime(2025, 1, 2, 20, 40, 56, 227, DateTimeKind.Utc).AddTicks(4667), 2, "jure@gmail.com", "Jure", "12345" },
-                    { 3, new DateTime(2025, 1, 2, 20, 40, 56, 227, DateTimeKind.Utc).AddTicks(4672), 3, "ana@gmail.com", "Ana", "12345" }
+                    { 1, new DateTime(2025, 1, 3, 15, 12, 50, 305, DateTimeKind.Utc).AddTicks(734), 1, "marko@gmail.com", "Marko", "12345" },
+                    { 2, new DateTime(2025, 1, 3, 15, 12, 50, 305, DateTimeKind.Utc).AddTicks(2077), 2, "jure@gmail.com", "Jure", "12345" },
+                    { 3, new DateTime(2025, 1, 3, 15, 12, 50, 305, DateTimeKind.Utc).AddTicks(2082), 3, "ana@gmail.com", "Ana", "12345" }
                 });
 
             migrationBuilder.InsertData(
@@ -168,14 +168,14 @@ namespace DumpDrive.Data.Migrations
                 columns: new[] { "ItemId", "CreatedAt", "DriveId", "Item_type", "LastChangedAt", "Name", "ParentFolderId", "ParentFolderItemId" },
                 values: new object[,]
                 {
-                    { 2, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(4129), 1, "Folder", null, "Fesb-predavanja", null, null },
-                    { 4, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(4989), 1, "Folder", null, "Slike", null, null },
-                    { 5, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(4993), 1, "Folder", null, "Dokumenti", null, null },
-                    { 7, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5007), 2, "Folder", null, "Recepti", null, null },
-                    { 8, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5009), 2, "Folder", null, "Svasta", null, null },
-                    { 9, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5010), 2, "Folder", null, "Projekti", null, null },
-                    { 11, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5015), 3, "Folder", null, "Operacijski-sustavi", null, null },
-                    { 14, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5020), 3, "Folder", null, "Folder-za-faks", null, null }
+                    { 2, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(2688), 1, "Folder", null, "Docs", null, null },
+                    { 4, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3685), 1, "Folder", null, "Videos", null, null },
+                    { 5, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3688), 1, "Folder", null, "Projects", null, null },
+                    { 7, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3708), 2, "Folder", null, "Google", null, null },
+                    { 8, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3709), 2, "Folder", null, "Firefox", null, null },
+                    { 9, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3711), 2, "Folder", null, "Debian", null, null },
+                    { 11, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3715), 3, "Folder", null, "Folder", null, null },
+                    { 14, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3720), 3, "Folder", null, "Folder3", null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -183,8 +183,8 @@ namespace DumpDrive.Data.Migrations
                 columns: new[] { "ItemId", "Content", "CreatedAt", "DriveId", "Item_type", "LastChangedAt", "Name", "ParentFolderId", "ParentFolderItemId" },
                 values: new object[,]
                 {
-                    { 19, "Review", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6287), 1, "File", null, "Review.txt", null, null },
-                    { 20, "Content for Recepti", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6290), 1, "File", null, "Recepti.docx", null, null }
+                    { 19, "Content file5", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5088), 1, "File", null, "file5.txt", null, null },
+                    { 20, "Content file6", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5092), 1, "File", null, "file6.docx", null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -192,10 +192,10 @@ namespace DumpDrive.Data.Migrations
                 columns: new[] { "CommentId", "Content", "CreatedAt", "ItemId", "UserId" },
                 values: new object[,]
                 {
-                    { 5, "Komentar 5", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7974), 19, 3 },
-                    { 6, "Komentar 6", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7977), 20, 2 },
-                    { 20, "Komentar 20", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7998), 19, 2 },
-                    { 21, "Komentar 21", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8096), 20, 3 }
+                    { 5, "Comm 5", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6978), 19, 3 },
+                    { 6, "Comm 6", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6982), 20, 2 },
+                    { 20, "Comm 20", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7002), 19, 2 },
+                    { 21, "Comm 21", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7004), 20, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -203,12 +203,12 @@ namespace DumpDrive.Data.Migrations
                 columns: new[] { "ItemId", "CreatedAt", "DriveId", "Item_type", "LastChangedAt", "Name", "ParentFolderId", "ParentFolderItemId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(4990), 1, "Folder", null, "Moje slike", 4, null },
-                    { 3, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(4752), 1, "Folder", null, "Web-prog", 2, null },
-                    { 6, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5005), 1, "Folder", null, "Projektni-zadaci", 2, null },
-                    { 10, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5013), 2, "Folder", null, "Zavrsni-rad", 9, null },
-                    { 12, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5016), 3, "Folder", null, "Linux", 11, null },
-                    { 13, new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5018), 3, "Folder", null, "Windows", 11, null }
+                    { 1, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3686), 1, "Folder", null, "Oldies", 4, null },
+                    { 3, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3445), 1, "Folder", null, "Pictures", 2, null },
+                    { 6, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3706), 1, "Folder", null, "Tasks", 2, null },
+                    { 10, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3713), 2, "Folder", null, "Git", 9, null },
+                    { 12, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3716), 3, "Folder", null, "Folder1", 11, null },
+                    { 13, new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3718), 3, "Folder", null, "Folder2", 11, null }
                 });
 
             migrationBuilder.InsertData(
@@ -216,13 +216,13 @@ namespace DumpDrive.Data.Migrations
                 columns: new[] { "ItemId", "Content", "CreatedAt", "DriveId", "Item_type", "LastChangedAt", "Name", "ParentFolderId", "ParentFolderItemId" },
                 values: new object[,]
                 {
-                    { 16, "Content for Fesb Predavanja Slides", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6281), 1, "File", null, "predavanje.txt", 2, null },
-                    { 18, "Content for Personal Documents", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6286), 1, "File", null, "osobni-dokument.docx", 5, null },
-                    { 21, "Class notes", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6292), 1, "File", null, "notes.txt", 2, null },
-                    { 23, "A random picture", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6295), 1, "File", null, "picture-description.txt", 4, null },
-                    { 24, "List of tasks", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6298), 1, "File", null, "tasklist.docx", 9, null },
-                    { 26, "Notes on OS", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6301), 3, "File", null, "system-notes.txt", 11, null },
-                    { 29, "Plan for studying", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6307), 3, "File", null, "study-plan.txt", 14, null }
+                    { 16, "Content file2", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5041), 1, "File", null, "file2.txt", 2, null },
+                    { 18, "Content file4", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5087), 1, "File", null, "file4.docx", 5, null },
+                    { 21, "Content file7", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5093), 1, "File", null, "file7.txt", 2, null },
+                    { 23, "Content file9", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5096), 1, "File", null, "file9.txt", 4, null },
+                    { 24, "Content file10", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5099), 1, "File", null, "file10.docx", 9, null },
+                    { 26, "Content file12", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5103), 3, "File", null, "file12.txt", 11, null },
+                    { 29, "Content file16", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5108), 3, "File", null, "file16.txt", 14, null }
                 });
 
             migrationBuilder.InsertData(
@@ -230,8 +230,8 @@ namespace DumpDrive.Data.Migrations
                 columns: new[] { "SharedItemId", "ItemId", "ItemName", "UserId" },
                 values: new object[,]
                 {
-                    { 5, 19, "Review.txt", 2 },
-                    { 6, 20, "Recepti.docx", 3 }
+                    { 5, 19, "file7.txt", 2 },
+                    { 6, 20, "file11.docx", 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -239,20 +239,20 @@ namespace DumpDrive.Data.Migrations
                 columns: new[] { "CommentId", "Content", "CreatedAt", "ItemId", "UserId" },
                 values: new object[,]
                 {
-                    { 2, "Komentar 2", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7969), 16, 1 },
-                    { 4, "Komentar 4", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7973), 18, 2 },
-                    { 7, "Komentar 7", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7978), 21, 1 },
-                    { 9, "Komentar 9", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7981), 23, 2 },
-                    { 10, "Komentar 10", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7983), 24, 1 },
-                    { 12, "Komentar 12", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7986), 26, 2 },
-                    { 15, "Komentar 15", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7990), 29, 3 },
-                    { 17, "Komentar 17", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7993), 16, 2 },
-                    { 19, "Komentar 19", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7996), 18, 1 },
-                    { 22, "Komentar 22", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8097), 21, 1 },
-                    { 24, "Komentar 24", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8100), 23, 3 },
-                    { 25, "Komentar 25", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8101), 24, 1 },
-                    { 27, "Komentar 27", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8104), 26, 3 },
-                    { 30, "Komentar 30", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8108), 29, 3 }
+                    { 2, "Comm 2", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6973), 16, 1 },
+                    { 4, "Comm 4", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6977), 18, 2 },
+                    { 7, "Comm 7", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6983), 21, 1 },
+                    { 9, "Comm 9", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6986), 23, 2 },
+                    { 10, "Comm 10", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6988), 24, 1 },
+                    { 12, "Comm 12", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6991), 26, 2 },
+                    { 15, "Comm 15", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6995), 29, 3 },
+                    { 17, "Comm 17", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6997), 16, 2 },
+                    { 19, "Comm 19", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7001), 18, 1 },
+                    { 22, "Comm 22", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7005), 21, 1 },
+                    { 24, "Comm 24", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7008), 23, 3 },
+                    { 25, "Comm 25", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7009), 24, 1 },
+                    { 27, "Comm 27", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7012), 26, 3 },
+                    { 30, "Comm 30", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7016), 29, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -260,12 +260,12 @@ namespace DumpDrive.Data.Migrations
                 columns: new[] { "ItemId", "Content", "CreatedAt", "DriveId", "Item_type", "LastChangedAt", "Name", "ParentFolderId", "ParentFolderItemId" },
                 values: new object[,]
                 {
-                    { 15, "Content for Dump Domaci Notes", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5997), 1, "File", null, "domaci.docx", 1, null },
-                    { 17, "Content for Web Programiranje Code", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6284), 1, "File", null, "preza.pdf", 3, null },
-                    { 22, "Project summary", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6293), 1, "File", null, "summary.pdf", 6, null },
-                    { 25, "Thesis draft", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6300), 2, "File", null, "thesis.docx", 10, null },
-                    { 27, "Linux guide", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6303), 3, "File", null, "linux-guide.pdf", 12, null },
-                    { 28, "Windows FAQ", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6305), 3, "File", null, "windows-faq.docx", 13, null }
+                    { 15, "Content file1", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(4755), 1, "File", null, "file1.docx", 1, null },
+                    { 17, "Content file3", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5044), 1, "File", null, "file3.pdf", 3, null },
+                    { 22, "Content file8", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5095), 1, "File", null, "file8.pdf", 6, null },
+                    { 25, "Content file11", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5101), 2, "File", null, "file11.docx", 10, null },
+                    { 27, "Content file13", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5104), 3, "File", null, "file13.pdf", 12, null },
+                    { 28, "Content file15", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5106), 3, "File", null, "file15.docx", 13, null }
                 });
 
             migrationBuilder.InsertData(
@@ -273,11 +273,11 @@ namespace DumpDrive.Data.Migrations
                 columns: new[] { "SharedItemId", "ItemId", "ItemName", "UserId" },
                 values: new object[,]
                 {
-                    { 2, 16, "predavanje.txt", 2 },
-                    { 4, 18, "osobni-dokument.docx", 1 },
-                    { 7, 21, "notes.txt", 1 },
-                    { 9, 23, "picture.jpg", 3 },
-                    { 10, 24, "tasklist.docx", 1 }
+                    { 2, 16, "file5.txt", 2 },
+                    { 4, 18, "file10.docx", 1 },
+                    { 7, 21, "file12.txt", 1 },
+                    { 9, 23, "file16.txt", 3 },
+                    { 10, 24, "file6.docx", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -285,18 +285,18 @@ namespace DumpDrive.Data.Migrations
                 columns: new[] { "CommentId", "Content", "CreatedAt", "ItemId", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Komentar 1", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7183), 15, 1 },
-                    { 3, "Komentar 3", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7971), 17, 1 },
-                    { 8, "Komentar 8", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7980), 22, 3 },
-                    { 11, "Komentar 11", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7985), 25, 3 },
-                    { 13, "Komentar 13", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7987), 27, 1 },
-                    { 14, "Komentar 14", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7989), 28, 2 },
-                    { 16, "Komentar 16", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7991), 15, 1 },
-                    { 18, "Komentar 18", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7995), 17, 3 },
-                    { 23, "Komentar 23", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8099), 22, 2 },
-                    { 26, "Komentar 26", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8103), 25, 2 },
-                    { 28, "Komentar 28", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8105), 27, 1 },
-                    { 29, "Komentar 29", new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8107), 28, 2 }
+                    { 1, "Comm 1", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6006), 15, 1 },
+                    { 3, "Comm 3", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6975), 17, 1 },
+                    { 8, "Comm 8", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6984), 22, 3 },
+                    { 11, "Comm 11", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6989), 25, 3 },
+                    { 13, "Comm 13", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6992), 27, 1 },
+                    { 14, "Comm 14", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6993), 28, 2 },
+                    { 16, "Comm 16", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6996), 15, 1 },
+                    { 18, "Comm 18", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7000), 17, 3 },
+                    { 23, "Comm 23", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7007), 22, 2 },
+                    { 26, "Comm 26", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7011), 25, 2 },
+                    { 28, "Comm 28", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7013), 27, 1 },
+                    { 29, "Comm 29", new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7014), 28, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -304,9 +304,9 @@ namespace DumpDrive.Data.Migrations
                 columns: new[] { "SharedItemId", "ItemId", "ItemName", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 15, "domaci.docx", 1 },
-                    { 3, 17, "preza.pdf", 3 },
-                    { 8, 22, "summary.pdf", 2 }
+                    { 1, 15, "file15.docx", 1 },
+                    { 3, 17, "file8.pdf", 3 },
+                    { 8, 22, "file13.pdf", 2 }
                 });
 
             migrationBuilder.CreateIndex(

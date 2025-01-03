@@ -42,7 +42,6 @@ namespace DumpDrive.Domain.Repositories
                 .ThenInclude(i => (i as Folder).Items)
                 .FirstOrDefault(f => f.ItemId == folderId);
         }
-
     }
 }
 

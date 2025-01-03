@@ -3,6 +3,7 @@ using System;
 using DumpDrive.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DumpDrive.Data.Migrations
 {
     [DbContext(typeof(DumpDriveDbContext))]
-    partial class DumpDriveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250103151524_AddingBase")]
+    partial class AddingBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

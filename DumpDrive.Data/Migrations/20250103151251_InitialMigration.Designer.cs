@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DumpDrive.Data.Migrations
 {
     [DbContext(typeof(DumpDriveDbContext))]
-    [Migration("20250102204057_InitialMigrationdotnet")]
-    partial class InitialMigrationdotnet
+    [Migration("20250103151251_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,240 +58,240 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             CommentId = 1,
-                            Content = "Komentar 1",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7183),
+                            Content = "Comm 1",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6006),
                             ItemId = 15,
                             UserId = 1
                         },
                         new
                         {
                             CommentId = 2,
-                            Content = "Komentar 2",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7969),
+                            Content = "Comm 2",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6973),
                             ItemId = 16,
                             UserId = 1
                         },
                         new
                         {
                             CommentId = 3,
-                            Content = "Komentar 3",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7971),
+                            Content = "Comm 3",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6975),
                             ItemId = 17,
                             UserId = 1
                         },
                         new
                         {
                             CommentId = 4,
-                            Content = "Komentar 4",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7973),
+                            Content = "Comm 4",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6977),
                             ItemId = 18,
                             UserId = 2
                         },
                         new
                         {
                             CommentId = 5,
-                            Content = "Komentar 5",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7974),
+                            Content = "Comm 5",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6978),
                             ItemId = 19,
                             UserId = 3
                         },
                         new
                         {
                             CommentId = 6,
-                            Content = "Komentar 6",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7977),
+                            Content = "Comm 6",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6982),
                             ItemId = 20,
                             UserId = 2
                         },
                         new
                         {
                             CommentId = 7,
-                            Content = "Komentar 7",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7978),
+                            Content = "Comm 7",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6983),
                             ItemId = 21,
                             UserId = 1
                         },
                         new
                         {
                             CommentId = 8,
-                            Content = "Komentar 8",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7980),
+                            Content = "Comm 8",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6984),
                             ItemId = 22,
                             UserId = 3
                         },
                         new
                         {
                             CommentId = 9,
-                            Content = "Komentar 9",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7981),
+                            Content = "Comm 9",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6986),
                             ItemId = 23,
                             UserId = 2
                         },
                         new
                         {
                             CommentId = 10,
-                            Content = "Komentar 10",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7983),
+                            Content = "Comm 10",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6988),
                             ItemId = 24,
                             UserId = 1
                         },
                         new
                         {
                             CommentId = 11,
-                            Content = "Komentar 11",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7985),
+                            Content = "Comm 11",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6989),
                             ItemId = 25,
                             UserId = 3
                         },
                         new
                         {
                             CommentId = 12,
-                            Content = "Komentar 12",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7986),
+                            Content = "Comm 12",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6991),
                             ItemId = 26,
                             UserId = 2
                         },
                         new
                         {
                             CommentId = 13,
-                            Content = "Komentar 13",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7987),
+                            Content = "Comm 13",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6992),
                             ItemId = 27,
                             UserId = 1
                         },
                         new
                         {
                             CommentId = 14,
-                            Content = "Komentar 14",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7989),
+                            Content = "Comm 14",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6993),
                             ItemId = 28,
                             UserId = 2
                         },
                         new
                         {
                             CommentId = 15,
-                            Content = "Komentar 15",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7990),
+                            Content = "Comm 15",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6995),
                             ItemId = 29,
                             UserId = 3
                         },
                         new
                         {
                             CommentId = 16,
-                            Content = "Komentar 16",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7991),
+                            Content = "Comm 16",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6996),
                             ItemId = 15,
                             UserId = 1
                         },
                         new
                         {
                             CommentId = 17,
-                            Content = "Komentar 17",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7993),
+                            Content = "Comm 17",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(6997),
                             ItemId = 16,
                             UserId = 2
                         },
                         new
                         {
                             CommentId = 18,
-                            Content = "Komentar 18",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7995),
+                            Content = "Comm 18",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7000),
                             ItemId = 17,
                             UserId = 3
                         },
                         new
                         {
                             CommentId = 19,
-                            Content = "Komentar 19",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7996),
+                            Content = "Comm 19",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7001),
                             ItemId = 18,
                             UserId = 1
                         },
                         new
                         {
                             CommentId = 20,
-                            Content = "Komentar 20",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(7998),
+                            Content = "Comm 20",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7002),
                             ItemId = 19,
                             UserId = 2
                         },
                         new
                         {
                             CommentId = 21,
-                            Content = "Komentar 21",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8096),
+                            Content = "Comm 21",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7004),
                             ItemId = 20,
                             UserId = 3
                         },
                         new
                         {
                             CommentId = 22,
-                            Content = "Komentar 22",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8097),
+                            Content = "Comm 22",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7005),
                             ItemId = 21,
                             UserId = 1
                         },
                         new
                         {
                             CommentId = 23,
-                            Content = "Komentar 23",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8099),
+                            Content = "Comm 23",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7007),
                             ItemId = 22,
                             UserId = 2
                         },
                         new
                         {
                             CommentId = 24,
-                            Content = "Komentar 24",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8100),
+                            Content = "Comm 24",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7008),
                             ItemId = 23,
                             UserId = 3
                         },
                         new
                         {
                             CommentId = 25,
-                            Content = "Komentar 25",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8101),
+                            Content = "Comm 25",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7009),
                             ItemId = 24,
                             UserId = 1
                         },
                         new
                         {
                             CommentId = 26,
-                            Content = "Komentar 26",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8103),
+                            Content = "Comm 26",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7011),
                             ItemId = 25,
                             UserId = 2
                         },
                         new
                         {
                             CommentId = 27,
-                            Content = "Komentar 27",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8104),
+                            Content = "Comm 27",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7012),
                             ItemId = 26,
                             UserId = 3
                         },
                         new
                         {
                             CommentId = 28,
-                            Content = "Komentar 28",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8105),
+                            Content = "Comm 28",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7013),
                             ItemId = 27,
                             UserId = 1
                         },
                         new
                         {
                             CommentId = 29,
-                            Content = "Komentar 29",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8107),
+                            Content = "Comm 29",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7014),
                             ItemId = 28,
                             UserId = 2
                         },
                         new
                         {
                             CommentId = 30,
-                            Content = "Komentar 30",
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(8108),
+                            Content = "Comm 30",
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(7016),
                             ItemId = 29,
                             UserId = 3
                         });
@@ -418,70 +418,70 @@ namespace DumpDrive.Data.Migrations
                         {
                             SharedItemId = 1,
                             ItemId = 15,
-                            ItemName = "domaci.docx",
+                            ItemName = "file15.docx",
                             UserId = 1
                         },
                         new
                         {
                             SharedItemId = 2,
                             ItemId = 16,
-                            ItemName = "predavanje.txt",
+                            ItemName = "file5.txt",
                             UserId = 2
                         },
                         new
                         {
                             SharedItemId = 3,
                             ItemId = 17,
-                            ItemName = "preza.pdf",
+                            ItemName = "file8.pdf",
                             UserId = 3
                         },
                         new
                         {
                             SharedItemId = 4,
                             ItemId = 18,
-                            ItemName = "osobni-dokument.docx",
+                            ItemName = "file10.docx",
                             UserId = 1
                         },
                         new
                         {
                             SharedItemId = 5,
                             ItemId = 19,
-                            ItemName = "Review.txt",
+                            ItemName = "file7.txt",
                             UserId = 2
                         },
                         new
                         {
                             SharedItemId = 6,
                             ItemId = 20,
-                            ItemName = "Recepti.docx",
+                            ItemName = "file11.docx",
                             UserId = 3
                         },
                         new
                         {
                             SharedItemId = 7,
                             ItemId = 21,
-                            ItemName = "notes.txt",
+                            ItemName = "file12.txt",
                             UserId = 1
                         },
                         new
                         {
                             SharedItemId = 8,
                             ItemId = 22,
-                            ItemName = "summary.pdf",
+                            ItemName = "file13.pdf",
                             UserId = 2
                         },
                         new
                         {
                             SharedItemId = 9,
                             ItemId = 23,
-                            ItemName = "picture.jpg",
+                            ItemName = "file16.txt",
                             UserId = 3
                         },
                         new
                         {
                             SharedItemId = 10,
                             ItemId = 24,
-                            ItemName = "tasklist.docx",
+                            ItemName = "file6.docx",
                             UserId = 1
                         });
                 });
@@ -519,7 +519,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 227, DateTimeKind.Utc).AddTicks(3247),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 305, DateTimeKind.Utc).AddTicks(734),
                             DriveId = 1,
                             Email = "marko@gmail.com",
                             Name = "Marko",
@@ -528,7 +528,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 227, DateTimeKind.Utc).AddTicks(4667),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 305, DateTimeKind.Utc).AddTicks(2077),
                             DriveId = 2,
                             Email = "jure@gmail.com",
                             Name = "Jure",
@@ -537,7 +537,7 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 227, DateTimeKind.Utc).AddTicks(4672),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 305, DateTimeKind.Utc).AddTicks(2082),
                             DriveId = 3,
                             Email = "ana@gmail.com",
                             Name = "Ana",
@@ -559,135 +559,135 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 15,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5997),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(4755),
                             DriveId = 1,
-                            Name = "domaci.docx",
+                            Name = "file1.docx",
                             ParentFolderId = 1,
-                            Content = "Content for Dump Domaci Notes"
+                            Content = "Content file1"
                         },
                         new
                         {
                             ItemId = 16,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6281),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5041),
                             DriveId = 1,
-                            Name = "predavanje.txt",
+                            Name = "file2.txt",
                             ParentFolderId = 2,
-                            Content = "Content for Fesb Predavanja Slides"
+                            Content = "Content file2"
                         },
                         new
                         {
                             ItemId = 17,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6284),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5044),
                             DriveId = 1,
-                            Name = "preza.pdf",
+                            Name = "file3.pdf",
                             ParentFolderId = 3,
-                            Content = "Content for Web Programiranje Code"
+                            Content = "Content file3"
                         },
                         new
                         {
                             ItemId = 18,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6286),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5087),
                             DriveId = 1,
-                            Name = "osobni-dokument.docx",
+                            Name = "file4.docx",
                             ParentFolderId = 5,
-                            Content = "Content for Personal Documents"
+                            Content = "Content file4"
                         },
                         new
                         {
                             ItemId = 19,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6287),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5088),
                             DriveId = 1,
-                            Name = "Review.txt",
-                            Content = "Review"
+                            Name = "file5.txt",
+                            Content = "Content file5"
                         },
                         new
                         {
                             ItemId = 20,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6290),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5092),
                             DriveId = 1,
-                            Name = "Recepti.docx",
-                            Content = "Content for Recepti"
+                            Name = "file6.docx",
+                            Content = "Content file6"
                         },
                         new
                         {
                             ItemId = 21,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6292),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5093),
                             DriveId = 1,
-                            Name = "notes.txt",
+                            Name = "file7.txt",
                             ParentFolderId = 2,
-                            Content = "Class notes"
+                            Content = "Content file7"
                         },
                         new
                         {
                             ItemId = 22,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6293),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5095),
                             DriveId = 1,
-                            Name = "summary.pdf",
+                            Name = "file8.pdf",
                             ParentFolderId = 6,
-                            Content = "Project summary"
+                            Content = "Content file8"
                         },
                         new
                         {
                             ItemId = 23,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6295),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5096),
                             DriveId = 1,
-                            Name = "picture-description.txt",
+                            Name = "file9.txt",
                             ParentFolderId = 4,
-                            Content = "A random picture"
+                            Content = "Content file9"
                         },
                         new
                         {
                             ItemId = 24,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6298),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5099),
                             DriveId = 1,
-                            Name = "tasklist.docx",
+                            Name = "file10.docx",
                             ParentFolderId = 9,
-                            Content = "List of tasks"
+                            Content = "Content file10"
                         },
                         new
                         {
                             ItemId = 25,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6300),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5101),
                             DriveId = 2,
-                            Name = "thesis.docx",
+                            Name = "file11.docx",
                             ParentFolderId = 10,
-                            Content = "Thesis draft"
+                            Content = "Content file11"
                         },
                         new
                         {
                             ItemId = 26,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6301),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5103),
                             DriveId = 3,
-                            Name = "system-notes.txt",
+                            Name = "file12.txt",
                             ParentFolderId = 11,
-                            Content = "Notes on OS"
+                            Content = "Content file12"
                         },
                         new
                         {
                             ItemId = 27,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6303),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5104),
                             DriveId = 3,
-                            Name = "linux-guide.pdf",
+                            Name = "file13.pdf",
                             ParentFolderId = 12,
-                            Content = "Linux guide"
+                            Content = "Content file13"
                         },
                         new
                         {
                             ItemId = 28,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6305),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5106),
                             DriveId = 3,
-                            Name = "windows-faq.docx",
+                            Name = "file15.docx",
                             ParentFolderId = 13,
-                            Content = "Windows FAQ"
+                            Content = "Content file15"
                         },
                         new
                         {
                             ItemId = 29,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(6307),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(5108),
                             DriveId = 3,
-                            Name = "study-plan.txt",
+                            Name = "file16.txt",
                             ParentFolderId = 14,
-                            Content = "Plan for studying"
+                            Content = "Content file16"
                         });
                 });
 
@@ -701,106 +701,106 @@ namespace DumpDrive.Data.Migrations
                         new
                         {
                             ItemId = 2,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(4129),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(2688),
                             DriveId = 1,
-                            Name = "Fesb-predavanja"
+                            Name = "Docs"
                         },
                         new
                         {
                             ItemId = 3,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(4752),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3445),
                             DriveId = 1,
-                            Name = "Web-prog",
+                            Name = "Pictures",
                             ParentFolderId = 2
                         },
                         new
                         {
                             ItemId = 4,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(4989),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3685),
                             DriveId = 1,
-                            Name = "Slike"
+                            Name = "Videos"
                         },
                         new
                         {
                             ItemId = 1,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(4990),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3686),
                             DriveId = 1,
-                            Name = "Moje slike",
+                            Name = "Oldies",
                             ParentFolderId = 4
                         },
                         new
                         {
                             ItemId = 5,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(4993),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3688),
                             DriveId = 1,
-                            Name = "Dokumenti"
+                            Name = "Projects"
                         },
                         new
                         {
                             ItemId = 6,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5005),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3706),
                             DriveId = 1,
-                            Name = "Projektni-zadaci",
+                            Name = "Tasks",
                             ParentFolderId = 2
                         },
                         new
                         {
                             ItemId = 7,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5007),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3708),
                             DriveId = 2,
-                            Name = "Recepti"
+                            Name = "Google"
                         },
                         new
                         {
                             ItemId = 8,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5009),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3709),
                             DriveId = 2,
-                            Name = "Svasta"
+                            Name = "Firefox"
                         },
                         new
                         {
                             ItemId = 9,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5010),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3711),
                             DriveId = 2,
-                            Name = "Projekti"
+                            Name = "Debian"
                         },
                         new
                         {
                             ItemId = 10,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5013),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3713),
                             DriveId = 2,
-                            Name = "Zavrsni-rad",
+                            Name = "Git",
                             ParentFolderId = 9
                         },
                         new
                         {
                             ItemId = 11,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5015),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3715),
                             DriveId = 3,
-                            Name = "Operacijski-sustavi"
+                            Name = "Folder"
                         },
                         new
                         {
                             ItemId = 12,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5016),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3716),
                             DriveId = 3,
-                            Name = "Linux",
+                            Name = "Folder1",
                             ParentFolderId = 11
                         },
                         new
                         {
                             ItemId = 13,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5018),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3718),
                             DriveId = 3,
-                            Name = "Windows",
+                            Name = "Folder2",
                             ParentFolderId = 11
                         },
                         new
                         {
                             ItemId = 14,
-                            CreatedAt = new DateTime(2025, 1, 2, 20, 40, 56, 228, DateTimeKind.Utc).AddTicks(5020),
+                            CreatedAt = new DateTime(2025, 1, 3, 15, 12, 50, 306, DateTimeKind.Utc).AddTicks(3720),
                             DriveId = 3,
-                            Name = "Folder-za-faks"
+                            Name = "Folder3"
                         });
                 });
 

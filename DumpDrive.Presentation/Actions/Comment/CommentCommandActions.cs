@@ -8,12 +8,10 @@ namespace DumpDrive.Presentation.Actions
     public class CommentCommandActions
     {
         private readonly UserRepository _userRepository;
-
         private readonly CommentRepository _commentRepository;
-
         private static int _itemId;
-
         private readonly User _user;
+
         public CommentCommandActions(UserRepository userRepository , CommentRepository commentRepository, int itemId, User user)
         {
             _userRepository = userRepository;
@@ -65,6 +63,11 @@ namespace DumpDrive.Presentation.Actions
                     Writer.Error($"Comment with ID {commentId} not found.\n");
                     return;
                 }
+                else if(existingComment.User != _user)
+                {
+                    Writer.Error("You are not the person who wrote the comment.\n");
+                    return;
+                }
 
                 Reader.TryReadInput("Enter new content", out var newContent);
                 existingComment.Content = newContent;
@@ -87,7 +90,7 @@ namespace DumpDrive.Presentation.Actions
 
         public void DeleteComment()
         {
-            Console.Write("Enter the ID of the comment to delete: ");
+            Console.Write("Enter the ID of the comment you want to delete: ");
             if (int.TryParse(Console.ReadLine(), out int commentId))
             {
                 var commentToDelete = _commentRepository.GetByIdAndItemId(commentId, _itemId);

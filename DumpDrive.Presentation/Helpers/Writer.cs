@@ -26,22 +26,21 @@ namespace DumpDrive.Presentation.Helpers
 
         public static void PrintCommands()
         {
-            Console.WriteLine("\nclear                                       - Clear terminal");
-            Console.WriteLine("help                                        - Display all commands");
-            Console.WriteLine("make folder 'folder name'                   - Create a folder with the specified name");
-            Console.WriteLine("make file 'filename'                        - Create a file with the specified name");
-            Console.WriteLine("cd 'folder name'                            - Navigate into the specified folder");
-            Console.WriteLine("edit file 'filename'                        - Edit the specified file");
-            Console.WriteLine("delete folder/file 'folder/file name'       - Delete the specified folder or file");
-            Console.WriteLine("change name folder/file 'name' in 'new'     - Rename a folder or file");
-            Console.WriteLine("share folder/file with 'email'              - Share a folder or file");
-            Console.WriteLine("stop sharing 'folder/file' with 'email'     - Stop shsaring a folder or file");
-            Console.WriteLine("back                                        - Return to the previous folder");
+            Console.WriteLine("\nclear                                     ->       Clear terminal");
+            Console.WriteLine("make folder [folder name]                  ->       Create a folder");
+            Console.WriteLine("make file [folder name]                    ->        Create a file");
+            Console.WriteLine("cd 'folder name'                           ->       Navigate into folder");
+            Console.WriteLine("edit file [file name]                      ->       Edit a file");
+            Console.WriteLine("delete folder/file [folder/file name]      ->       Delete folder or file");
+            Console.WriteLine("change name folder/file [name] in [new]    ->       Rename a folder or file");
+            Console.WriteLine("share folder/file with [email]             ->       Share a folder or file");
+            Console.WriteLine("stop sharing [folder/file] with [email]    ->       Stop shsaring a folder or file");
+            Console.WriteLine("return                                     ->       Return to the previous folder");
         }
 
         public static void PrintCommentCommands()
         {
-            Console.WriteLine("\nhelp                           - Display all commands");
+            Console.WriteLine("\nhelp           ->     Display all commands");
             Console.WriteLine("add comment");
             Console.WriteLine("edit comment");
             Console.WriteLine("delete comment\n");
@@ -107,17 +106,17 @@ namespace DumpDrive.Presentation.Helpers
 
         public static void PrintReducedCommands()
         {
-            Console.WriteLine("\nhelp                              - Display all commands");
-            Console.WriteLine("edit file 'filename'               - Edit the specified file");
-            Console.WriteLine("delete 'name of folder/file'       - Delete the specified folder or file\n");
+            Console.WriteLine("\nhelp                                 ->       Display all commands");
+            Console.WriteLine("edit file [filename]                  ->       Edit a file");
+            Console.WriteLine("delete [folder/file name]             ->       Delete folder or file\n");
         }
 
         public static void PrintFileEditCommands()
         {
-            Console.WriteLine("\n:save               - Save and exit");
-            Console.WriteLine(":cancel              - Exit without saving");
-            Console.WriteLine(":open comments       - Open comments");
-            Console.WriteLine(":help                - Display available commands");
+            Console.WriteLine("\n:save               ->       Save and exit");
+            Console.WriteLine(":cancel              ->       Exit without saving");
+            Console.WriteLine(":open comments       ->       Open comments");
+            Console.WriteLine(":help                ->       Available commands");
         }
 
 
@@ -137,7 +136,7 @@ namespace DumpDrive.Presentation.Helpers
             }
         }
 
-        public static void PrintCurrentFolderContent(CurrentFolder? currentFolder, List<Folder> folders, List<Files> files)
+        public static void PrintCurrentFolderContent(FolderContext? currentFolder, List<Folder> folders, List<Files> files)
         {
             Console.Clear();
             Write("\t- My Drive -");
